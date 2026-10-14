@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../HotelReservation.Businesslogic/HotelReservation.Businesslogic.csproj" />
+  <Project Path="../HotelReservation.Model/HotelReservation.Model.csproj" />
+  <Project Path="HotelReservation.UI.csproj" />
+</Solution>
