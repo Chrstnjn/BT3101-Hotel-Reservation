@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\" />
-    <Folder Include="FrontDesk\" />
+    <ProjectReference Include="..\HotelReservation.Businesslogic\HotelReservation.Businesslogic.csproj" />
+    <ProjectReference Include="..\HotelReservation.Model\HotelReservation.Model.csproj" />
   </ItemGroup>
 
 </Project>
