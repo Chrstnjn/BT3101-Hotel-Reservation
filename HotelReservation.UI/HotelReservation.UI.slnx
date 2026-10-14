@@ -1,5 +1,9 @@
 <Solution>
   <Project Path="../HotelReservation.Businesslogic/HotelReservation.Businesslogic.csproj" />
+  <Project Path="../HotelReservation.DB/Highlands.DB.sqlproj" Id="dccda04f-c45f-45e6-9bdb-a94b9a63eb51">
+    <Build />
+    <Deploy />
+  </Project>
   <Project Path="../HotelReservation.Model/HotelReservation.Model.csproj" />
   <Project Path="HotelReservation.UI.csproj" />
 </Solution>
