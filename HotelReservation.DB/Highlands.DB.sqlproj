@@ -63,8 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\Users.sql" />
+    <Build Include="Table\Guests.sql" />
+    <Build Include="Stored Procedures\usp_UpdateGuest.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />
+    <None Include="Scripts\GuestScript.sql" />
   </ItemGroup>
 </Project>

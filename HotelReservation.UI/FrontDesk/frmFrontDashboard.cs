@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+﻿using HotelReservation.Businesslogic.Controller;
+
 
 namespace HotelReservation.UI.FrontDesk
 {
@@ -13,6 +8,25 @@ namespace HotelReservation.UI.FrontDesk
         public frmFrontDashboard()
         {
             InitializeComponent();
+        }
+
+        private void LoadTotalGuests()
+        {
+            GuestController guestController = new GuestController();
+
+            lblTotalGuest.Text = guestController.GetGuests().Rows.Count.ToString();
+        }
+        private void frmFrontDashboard_Load(object sender, EventArgs e)
+        {
+
+            LoadTotalGuests();
+        }
+
+        private void btnGuestManagement_Click(object sender, EventArgs e)
+        {
+            frmGuestManagement guestForm = new frmGuestManagement();
+            guestForm.Show();
+            this.Hide();
         }
     }
 }

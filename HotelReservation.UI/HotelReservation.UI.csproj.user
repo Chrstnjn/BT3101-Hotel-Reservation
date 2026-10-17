@@ -10,5 +10,11 @@
     <Compile Update="FrontDesk\frmFrontDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrontDesk\frmGuestManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrontDesk\UcAddGuest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

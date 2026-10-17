@@ -1,3 +1,5 @@
 .vs/
 bin/
 obj/
+/HotelReservation.DB/Highlands.DB.dbmdl
+/HotelReservation.DB/Highlands.DB.jfm
