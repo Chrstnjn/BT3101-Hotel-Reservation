@@ -365,9 +365,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "frmFrontDashboard";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmFrontDashboard";
-            WindowState = FormWindowState.Maximized;
             Load += frmFrontDashboard_Load;
             panel5.ResumeLayout(false);
             panel5.PerformLayout();

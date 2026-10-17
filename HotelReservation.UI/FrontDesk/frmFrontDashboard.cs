@@ -1,5 +1,6 @@
 ﻿using HotelReservation.Businesslogic.Controller;
-
+using HotelReservation.Businesslogic.Repository;
+using System.Data;
 
 namespace HotelReservation.UI.FrontDesk
 {
@@ -10,23 +11,23 @@ namespace HotelReservation.UI.FrontDesk
             InitializeComponent();
         }
 
-        private void LoadTotalGuests()
+        private void btnGuestManagement_Click(object sender, EventArgs e)
         {
-            GuestController guestController = new GuestController();
-
-            lblTotalGuest.Text = guestController.GetGuests().Rows.Count.ToString();
+            frmGuestManagement frontDashboard = new frmGuestManagement();
+            frontDashboard.Show();
+            this.Hide();
         }
+
         private void frmFrontDashboard_Load(object sender, EventArgs e)
         {
-
             LoadTotalGuests();
         }
 
-        private void btnGuestManagement_Click(object sender, EventArgs e)
+        private void LoadTotalGuests()
         {
-            frmGuestManagement guestForm = new frmGuestManagement();
-            guestForm.Show();
-            this.Hide();
+            GuestRepository repo = new GuestRepository();
+
+            lblTotalGuest.Text = repo.GetGuests().Rows.Count.ToString();
         }
     }
 }
