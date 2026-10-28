@@ -45,7 +45,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(199, 115);
+            label1.Location = new Point(200, 115);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
             label1.TabIndex = 0;
@@ -56,7 +56,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(64, 310);
+            label2.Location = new Point(65, 365);
             label2.Name = "label2";
             label2.Size = new Size(83, 19);
             label2.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Cambria", 12F, FontStyle.Bold);
-            label3.Location = new Point(64, 392);
+            label3.Location = new Point(65, 447);
             label3.Name = "label3";
             label3.Size = new Size(81, 19);
             label3.TabIndex = 2;
@@ -74,18 +74,18 @@
             // 
             // txtUsername
             // 
-            txtUsername.Font = new Font("Constantia", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtUsername.Location = new Point(64, 332);
+            txtUsername.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtUsername.Location = new Point(65, 387);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(296, 33);
+            txtUsername.Size = new Size(322, 36);
             txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("Constantia", 15.75F, FontStyle.Bold);
-            txtPassword.Location = new Point(64, 414);
+            txtPassword.Font = new Font("Consolas", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtPassword.Location = new Point(65, 469);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(296, 33);
+            txtPassword.Size = new Size(322, 36);
             txtPassword.TabIndex = 4;
             // 
             // btnLogin
@@ -94,9 +94,9 @@
             btnLogin.FlatStyle = FlatStyle.Popup;
             btnLogin.Font = new Font("Constantia", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = SystemColors.ButtonHighlight;
-            btnLogin.Location = new Point(116, 518);
+            btnLogin.Location = new Point(118, 574);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(186, 39);
+            btnLogin.Size = new Size(212, 49);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
@@ -107,7 +107,7 @@
             chkPassword.AutoSize = true;
             chkPassword.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkPassword.ForeColor = SystemColors.GrayText;
-            chkPassword.Location = new Point(251, 453);
+            chkPassword.Location = new Point(276, 511);
             chkPassword.Name = "chkPassword";
             chkPassword.Size = new Size(111, 19);
             chkPassword.TabIndex = 6;
@@ -126,9 +126,9 @@
             panel1.Controls.Add(txtUsername);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(493, 88);
+            panel1.Location = new Point(683, 156);
             panel1.Name = "panel1";
-            panel1.Size = new Size(420, 610);
+            panel1.Size = new Size(448, 684);
             panel1.TabIndex = 7;
             // 
             // pictureBox1
@@ -138,9 +138,9 @@
             pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(64, 50);
+            pictureBox1.Location = new Point(65, 77);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(298, 187);
+            pictureBox1.Size = new Size(322, 187);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
@@ -150,7 +150,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 69, 115);
-            ClientSize = new Size(1387, 802);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(panel1);
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
