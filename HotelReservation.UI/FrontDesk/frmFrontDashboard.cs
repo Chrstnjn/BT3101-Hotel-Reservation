@@ -29,5 +29,12 @@ namespace HotelReservation.UI.FrontDesk
 
             lblTotalGuest.Text = repo.GetGuests().Rows.Count.ToString();
         }
+
+        private void btnRoom_Click(object sender, EventArgs e)
+        {
+            frmRooms frontRoom = new frmRooms();
+            frontRoom.Show();
+            this.Hide();
+        }
     }
 }

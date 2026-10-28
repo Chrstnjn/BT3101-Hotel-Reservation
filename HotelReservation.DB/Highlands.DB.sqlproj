@@ -65,6 +65,8 @@
     <Build Include="Table\Users.sql" />
     <Build Include="Table\Guests.sql" />
     <Build Include="Stored Procedures\usp_UpdateGuest.sql" />
+    <Build Include="Table\RoomTypes.sql" />
+    <Build Include="Table\Rooms.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />

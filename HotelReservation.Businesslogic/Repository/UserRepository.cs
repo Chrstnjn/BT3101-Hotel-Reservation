@@ -7,7 +7,7 @@ namespace HotelReservation.Businesslogic.Repository
     public class UserRepository
     {
         private readonly string connectionString =
-            ConfigurationManager.ConnectionStrings["HotelDB"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["HighlandsDB"].ConnectionString;
 
         public UserModel Login(string username, string password)
         {

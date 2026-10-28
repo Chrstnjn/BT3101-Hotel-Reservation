@@ -114,6 +114,7 @@
             Controls.Add(label1);
             Controls.Add(chkPassword);
             Name = "frmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += frmLogin_Load;
             ResumeLayout(false);
