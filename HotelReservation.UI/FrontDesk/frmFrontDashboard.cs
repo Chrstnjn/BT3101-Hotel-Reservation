@@ -36,5 +36,7 @@ namespace HotelReservation.UI.FrontDesk
             frontRoom.Show();
             this.Hide();
         }
+
+
     }
 }
