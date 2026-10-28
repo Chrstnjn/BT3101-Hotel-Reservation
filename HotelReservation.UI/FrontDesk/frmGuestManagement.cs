@@ -27,6 +27,9 @@ namespace HotelReservation.UI.FrontDesk
         private void frmGuestManagement_Load(object sender, EventArgs e)
         {
             dgvGuestsList.ContextMenuStrip = cMenuGuest;
+            dgvGuestsList.SelectionMode =
+       DataGridViewSelectionMode.FullRowSelect;
+
             LoadGuests();
 
             cmbGender.Items.Clear();
@@ -113,11 +116,27 @@ namespace HotelReservation.UI.FrontDesk
         {
 
         }
+        private void ClearFields()
+        {
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtPhone.Clear();
+            txtStreet.Clear();
+            txtCity.Clear();
+            txtProvince.Clear();
+            txtEmergencyName.Clear();
+            txtEmergencyNumber.Clear();
+
+            cmbGender.SelectedIndex = -1;
+
+            selectedGuestId = 0;
+        }
 
         private void btnAddGuest_Click(object sender, EventArgs e)
         {
             pnlAddGuest.Visible = true;
 
+            ClearFields();
             cmbGender.SelectedIndex = 0;
 
             btnSave.Text = "Save";
@@ -234,6 +253,7 @@ namespace HotelReservation.UI.FrontDesk
                 dgvGuestsList.ClearSelection();
                 dgvGuestsList.Rows[e.RowIndex].Selected = true;
 
+                cMenuGuest.Show(Cursor.Position);
             }
         }
         private int selectedGuestId = 0;
@@ -316,6 +336,13 @@ namespace HotelReservation.UI.FrontDesk
         {
             frmFrontDashboard frontDashboard = new frmFrontDashboard();
             frontDashboard.Show();
+            this.Hide();
+        }
+
+        private void btnRoom_Click(object sender, EventArgs e)
+        {
+            frmRooms frontRoom = new frmRooms();
+            frontRoom.Show();
             this.Hide();
         }
     }

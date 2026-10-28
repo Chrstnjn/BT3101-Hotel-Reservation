@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
+            btnDashboard = new Button();
+            btnRoom = new Button();
             btnGuestManagement = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
+            btnReservation = new Button();
+            btnCheckIn = new Button();
+            btnCheckOut = new Button();
+            btnPayment = new Button();
             panel5 = new Panel();
             dgvAvailableRoom = new DataGridView();
             dtDate = new DateTimePicker();
@@ -68,23 +68,24 @@
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // btnDashboard
             // 
-            button1.Location = new Point(13, 102);
-            button1.Name = "button1";
-            button1.Size = new Size(108, 34);
-            button1.TabIndex = 0;
-            button1.Text = "Dashboard";
-            button1.UseVisualStyleBackColor = true;
+            btnDashboard.Location = new Point(13, 102);
+            btnDashboard.Name = "btnDashboard";
+            btnDashboard.Size = new Size(108, 34);
+            btnDashboard.TabIndex = 0;
+            btnDashboard.Text = "Dashboard";
+            btnDashboard.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnRoom
             // 
-            button2.Location = new Point(13, 142);
-            button2.Name = "button2";
-            button2.Size = new Size(108, 34);
-            button2.TabIndex = 1;
-            button2.Text = "Room";
-            button2.UseVisualStyleBackColor = true;
+            btnRoom.Location = new Point(13, 142);
+            btnRoom.Name = "btnRoom";
+            btnRoom.Size = new Size(108, 34);
+            btnRoom.TabIndex = 1;
+            btnRoom.Text = "Room";
+            btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Click += btnRoom_Click;
             // 
             // btnGuestManagement
             // 
@@ -96,41 +97,41 @@
             btnGuestManagement.UseVisualStyleBackColor = true;
             btnGuestManagement.Click += btnGuestManagement_Click;
             // 
-            // button4
+            // btnReservation
             // 
-            button4.Location = new Point(13, 222);
-            button4.Name = "button4";
-            button4.Size = new Size(108, 34);
-            button4.TabIndex = 3;
-            button4.Text = "Reservation";
-            button4.UseVisualStyleBackColor = true;
+            btnReservation.Location = new Point(13, 222);
+            btnReservation.Name = "btnReservation";
+            btnReservation.Size = new Size(108, 34);
+            btnReservation.TabIndex = 3;
+            btnReservation.Text = "Reservation";
+            btnReservation.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnCheckIn
             // 
-            button5.Location = new Point(13, 262);
-            button5.Name = "button5";
-            button5.Size = new Size(108, 34);
-            button5.TabIndex = 4;
-            button5.Text = "Check In";
-            button5.UseVisualStyleBackColor = true;
+            btnCheckIn.Location = new Point(13, 262);
+            btnCheckIn.Name = "btnCheckIn";
+            btnCheckIn.Size = new Size(108, 34);
+            btnCheckIn.TabIndex = 4;
+            btnCheckIn.Text = "Check In";
+            btnCheckIn.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnCheckOut
             // 
-            button6.Location = new Point(12, 302);
-            button6.Name = "button6";
-            button6.Size = new Size(108, 34);
-            button6.TabIndex = 5;
-            button6.Text = "Check Out";
-            button6.UseVisualStyleBackColor = true;
+            btnCheckOut.Location = new Point(12, 302);
+            btnCheckOut.Name = "btnCheckOut";
+            btnCheckOut.Size = new Size(108, 34);
+            btnCheckOut.TabIndex = 5;
+            btnCheckOut.Text = "Check Out";
+            btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnPayment
             // 
-            button7.Location = new Point(12, 342);
-            button7.Name = "button7";
-            button7.Size = new Size(108, 34);
-            button7.TabIndex = 6;
-            button7.Text = "Payment";
-            button7.UseVisualStyleBackColor = true;
+            btnPayment.Location = new Point(12, 342);
+            btnPayment.Name = "btnPayment";
+            btnPayment.Size = new Size(108, 34);
+            btnPayment.TabIndex = 6;
+            btnPayment.Text = "Payment";
+            btnPayment.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -357,14 +358,15 @@
             Controls.Add(panel1);
             Controls.Add(panel7);
             Controls.Add(panel5);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
+            Controls.Add(btnPayment);
+            Controls.Add(btnCheckOut);
+            Controls.Add(btnCheckIn);
+            Controls.Add(btnReservation);
             Controls.Add(btnGuestManagement);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnRoom);
+            Controls.Add(btnDashboard);
             Name = "frmFrontDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmFrontDashboard";
             Load += frmFrontDashboard_Load;
             panel5.ResumeLayout(false);
@@ -386,13 +388,13 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Button btnDashboard;
+        private Button btnRoom;
         private Button btnGuestManagement;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
+        private Button btnReservation;
+        private Button btnCheckIn;
+        private Button btnCheckOut;
+        private Button btnPayment;
         private Panel panel5;
         private Panel panel7;
         private Panel panel3;

@@ -30,12 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             dgvGuestsList = new DataGridView();
-            button7 = new Button();
-            button6 = new Button();
-            button5 = new Button();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
+            btnPayment = new Button();
+            btnCheckOut = new Button();
+            btnCheckIn = new Button();
+            btnReservation = new Button();
+            btnGuestManagement = new Button();
+            btnRoom = new Button();
             btnDashboard = new Button();
             lblTotalGuest = new Label();
             btnAddGuest = new Button();
@@ -87,59 +87,60 @@
             dgvGuestsList.CellFormatting += dgvGuestsList_CellFormatting;
             dgvGuestsList.CellMouseDown += dgvGuestsList_CellMouseDown;
             // 
-            // button7
+            // btnPayment
             // 
-            button7.Location = new Point(12, 342);
-            button7.Name = "button7";
-            button7.Size = new Size(108, 34);
-            button7.TabIndex = 13;
-            button7.Text = "Payment";
-            button7.UseVisualStyleBackColor = true;
+            btnPayment.Location = new Point(12, 342);
+            btnPayment.Name = "btnPayment";
+            btnPayment.Size = new Size(108, 34);
+            btnPayment.TabIndex = 13;
+            btnPayment.Text = "Payment";
+            btnPayment.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnCheckOut
             // 
-            button6.Location = new Point(12, 302);
-            button6.Name = "button6";
-            button6.Size = new Size(108, 34);
-            button6.TabIndex = 12;
-            button6.Text = "Check Out";
-            button6.UseVisualStyleBackColor = true;
+            btnCheckOut.Location = new Point(12, 302);
+            btnCheckOut.Name = "btnCheckOut";
+            btnCheckOut.Size = new Size(108, 34);
+            btnCheckOut.TabIndex = 12;
+            btnCheckOut.Text = "Check Out";
+            btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnCheckIn
             // 
-            button5.Location = new Point(13, 262);
-            button5.Name = "button5";
-            button5.Size = new Size(108, 34);
-            button5.TabIndex = 11;
-            button5.Text = "Check In";
-            button5.UseVisualStyleBackColor = true;
+            btnCheckIn.Location = new Point(13, 262);
+            btnCheckIn.Name = "btnCheckIn";
+            btnCheckIn.Size = new Size(108, 34);
+            btnCheckIn.TabIndex = 11;
+            btnCheckIn.Text = "Check In";
+            btnCheckIn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnReservation
             // 
-            button4.Location = new Point(13, 222);
-            button4.Name = "button4";
-            button4.Size = new Size(108, 34);
-            button4.TabIndex = 10;
-            button4.Text = "Reservation";
-            button4.UseVisualStyleBackColor = true;
+            btnReservation.Location = new Point(13, 222);
+            btnReservation.Name = "btnReservation";
+            btnReservation.Size = new Size(108, 34);
+            btnReservation.TabIndex = 10;
+            btnReservation.Text = "Reservation";
+            btnReservation.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnGuestManagement
             // 
-            button3.Location = new Point(13, 182);
-            button3.Name = "button3";
-            button3.Size = new Size(108, 34);
-            button3.TabIndex = 9;
-            button3.Text = "Guest";
-            button3.UseVisualStyleBackColor = true;
+            btnGuestManagement.Location = new Point(13, 182);
+            btnGuestManagement.Name = "btnGuestManagement";
+            btnGuestManagement.Size = new Size(108, 34);
+            btnGuestManagement.TabIndex = 9;
+            btnGuestManagement.Text = "Guest";
+            btnGuestManagement.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnRoom
             // 
-            button2.Location = new Point(13, 142);
-            button2.Name = "button2";
-            button2.Size = new Size(108, 34);
-            button2.TabIndex = 8;
-            button2.Text = "Room";
-            button2.UseVisualStyleBackColor = true;
+            btnRoom.Location = new Point(13, 142);
+            btnRoom.Name = "btnRoom";
+            btnRoom.Size = new Size(108, 34);
+            btnRoom.TabIndex = 8;
+            btnRoom.Text = "Room";
+            btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Click += btnRoom_Click;
             // 
             // btnDashboard
             // 
@@ -462,15 +463,16 @@
             Controls.Add(txtSearch);
             Controls.Add(btnAddGuest);
             Controls.Add(lblTotalGuest);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnPayment);
+            Controls.Add(btnCheckOut);
+            Controls.Add(btnCheckIn);
+            Controls.Add(btnReservation);
+            Controls.Add(btnGuestManagement);
+            Controls.Add(btnRoom);
             Controls.Add(btnDashboard);
             Controls.Add(dgvGuestsList);
             Name = "frmGuestManagement";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmGuestManagement";
             Load += frmGuestManagement_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGuestsList).EndInit();
@@ -484,12 +486,12 @@
         #endregion
 
         private DataGridView dgvGuestsList;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Button button2;
+        private Button btnPayment;
+        private Button btnCheckOut;
+        private Button btnCheckIn;
+        private Button btnReservation;
+        private Button btnGuestManagement;
+        private Button btnRoom;
         private Button btnDashboard;
         private Label lblTotalGuest;
         private Button btnAddGuest;
