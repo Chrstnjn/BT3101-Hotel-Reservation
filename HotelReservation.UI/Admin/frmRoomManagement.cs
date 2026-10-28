@@ -248,5 +248,10 @@ namespace HotelReservation.UI.Admin
                     $"Status LIKE '%{keyword}%'";
             }
         }
+
+        private void txtRoomType_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
