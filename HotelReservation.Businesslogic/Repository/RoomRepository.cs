@@ -46,17 +46,18 @@ namespace HotelReservation.Businesslogic.Repository
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"
-        SELECT
-            r.RoomID,
-            r.RoomNumber,
-            rt.RoomTypeName,
-            rt.NumberOfBeds,
-            rt.NumberOfPersons,
-            rt.PricePerNight,
-            r.Status
-        FROM Rooms r
-        INNER JOIN RoomTypes rt
-            ON r.RoomTypeID = rt.RoomTypeID";
+                SELECT
+                    r.RoomID,
+                    r.RoomNumber,
+                    rt.RoomTypeName,
+                    rt.NumberOfBeds,
+                    rt.NumberOfPersons,
+                    rt.PricePerNight,
+                    r.Status
+                FROM Rooms r
+                INNER JOIN RoomTypes rt
+                    ON r.RoomTypeID = rt.RoomTypeID
+                ORDER BY CAST(r.RoomNumber AS INT)";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
 
@@ -80,6 +81,44 @@ namespace HotelReservation.Businesslogic.Repository
                 int count = (int)cmd.ExecuteScalar();
 
                 return count > 0;
+            }
+        }
+
+        public bool UpdateRoom(RoomModel room)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = @"UPDATE Rooms
+                         SET RoomNumber = @RoomNumber,
+                             RoomTypeID = @RoomTypeID,
+                             Status = @Status
+                         WHERE RoomID = @RoomID";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                cmd.Parameters.AddWithValue("@RoomID", room.RoomID);
+                cmd.Parameters.AddWithValue("@RoomNumber", room.RoomNumber);
+                cmd.Parameters.AddWithValue("@RoomTypeID", room.RoomTypeID);
+                cmd.Parameters.AddWithValue("@Status", room.Status);
+
+                con.Open();
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool DeleteRoom(int roomID)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = "DELETE FROM Rooms WHERE RoomID = @RoomID";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@RoomID", roomID);
+
+                con.Open();
+
+                return cmd.ExecuteNonQuery() > 0;
             }
         }
     }

@@ -7,6 +7,7 @@ namespace HotelReservation.UI.Admin
 {
     public partial class frmRoomManagement : Form
     {
+        private int selectedRoomID = 0;
         public frmRoomManagement()
         {
             InitializeComponent();
@@ -71,6 +72,28 @@ namespace HotelReservation.UI.Admin
             if (string.IsNullOrWhiteSpace(txtRoomType.Text))
             {
                 MessageBox.Show("Enter Room Type");
+                txtRoomType.Focus();
+                return;
+            }
+
+            if (txtNumberofBed.Value <= 0)
+            {
+                MessageBox.Show("Number of Beds must be greater than 0");
+                txtNumberofBed.Focus();
+                return;
+            }
+
+            if (txtNumberofPerson.Value <= 0)
+            {
+                MessageBox.Show("Number of Persons must be greater than 0");
+                txtNumberofPerson.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPricePerNight.Text))
+            {
+                MessageBox.Show("Enter Price Per Night");
+                txtPricePerNight.Focus();
                 return;
             }
 
@@ -87,12 +110,10 @@ namespace HotelReservation.UI.Admin
             if (result)
             {
                 MessageBox.Show("Room Type Added Successfully!");
-
                 LoadRoomTypes();
-
+                LoadRoomTypesToCombo();
                 pnlRoomType.Visible = false;
             }
-
         }
 
         private void frmRoomManagement_Load(object sender, EventArgs e)
@@ -103,12 +124,29 @@ namespace HotelReservation.UI.Admin
             LoadRoomTypesToCombo();
             LoadRooms();
 
+            dgvRoomList.ContextMenuStrip = cMenuRoom;
+
             cmbStatus.Items.Clear();
 
             cmbStatus.Items.Add("Available");
             cmbStatus.Items.Add("Under Maintenance");
+
+            dgvRoomList.Columns["RoomID"].Visible = false;
+
         }
 
+        private void dgvRoomList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 &&
+                e.Button == MouseButtons.Right)
+            {
+                dgvRoomList.ClearSelection();
+                dgvRoomList.Rows[e.RowIndex].Selected = true;
+
+                dgvRoomList.CurrentCell =
+                    dgvRoomList.Rows[e.RowIndex].Cells["RoomNumber"];
+            }
+        }
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             frmAdminDashboard adminDashboard = new frmAdminDashboard();
@@ -179,37 +217,118 @@ namespace HotelReservation.UI.Admin
             cmbRoomType.DataSource = dt;
             cmbRoomType.DisplayMember = "RoomTypeName";
             cmbRoomType.ValueMember = "RoomTypeID";
+
+            cmbRoomType.SelectedIndex = -1;
         }
 
         private void btnRoomAdd_Click(object sender, EventArgs e)
         {
             RoomController controller = new RoomController();
 
-            if (controller.RoomNumberExists(txtRoomNumber.Text.Trim()))
+            // VALIDATIONS
+            if (string.IsNullOrWhiteSpace(txtRoomNumber.Text))
             {
-                MessageBox.Show("Room Number already exists!",
-                    "Duplicate Room",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Please enter Room Number.");
                 txtRoomNumber.Focus();
                 return;
             }
 
-            RoomModel room = new RoomModel()
+            if (cmbRoomType.SelectedIndex == -1)
             {
-                RoomNumber = txtRoomNumber.Text.Trim(),
-                RoomTypeID = Convert.ToInt32(cmbRoomType.SelectedValue),
-                Status = cmbStatus.Text
-            };
+                MessageBox.Show("Please select Room Type.");
+                cmbRoomType.Focus();
+                return;
+            }
 
-            bool result = controller.SaveRoom(room);
-
-            if (result)
+            if (string.IsNullOrWhiteSpace(cmbStatus.Text))
             {
-                MessageBox.Show("Room Added Successfully!");
-                LoadRooms();
-                pnlRoom.Visible = false;
+                MessageBox.Show("Please select Status.");
+                cmbStatus.Focus();
+                return;
+            }
+
+            // ================= ADD =================
+            if (selectedRoomID == 0)
+            {
+                if (controller.RoomNumberExists(txtRoomNumber.Text.Trim()))
+                {
+                    MessageBox.Show("Room Number already exists!",
+                        "Duplicate Room",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    txtRoomNumber.Focus();
+                    return;
+                }
+
+                RoomModel room = new RoomModel()
+                {
+                    RoomNumber = txtRoomNumber.Text.Trim(),
+                    RoomTypeID = Convert.ToInt32(cmbRoomType.SelectedValue),
+                    Status = cmbStatus.Text
+                };
+
+                bool result = controller.SaveRoom(room);
+
+                if (result)
+                {
+                    MessageBox.Show("Room Added Successfully!");
+
+                    LoadRooms();
+
+                    pnlRoom.Visible = false;
+
+                    txtRoomNumber.Clear();
+                    cmbRoomType.SelectedIndex = -1;
+                    cmbStatus.SelectedIndex = -1;
+                }
+            }
+
+            // ================= UPDATE =================
+            else
+            {
+                DataTable dt = controller.GetRooms();
+
+                bool duplicate = dt.AsEnumerable()
+                    .Any(r =>
+                        Convert.ToInt32(r["RoomID"]) != selectedRoomID &&
+                        r["RoomNumber"].ToString() == txtRoomNumber.Text.Trim());
+
+                if (duplicate)
+                {
+                    MessageBox.Show("Room Number already exists!",
+                        "Duplicate Room",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    txtRoomNumber.Focus();
+                    return;
+                }
+
+                RoomModel room = new RoomModel()
+                {
+                    RoomID = selectedRoomID,
+                    RoomNumber = txtRoomNumber.Text.Trim(),
+                    RoomTypeID = Convert.ToInt32(cmbRoomType.SelectedValue),
+                    Status = cmbStatus.Text
+                };
+
+                bool result = controller.UpdateRoom(room);
+
+                if (result)
+                {
+                    MessageBox.Show("Room Updated Successfully!");
+
+                    LoadRooms();
+
+                    pnlRoom.Visible = false;
+
+                    txtRoomNumber.Clear();
+                    cmbRoomType.SelectedIndex = -1;
+                    cmbStatus.SelectedIndex = -1;
+
+                    selectedRoomID = 0;
+                }
             }
         }
 
@@ -220,12 +339,16 @@ namespace HotelReservation.UI.Admin
 
         private void btnAddRoom_Click(object sender, EventArgs e)
         {
-            pnlRoom.Visible = true;
+            selectedRoomID = 0;
 
             txtRoomNumber.Clear();
 
             cmbRoomType.SelectedIndex = -1;
             cmbStatus.SelectedIndex = -1;
+
+            btnRoomAdd.Text = "Add";
+
+            pnlRoom.Visible = true;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -248,10 +371,82 @@ namespace HotelReservation.UI.Admin
                     $"Status LIKE '%{keyword}%'";
             }
         }
-
-        private void txtRoomType_TextChanged(object sender, EventArgs e)
+        private void txtRoomNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvRoomList.SelectedRows.Count > 0)
+            {
+                selectedRoomID =
+                    Convert.ToInt32(
+                        dgvRoomList.SelectedRows[0]
+                        .Cells["RoomID"].Value);
+
+                txtRoomNumber.Text =
+                    dgvRoomList.SelectedRows[0]
+                    .Cells["RoomNumber"].Value.ToString();
+
+                cmbStatus.Text =
+                    dgvRoomList.SelectedRows[0]
+                    .Cells["Status"].Value.ToString();
+
+                cmbRoomType.Text =
+                    dgvRoomList.SelectedRows[0]
+                    .Cells["RoomTypeName"].Value.ToString();
+
+                btnRoomAdd.Text = "Update";
+
+                pnlRoom.Visible = true;
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvRoomList.SelectedRows.Count > 0)
+            {
+                int roomID = Convert.ToInt32(
+                    dgvRoomList.SelectedRows[0]
+                    .Cells["RoomID"].Value);
+
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to delete this room?",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    RoomController controller = new RoomController();
+
+                    bool deleted = controller.DeleteRoom(roomID);
+
+                    if (deleted)
+                    {
+                        MessageBox.Show(
+                            "Room deleted successfully!",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        LoadRooms();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Failed to delete room.",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
