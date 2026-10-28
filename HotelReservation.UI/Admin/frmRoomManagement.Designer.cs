@@ -256,7 +256,6 @@
             label2.Size = new Size(95, 19);
             label2.TabIndex = 0;
             label2.Text = "Room Type";
-            label2.Click += this.label2_Click;
             // 
             // dgvRoomTypeList
             // 
