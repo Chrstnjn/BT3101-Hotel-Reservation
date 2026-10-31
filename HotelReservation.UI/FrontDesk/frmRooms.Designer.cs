@@ -47,9 +47,7 @@
             panel1 = new Panel();
             lblTotalRoom = new Label();
             label1 = new Label();
-            btnAddRoomType = new Button();
-            btnAddRoom = new Button();
-            textBox1 = new TextBox();
+            txtSearch = new TextBox();
             dgvRoomList = new DataGridView();
             dgvRoomTypeList = new DataGridView();
             panel3.SuspendLayout();
@@ -95,6 +93,7 @@
             btnReservation.TabIndex = 17;
             btnReservation.Text = "Reservation";
             btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Click += btnReservation_Click;
             // 
             // btnGuestManagement
             // 
@@ -237,30 +236,13 @@
             label1.TabIndex = 0;
             label1.Text = "Total Room";
             // 
-            // btnAddRoomType
+            // txtSearch
             // 
-            btnAddRoomType.Location = new Point(671, 91);
-            btnAddRoomType.Name = "btnAddRoomType";
-            btnAddRoomType.Size = new Size(101, 34);
-            btnAddRoomType.TabIndex = 25;
-            btnAddRoomType.Text = "Add Room Type";
-            btnAddRoomType.UseVisualStyleBackColor = true;
-            // 
-            // btnAddRoom
-            // 
-            btnAddRoom.Location = new Point(578, 91);
-            btnAddRoom.Name = "btnAddRoom";
-            btnAddRoom.Size = new Size(87, 34);
-            btnAddRoom.TabIndex = 26;
-            btnAddRoom.Text = "Add Room";
-            btnAddRoom.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(142, 98);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(430, 23);
-            textBox1.TabIndex = 27;
+            txtSearch.Location = new Point(142, 98);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(630, 23);
+            txtSearch.TabIndex = 27;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // dgvRoomList
             // 
@@ -268,6 +250,7 @@
             dgvRoomList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRoomList.Location = new Point(142, 127);
             dgvRoomList.Name = "dgvRoomList";
+            dgvRoomList.ReadOnly = true;
             dgvRoomList.Size = new Size(630, 150);
             dgvRoomList.TabIndex = 28;
             // 
@@ -277,6 +260,7 @@
             dgvRoomTypeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRoomTypeList.Location = new Point(142, 283);
             dgvRoomTypeList.Name = "dgvRoomTypeList";
+            dgvRoomTypeList.ReadOnly = true;
             dgvRoomTypeList.Size = new Size(630, 155);
             dgvRoomTypeList.TabIndex = 29;
             // 
@@ -287,9 +271,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvRoomTypeList);
             Controls.Add(dgvRoomList);
-            Controls.Add(textBox1);
-            Controls.Add(btnAddRoom);
-            Controls.Add(btnAddRoomType);
+            Controls.Add(txtSearch);
             Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(panel2);
@@ -304,6 +286,7 @@
             Name = "frmRooms";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmRooms";
+            Load += frmRooms_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
@@ -339,9 +322,7 @@
         private Panel panel1;
         private Label lblTotalRoom;
         private Label label1;
-        private Button btnAddRoomType;
-        private Button btnAddRoom;
-        private TextBox textBox1;
+        private TextBox txtSearch;
         private DataGridView dgvRoomList;
         private DataGridView dgvRoomTypeList;
     }

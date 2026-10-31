@@ -35,7 +35,7 @@
             lblTotalMaintenance = new Label();
             label8 = new Label();
             panel2 = new Panel();
-            lblTotalAvailable = new Label();
+            lblTotalGuest = new Label();
             label4 = new Label();
             panel1 = new Panel();
             lblTotalRoom = new Label();
@@ -108,21 +108,21 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
-            panel2.Controls.Add(lblTotalAvailable);
+            panel2.Controls.Add(lblTotalGuest);
             panel2.Controls.Add(label4);
             panel2.Location = new Point(282, 20);
             panel2.Name = "panel2";
             panel2.Size = new Size(120, 55);
             panel2.TabIndex = 39;
             // 
-            // lblTotalAvailable
+            // lblTotalGuest
             // 
-            lblTotalAvailable.AutoSize = true;
-            lblTotalAvailable.Location = new Point(50, 33);
-            lblTotalAvailable.Name = "lblTotalAvailable";
-            lblTotalAvailable.Size = new Size(13, 15);
-            lblTotalAvailable.TabIndex = 1;
-            lblTotalAvailable.Text = "0";
+            lblTotalGuest.AutoSize = true;
+            lblTotalGuest.Location = new Point(50, 33);
+            lblTotalGuest.Name = "lblTotalGuest";
+            lblTotalGuest.Size = new Size(13, 15);
+            lblTotalGuest.TabIndex = 1;
+            lblTotalGuest.Text = "0";
             // 
             // label4
             // 
@@ -203,6 +203,7 @@
             Controls.Add(btnDashboard);
             Name = "frmAdminDashboard";
             Text = "frmAdminDashboard";
+            Load += frmAdminDashboard_Load;
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
@@ -223,7 +224,7 @@
         private Label lblTotalMaintenance;
         private Label label8;
         private Panel panel2;
-        private Label lblTotalAvailable;
+        private Label lblTotalGuest;
         private Label label4;
         private Panel panel1;
         private Label lblTotalRoom;
