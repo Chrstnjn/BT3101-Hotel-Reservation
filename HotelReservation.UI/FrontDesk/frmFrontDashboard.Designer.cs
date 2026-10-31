@@ -68,6 +68,7 @@
             panel8 = new Panel();
             label2 = new Label();
             pictureBox1 = new PictureBox();
+            btnLogout = new Button();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAvailableRoom).BeginInit();
             panel7.SuspendLayout();
@@ -500,6 +501,7 @@
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(19, 52, 113);
+            panel8.Controls.Add(btnLogout);
             panel8.Controls.Add(label2);
             panel8.Controls.Add(pictureBox1);
             panel8.Controls.Add(btnDashboard);
@@ -539,6 +541,19 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.FromArgb(255, 100, 100);
+            btnLogout.FlatStyle = FlatStyle.Popup;
+            btnLogout.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(35, 973);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(263, 43);
+            btnLogout.TabIndex = 53;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
             // frmFrontDashboard
             // 
@@ -626,5 +641,6 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private Label label3;
+        private Button btnLogout;
     }
 }

@@ -14,14 +14,24 @@ namespace HotelReservation.Businesslogic.Controller
             return repository.AddRoomType(roomType);
         }
 
+        public bool Update(RoomTypeModel roomType)
+        {
+            return repository.UpdateRoomType(roomType);
+        }
+
+        public bool RoomTypeNameExists(string roomTypeName, int excludeId = 0)
+        {
+            return repository.RoomTypeNameExists(roomTypeName, excludeId);
+        }
+
         public DataTable GetRoomTypes()
         {
             return repository.GetRoomTypes();
         }
 
-        public void DeleteRoomType(int roomTypeId)
+        public bool DeleteRoomType(int roomTypeId)
         {
-            repository.DeleteRoomType(roomTypeId);
+            return repository.DeleteRoomType(roomTypeId);
         }
     }
 }

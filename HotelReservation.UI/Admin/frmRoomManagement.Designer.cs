@@ -86,11 +86,12 @@
             panel6 = new Panel();
             label14 = new Label();
             panel5 = new Panel();
+            btnLogout = new Button();
             label15 = new Label();
             pictureBox1 = new PictureBox();
             panel7 = new Panel();
-            panel8 = new Panel();
             label16 = new Label();
+            panel8 = new Panel();
             label17 = new Label();
             pnlRoomType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtNumberofBed).BeginInit();
@@ -113,7 +114,7 @@
             // 
             // pnlRoomType
             // 
-            pnlRoomType.BackColor = Color.LightGray;
+            pnlRoomType.BackColor = SystemColors.ActiveCaption;
             pnlRoomType.Controls.Add(btnCancel);
             pnlRoomType.Controls.Add(btnAdd);
             pnlRoomType.Controls.Add(txtPricePerNight);
@@ -126,7 +127,7 @@
             pnlRoomType.Controls.Add(label5);
             pnlRoomType.Controls.Add(label3);
             pnlRoomType.Controls.Add(label2);
-            pnlRoomType.Location = new Point(1088, 236);
+            pnlRoomType.Location = new Point(841, 239);
             pnlRoomType.Name = "pnlRoomType";
             pnlRoomType.Size = new Size(504, 431);
             pnlRoomType.TabIndex = 47;
@@ -196,6 +197,7 @@
             // label9
             // 
             label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
             label9.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             label9.ForeColor = Color.Black;
             label9.Location = new Point(13, 15);
@@ -215,6 +217,7 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
             label7.Font = new Font("Constantia", 12F, FontStyle.Bold);
             label7.ForeColor = Color.Black;
             label7.Location = new Point(37, 162);
@@ -226,6 +229,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
             label5.Font = new Font("Constantia", 12F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
             label5.Location = new Point(18, 240);
@@ -237,6 +241,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Constantia", 12F, FontStyle.Bold);
             label3.ForeColor = Color.Black;
             label3.Location = new Point(39, 313);
@@ -248,6 +253,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
             label2.Font = new Font("Constantia", 12F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
             label2.Location = new Point(67, 90);
@@ -259,16 +265,21 @@
             // dgvRoomTypeList
             // 
             dgvRoomTypeList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRoomTypeList.BackgroundColor = SystemColors.ActiveCaption;
             dgvRoomTypeList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRoomTypeList.GridColor = SystemColors.InactiveCaption;
             dgvRoomTypeList.Location = new Point(14, 50);
             dgvRoomTypeList.Name = "dgvRoomTypeList";
             dgvRoomTypeList.Size = new Size(1514, 292);
             dgvRoomTypeList.TabIndex = 46;
+            dgvRoomTypeList.CellMouseDown += dgvRoomTypeList_CellMouseDown;
             // 
             // dgvRoomList
             // 
             dgvRoomList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRoomList.BackgroundColor = SystemColors.ActiveCaption;
             dgvRoomList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRoomList.GridColor = SystemColors.InactiveCaption;
             dgvRoomList.Location = new Point(14, 54);
             dgvRoomList.Name = "dgvRoomList";
             dgvRoomList.Size = new Size(1514, 292);
@@ -278,9 +289,9 @@
             // txtSearch
             // 
             txtSearch.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearch.Location = new Point(739, 240);
+            txtSearch.Location = new Point(349, 240);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(761, 39);
+            txtSearch.Size = new Size(1151, 39);
             txtSearch.TabIndex = 44;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -532,7 +543,7 @@
             // 
             // pnlRoom
             // 
-            pnlRoom.BackColor = Color.LightGray;
+            pnlRoom.BackColor = SystemColors.ActiveCaption;
             pnlRoom.Controls.Add(label13);
             pnlRoom.Controls.Add(btnBack);
             pnlRoom.Controls.Add(btnRoomAdd);
@@ -542,9 +553,9 @@
             pnlRoom.Controls.Add(label12);
             pnlRoom.Controls.Add(label11);
             pnlRoom.Controls.Add(label10);
-            pnlRoom.Location = new Point(514, 254);
+            pnlRoom.Location = new Point(841, 239);
             pnlRoom.Name = "pnlRoom";
-            pnlRoom.Size = new Size(506, 370);
+            pnlRoom.Size = new Size(503, 370);
             pnlRoom.TabIndex = 48;
             // 
             // label13
@@ -648,19 +659,19 @@
             // 
             cMenuRoom.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem });
             cMenuRoom.Name = "cMenuRoom";
-            cMenuRoom.Size = new Size(181, 70);
+            cMenuRoom.Size = new Size(108, 48);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(180, 22);
+            editToolStripMenuItem.Size = new Size(107, 22);
             editToolStripMenuItem.Text = "Edit";
             editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(180, 22);
+            deleteToolStripMenuItem.Size = new Size(107, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
@@ -675,12 +686,14 @@
             editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             editToolStripMenuItem1.Size = new Size(107, 22);
             editToolStripMenuItem1.Text = "Edit";
+            editToolStripMenuItem1.Click += editRoomTypeToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem1
             // 
             deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
             deleteToolStripMenuItem1.Size = new Size(107, 22);
             deleteToolStripMenuItem1.Text = "Delete";
+            deleteToolStripMenuItem1.Click += deleteRoomTypeToolStripMenuItem_Click;
             // 
             // panel6
             // 
@@ -688,7 +701,7 @@
             panel6.Controls.Add(label14);
             panel6.Location = new Point(334, -1);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1572, 108);
+            panel6.Size = new Size(1611, 108);
             panel6.TabIndex = 49;
             // 
             // label14
@@ -705,6 +718,7 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(19, 52, 113);
+            panel5.Controls.Add(btnLogout);
             panel5.Controls.Add(label15);
             panel5.Controls.Add(pictureBox1);
             panel5.Controls.Add(btnDashboard);
@@ -718,6 +732,19 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(336, 1044);
             panel5.TabIndex = 50;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.FromArgb(255, 100, 100);
+            btnLogout.FlatStyle = FlatStyle.Popup;
+            btnLogout.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(35, 973);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(263, 43);
+            btnLogout.TabIndex = 52;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.UseVisualStyleBackColor = false;
             // 
             // label15
             // 
@@ -755,16 +782,6 @@
             panel7.Size = new Size(1543, 360);
             panel7.TabIndex = 51;
             // 
-            // panel8
-            // 
-            panel8.BackColor = Color.FromArgb(48, 91, 171);
-            panel8.Controls.Add(label17);
-            panel8.Controls.Add(dgvRoomTypeList);
-            panel8.Location = new Point(349, 673);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(1543, 356);
-            panel8.TabIndex = 52;
-            // 
             // label16
             // 
             label16.AutoSize = true;
@@ -775,6 +792,16 @@
             label16.Size = new Size(98, 22);
             label16.TabIndex = 52;
             label16.Text = "Room List";
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(48, 91, 171);
+            panel8.Controls.Add(label17);
+            panel8.Controls.Add(dgvRoomTypeList);
+            panel8.Location = new Point(349, 673);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1543, 356);
+            panel8.TabIndex = 52;
             // 
             // label17
             // 
@@ -808,6 +835,7 @@
             Name = "frmRoomManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmRoomManagement";
+            WindowState = FormWindowState.Maximized;
             Load += frmRoomManagement_Load;
             pnlRoomType.ResumeLayout(false);
             pnlRoomType.PerformLayout();
@@ -904,5 +932,6 @@
         private Panel panel8;
         private Label label16;
         private Label label17;
+        private Button btnLogout;
     }
 }

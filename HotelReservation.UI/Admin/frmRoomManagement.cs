@@ -8,6 +8,7 @@ namespace HotelReservation.UI.Admin
     public partial class frmRoomManagement : Form
     {
         private int selectedRoomID = 0;
+        private int selectedRoomTypeID = 0;
         public frmRoomManagement()
         {
             InitializeComponent();
@@ -43,6 +44,9 @@ namespace HotelReservation.UI.Admin
         }
         private void btnAddRoomType_Click(object sender, EventArgs e)
         {
+            selectedRoomTypeID = 0;
+            btnAdd.Text = "Add";
+
             pnlRoomType.Visible = true;
 
             txtRoomType.Clear();
@@ -96,26 +100,51 @@ namespace HotelReservation.UI.Admin
                 txtPricePerNight.Focus();
                 return;
             }
+            string name = txtRoomType.Text.Trim();
 
+            // Duplicate check (ignores the current record when editing)
+            if (roomTypeController.RoomTypeNameExists(name, selectedRoomTypeID))
+            {
+                MessageBox.Show("Room Type already exists!",
+                    "Duplicate Room Type",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                txtRoomType.Focus();
+                return;
+            }
             RoomTypeModel roomType = new RoomTypeModel()
             {
-                RoomTypeName = txtRoomType.Text.Trim(),
+                RoomTypeID = selectedRoomTypeID,
+                RoomTypeName = name,
                 NumberOfBeds = (int)txtNumberofBed.Value,
                 NumberOfPersons = (int)txtNumberofPerson.Value,
                 PricePerNight = Convert.ToDecimal(txtPricePerNight.Text)
             };
 
-            bool result = roomTypeController.Save(roomType);
+            bool result;
+
+            if (selectedRoomTypeID == 0)
+            {
+                result = roomTypeController.Save(roomType);
+                if (result) MessageBox.Show("Room Type Added Successfully!");
+            }
+            else
+            {
+                result = roomTypeController.Update(roomType);
+                if (result) MessageBox.Show("Room Type Updated Successfully!");
+            }
 
             if (result)
             {
-                MessageBox.Show("Room Type Added Successfully!");
                 LoadRoomTypes();
                 LoadRoomTypesToCombo();
+                LoadRooms();            // Room List shows type name and price, so refresh it
+
+                selectedRoomTypeID = 0;
                 pnlRoomType.Visible = false;
             }
         }
-
         private void frmRoomManagement_Load(object sender, EventArgs e)
         {
             pnlRoom.Visible = false;
@@ -125,6 +154,7 @@ namespace HotelReservation.UI.Admin
             LoadRooms();
 
             dgvRoomList.ContextMenuStrip = cMenuRoom;
+            dgvRoomTypeList.ContextMenuStrip = cMenuRoomType;
 
             cmbStatus.Items.Clear();
 
@@ -380,6 +410,7 @@ namespace HotelReservation.UI.Admin
             }
         }
 
+        // room list
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvRoomList.SelectedRows.Count > 0)
@@ -441,6 +472,77 @@ namespace HotelReservation.UI.Admin
                     {
                         MessageBox.Show(
                             "Failed to delete room.",
+                            "Error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        //room type
+        private void dgvRoomTypeList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.Button == MouseButtons.Right)
+            {
+                dgvRoomTypeList.ClearSelection();
+                dgvRoomTypeList.Rows[e.RowIndex].Selected = true;
+
+                dgvRoomTypeList.CurrentCell =
+                    dgvRoomTypeList.Rows[e.RowIndex].Cells["RoomTypeName"];
+            }
+        }
+
+        private void editRoomTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvRoomTypeList.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dgvRoomTypeList.SelectedRows[0];
+
+                selectedRoomTypeID = Convert.ToInt32(row.Cells["RoomTypeID"].Value);
+
+                txtRoomType.Text = row.Cells["RoomTypeName"].Value.ToString();
+                txtNumberofBed.Value = Convert.ToInt32(row.Cells["NumberOfBeds"].Value);
+                txtNumberofPerson.Value = Convert.ToInt32(row.Cells["NumberOfPersons"].Value);
+                txtPricePerNight.Text =
+                    Convert.ToDecimal(row.Cells["PricePerNight"].Value).ToString("0.##");
+
+                btnAdd.Text = "Update";
+                pnlRoomType.Visible = true;
+            }
+        }
+
+        private void deleteRoomTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvRoomTypeList.SelectedRows.Count > 0)
+            {
+                int roomTypeID = Convert.ToInt32(
+                    dgvRoomTypeList.SelectedRows[0].Cells["RoomTypeID"].Value);
+
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to delete this room type?",
+                    "Confirm Delete",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    bool deleted = roomTypeController.DeleteRoomType(roomTypeID);
+
+                    if (deleted)
+                    {
+                        MessageBox.Show("Room type deleted successfully!",
+                            "Success",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+
+                        LoadRoomTypes();
+                        LoadRoomTypesToCombo();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Cannot delete this room type. It is still used by a room.",
                             "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);

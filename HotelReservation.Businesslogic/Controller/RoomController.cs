@@ -31,6 +31,9 @@ namespace HotelReservation.Businesslogic.Controller
         {
             return repository.DeleteRoom(roomID);
         }
-
+        public DataTable GetTotalRooms()
+        {
+            return repository.GetTotalRooms();
+        }
     }
 }

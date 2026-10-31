@@ -121,5 +121,22 @@ namespace HotelReservation.Businesslogic.Repository
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        public DataTable GetTotalRooms()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Rooms";
+
+                SqlDataAdapter da = new SqlDataAdapter(query, con);
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+
     }
 }
