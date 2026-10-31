@@ -42,6 +42,7 @@
             label1 = new Label();
             btnRoom = new Button();
             btnDashboard = new Button();
+            button1 = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -126,11 +127,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(32, 9);
+            label4.Location = new Point(27, 9);
             label4.Name = "label4";
-            label4.Size = new Size(55, 15);
+            label4.Size = new Size(66, 15);
             label4.TabIndex = 0;
-            label4.Text = "Available";
+            label4.Text = "Total Guest";
             // 
             // panel1
             // 
@@ -179,11 +180,21 @@
             btnDashboard.Text = "Dashboard";
             btnDashboard.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(21, 175);
+            button1.Name = "button1";
+            button1.Size = new Size(108, 34);
+            button1.TabIndex = 42;
+            button1.Text = "Room";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // frmAdminDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(panel2);
@@ -219,5 +230,6 @@
         private Label label1;
         private Button btnRoom;
         private Button btnDashboard;
+        private Button button1;
     }
 }

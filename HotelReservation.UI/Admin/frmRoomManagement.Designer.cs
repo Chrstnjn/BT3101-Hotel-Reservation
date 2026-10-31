@@ -211,7 +211,6 @@
             txtRoomType.Name = "txtRoomType";
             txtRoomType.Size = new Size(293, 33);
             txtRoomType.TabIndex = 4;
-            txtRoomType.TextChanged += txtRoomType_TextChanged;
             // 
             // label7
             // 
@@ -274,6 +273,7 @@
             dgvRoomList.Name = "dgvRoomList";
             dgvRoomList.Size = new Size(1514, 292);
             dgvRoomList.TabIndex = 45;
+            dgvRoomList.CellMouseDown += dgvRoomList_CellMouseDown;
             // 
             // txtSearch
             // 
@@ -591,6 +591,7 @@
             txtRoomNumber.Name = "txtRoomNumber";
             txtRoomNumber.Size = new Size(311, 33);
             txtRoomNumber.TabIndex = 12;
+            txtRoomNumber.KeyPress += txtRoomNumber_KeyPress;
             // 
             // cmbRoomType
             // 
@@ -647,19 +648,21 @@
             // 
             cMenuRoom.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem });
             cMenuRoom.Name = "cMenuRoom";
-            cMenuRoom.Size = new Size(108, 48);
+            cMenuRoom.Size = new Size(181, 70);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(107, 22);
+            editToolStripMenuItem.Size = new Size(180, 22);
             editToolStripMenuItem.Text = "Edit";
+            editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(107, 22);
+            deleteToolStripMenuItem.Size = new Size(180, 22);
             deleteToolStripMenuItem.Text = "Delete";
+            deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
             // 
             // cMenuRoomType
             // 

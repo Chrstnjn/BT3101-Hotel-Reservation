@@ -22,5 +22,15 @@ namespace HotelReservation.Businesslogic.Controller
         {
             return repository.RoomNumberExists(roomNumber);
         }
+
+        public bool UpdateRoom(RoomModel room)
+        {
+            return repository.UpdateRoom(room);
+        }
+        public bool DeleteRoom(int roomID)
+        {
+            return repository.DeleteRoom(roomID);
+        }
+
     }
 }
