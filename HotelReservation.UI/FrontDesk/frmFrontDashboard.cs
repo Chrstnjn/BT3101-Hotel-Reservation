@@ -37,6 +37,11 @@ namespace HotelReservation.UI.FrontDesk
             this.Hide();
         }
 
-
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            frmReservation frontReservation = new frmReservation();
+            frontReservation.Show();
+            this.Hide();
+        }
     }
 }

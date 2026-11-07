@@ -43,6 +43,7 @@
             btnRoom = new Button();
             btnDashboard = new Button();
             button1 = new Button();
+            btnLogout = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -189,11 +190,22 @@
             button1.Text = "Room";
             button1.UseVisualStyleBackColor = true;
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(21, 404);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(108, 34);
+            btnLogout.TabIndex = 43;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // frmAdminDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(button1);
             Controls.Add(panel3);
             Controls.Add(panel4);
@@ -232,5 +244,6 @@
         private Button btnRoom;
         private Button btnDashboard;
         private Button button1;
+        private Button btnLogout;
     }
 }

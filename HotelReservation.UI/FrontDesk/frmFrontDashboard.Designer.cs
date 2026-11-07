@@ -66,9 +66,9 @@
             panel6 = new Panel();
             label3 = new Label();
             panel8 = new Panel();
+            btnLogout = new Button();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            btnLogout = new Button();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAvailableRoom).BeginInit();
             panel7.SuspendLayout();
@@ -139,6 +139,7 @@
             btnReservation.TabIndex = 3;
             btnReservation.Text = "RESERVATION";
             btnReservation.UseVisualStyleBackColor = false;
+            btnReservation.Click += btnReservation_Click;
             // 
             // btnCheckIn
             // 
@@ -516,6 +517,19 @@
             panel8.Size = new Size(336, 1044);
             panel8.TabIndex = 19;
             // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.FromArgb(255, 100, 100);
+            btnLogout.FlatStyle = FlatStyle.Popup;
+            btnLogout.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(35, 973);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(263, 43);
+            btnLogout.TabIndex = 53;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.UseVisualStyleBackColor = false;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -541,19 +555,6 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
-            // 
-            // btnLogout
-            // 
-            btnLogout.BackColor = Color.FromArgb(255, 100, 100);
-            btnLogout.FlatStyle = FlatStyle.Popup;
-            btnLogout.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
-            btnLogout.ForeColor = SystemColors.ButtonHighlight;
-            btnLogout.Location = new Point(35, 973);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(263, 43);
-            btnLogout.TabIndex = 53;
-            btnLogout.Text = "LOGOUT";
-            btnLogout.UseVisualStyleBackColor = false;
             // 
             // frmFrontDashboard
             // 

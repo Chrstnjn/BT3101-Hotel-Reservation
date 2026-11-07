@@ -11,8 +11,8 @@
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>HotelReservation.DB</RootNamespace>
-    <AssemblyName>HotelReservation.DB</AssemblyName>
+    <RootNamespace>Highlands.DB</RootNamespace>
+    <AssemblyName>HighlandsDB</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -67,6 +67,11 @@
     <Build Include="Stored Procedures\usp_UpdateGuest.sql" />
     <Build Include="Table\RoomTypes.sql" />
     <Build Include="Table\Rooms.sql" />
+    <Build Include="Table\Reservations.sql" />
+    <Build Include="Stored Procedures\usp_AddReservation.sql" />
+    <Build Include="Stored Procedures\usp_GetReservations.sql" />
+    <Build Include="Table\UQ_Reservations_ReservationNumber.sql" />
+    <Build Include="Stored Procedures\usp_ConfirmDownpayment.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />
