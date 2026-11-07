@@ -34,5 +34,12 @@ namespace HotelReservation.UI.Admin
             LoadTotalRooms();
             LoadTotalGuests();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            frmLogin BackToLogin = new frmLogin();
+            BackToLogin.Show();
+            this.Hide();
+        }
     }
 }

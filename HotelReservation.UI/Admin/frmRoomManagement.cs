@@ -550,5 +550,12 @@ namespace HotelReservation.UI.Admin
                 }
             }
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            frmLogin BackToLogin = new frmLogin();
+            BackToLogin.Show();
+            this.Hide();
+        }
     }
 }

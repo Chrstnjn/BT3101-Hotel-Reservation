@@ -1,0 +1,40 @@
+﻿CREATE PROCEDURE usp_ConfirmDownpayment
+(
+    @ReservationID INT
+)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+    BEGIN TRANSACTION;
+
+    DECLARE @RoomID INT;
+
+    SELECT @RoomID = RoomID
+    FROM Reservations
+    WHERE ReservationID = @ReservationID AND Status = 'Pending Downpayment';
+
+    IF @RoomID IS NULL
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50002, 'This reservation is not waiting for a downpayment.', 1;
+    END
+
+    -- The room is taken only now, and only if nobody else paid for it first
+    UPDATE Rooms
+    SET Status = 'Awaiting Check-In'
+    WHERE RoomID = @RoomID AND Status = 'Available';
+
+    IF @@ROWCOUNT = 0
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50003, 'This room was already taken by another guest.', 1;
+    END
+
+    UPDATE Reservations
+    SET Status = 'Awaiting Check-In'
+    WHERE ReservationID = @ReservationID;
+
+    COMMIT TRANSACTION;
+END

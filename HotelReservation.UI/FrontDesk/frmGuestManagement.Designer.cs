@@ -69,7 +69,6 @@
             cMenuGuest = new ContextMenuStrip(components);
             editToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
-            reserveToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvGuestsList).BeginInit();
             pnlAddGuest.SuspendLayout();
             cMenuGuest.SuspendLayout();
@@ -429,29 +428,23 @@
             // 
             // cMenuGuest
             // 
-            cMenuGuest.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem, reserveToolStripMenuItem });
+            cMenuGuest.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem });
             cMenuGuest.Name = "cMenuGuest";
-            cMenuGuest.Size = new Size(115, 70);
+            cMenuGuest.Size = new Size(181, 70);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(114, 22);
+            editToolStripMenuItem.Size = new Size(180, 22);
             editToolStripMenuItem.Text = "Edit";
             editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(114, 22);
+            deleteToolStripMenuItem.Size = new Size(180, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
-            // 
-            // reserveToolStripMenuItem
-            // 
-            reserveToolStripMenuItem.Name = "reserveToolStripMenuItem";
-            reserveToolStripMenuItem.Size = new Size(114, 22);
-            reserveToolStripMenuItem.Text = "Reserve";
             // 
             // frmGuestManagement
             // 
@@ -525,6 +518,5 @@
         private ContextMenuStrip cMenuGuest;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
-        private ToolStripMenuItem reserveToolStripMenuItem;
     }
 }
