@@ -5,6 +5,9 @@ BEGIN
 
     SELECT
         r.ReservationID,
+        r.GuestID,
+        r.RoomID,
+        r.RatePerNight,
         r.ReservationNumber,
         g.FirstName + ' ' + g.LastName AS GuestName,
         rm.RoomNumber,

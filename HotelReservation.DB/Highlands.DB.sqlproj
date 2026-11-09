@@ -72,6 +72,9 @@
     <Build Include="Stored Procedures\usp_GetReservations.sql" />
     <Build Include="Table\UQ_Reservations_ReservationNumber.sql" />
     <Build Include="Stored Procedures\usp_ConfirmDownpayment.sql" />
+    <Build Include="Table\DPayments.sql" />
+    <Build Include="Stored Procedures\usp_UpdateReservation.sql" />
+    <Build Include="Stored Procedures\usp_CancelReservation.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />

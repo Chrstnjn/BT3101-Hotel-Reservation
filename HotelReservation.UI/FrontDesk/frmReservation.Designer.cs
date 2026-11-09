@@ -37,7 +37,7 @@
             btnRoom = new Button();
             btnDashboard = new Button();
             panel3 = new Panel();
-            lblTotalCheckOut = new Label();
+            lblTotalCheckIn = new Label();
             label6 = new Label();
             panel4 = new Panel();
             lblTotalPending = new Label();
@@ -50,7 +50,10 @@
             label2 = new Label();
             dgvReservationList = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
-            reserveDetailsToolStripMenuItem = new ToolStripMenuItem();
+            EditToolStripMenuItem = new ToolStripMenuItem();
+            processPaymentToolStripMenuItem = new ToolStripMenuItem();
+            awaitCheckInToolStripMenuItem = new ToolStripMenuItem();
+            cancelToolStripMenuItem = new ToolStripMenuItem();
             pnlReservationDetails = new Panel();
             btnReserve = new Button();
             lblTotalNight = new Label();
@@ -97,8 +100,49 @@
             label23 = new Label();
             dgvRoomList = new DataGridView();
             panel2 = new Panel();
-            lblTotalCheckIn = new Label();
+            lblTotalAwaiting = new Label();
             label13 = new Label();
+            pnlDownpayment = new Panel();
+            btnCancel = new Button();
+            btnDpProcess = new Button();
+            lblChange = new Label();
+            label42 = new Label();
+            label44 = new Label();
+            cboPaymentMethod = new ComboBox();
+            numPaymentReceived = new NumericUpDown();
+            label43 = new Label();
+            lblAmountToPay = new Label();
+            label40 = new Label();
+            panel9 = new Panel();
+            panel10 = new Panel();
+            label30 = new Label();
+            label31 = new Label();
+            label32 = new Label();
+            label33 = new Label();
+            label34 = new Label();
+            label35 = new Label();
+            label36 = new Label();
+            textBox3 = new TextBox();
+            label37 = new Label();
+            textBox4 = new TextBox();
+            label38 = new Label();
+            label39 = new Label();
+            panel8 = new Panel();
+            lblDpTotalNights = new Label();
+            lblDpSubtotal = new Label();
+            label22 = new Label();
+            label29 = new Label();
+            lblDpRate = new Label();
+            lblDpRoomType = new Label();
+            label26 = new Label();
+            label27 = new Label();
+            label18 = new Label();
+            txtDpFullName = new TextBox();
+            label17 = new Label();
+            txtDpReservationID = new TextBox();
+            label4 = new Label();
+            lbl1 = new Label();
+            btnReserveCancel = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
@@ -113,6 +157,11 @@
             pnlRoomList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRoomList).BeginInit();
             panel2.SuspendLayout();
+            pnlDownpayment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numPaymentReceived).BeginInit();
+            panel9.SuspendLayout();
+            panel10.SuspendLayout();
+            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // btnBilling
@@ -183,21 +232,21 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ActiveCaption;
-            panel3.Controls.Add(lblTotalCheckOut);
+            panel3.Controls.Add(lblTotalCheckIn);
             panel3.Controls.Add(label6);
             panel3.Location = new Point(569, 24);
             panel3.Name = "panel3";
             panel3.Size = new Size(120, 55);
             panel3.TabIndex = 28;
             // 
-            // lblTotalCheckOut
+            // lblTotalCheckIn
             // 
-            lblTotalCheckOut.AutoSize = true;
-            lblTotalCheckOut.Location = new Point(50, 33);
-            lblTotalCheckOut.Name = "lblTotalCheckOut";
-            lblTotalCheckOut.Size = new Size(13, 15);
-            lblTotalCheckOut.TabIndex = 1;
-            lblTotalCheckOut.Text = "0";
+            lblTotalCheckIn.AutoSize = true;
+            lblTotalCheckIn.Location = new Point(50, 33);
+            lblTotalCheckIn.Name = "lblTotalCheckIn";
+            lblTotalCheckIn.Size = new Size(13, 15);
+            lblTotalCheckIn.TabIndex = 1;
+            lblTotalCheckIn.Text = "0";
             // 
             // label6
             // 
@@ -300,21 +349,44 @@
             dgvReservationList.Name = "dgvReservationList";
             dgvReservationList.Size = new Size(1200, 420);
             dgvReservationList.TabIndex = 32;
+            dgvReservationList.CellMouseDown += dgvReservationList_CellMouseDown;
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { reserveDetailsToolStripMenuItem });
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { EditToolStripMenuItem, processPaymentToolStripMenuItem, awaitCheckInToolStripMenuItem, cancelToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(195, 26);
+            contextMenuStrip1.Size = new Size(173, 92);
             // 
-            // reserveDetailsToolStripMenuItem
+            // EditToolStripMenuItem
             // 
-            reserveDetailsToolStripMenuItem.Name = "reserveDetailsToolStripMenuItem";
-            reserveDetailsToolStripMenuItem.Size = new Size(194, 22);
-            reserveDetailsToolStripMenuItem.Text = "Process downpayment";
+            EditToolStripMenuItem.Name = "EditToolStripMenuItem";
+            EditToolStripMenuItem.Size = new Size(172, 22);
+            EditToolStripMenuItem.Text = "Edit";
+            EditToolStripMenuItem.Click += EditToolStripMenuItem_Click;
+            // 
+            // processPaymentToolStripMenuItem
+            // 
+            processPaymentToolStripMenuItem.Name = "processPaymentToolStripMenuItem";
+            processPaymentToolStripMenuItem.Size = new Size(172, 22);
+            processPaymentToolStripMenuItem.Text = "Process payment";
+            processPaymentToolStripMenuItem.Click += processPaymentToolStripMenuItem_Click;
+            // 
+            // awaitCheckInToolStripMenuItem
+            // 
+            awaitCheckInToolStripMenuItem.Name = "awaitCheckInToolStripMenuItem";
+            awaitCheckInToolStripMenuItem.Size = new Size(172, 22);
+            awaitCheckInToolStripMenuItem.Text = "Awaiting Check-In";
+            // 
+            // cancelToolStripMenuItem
+            // 
+            cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
+            cancelToolStripMenuItem.Size = new Size(172, 22);
+            cancelToolStripMenuItem.Text = "Cancel";
+            cancelToolStripMenuItem.Click += cancelToolStripMenuItem_Click;
             // 
             // pnlReservationDetails
             // 
+            pnlReservationDetails.Controls.Add(btnReserveCancel);
             pnlReservationDetails.Controls.Add(btnReserve);
             pnlReservationDetails.Controls.Add(lblTotalNight);
             pnlReservationDetails.Controls.Add(pnlCheckInDate);
@@ -768,21 +840,21 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
-            panel2.Controls.Add(lblTotalCheckIn);
+            panel2.Controls.Add(lblTotalAwaiting);
             panel2.Controls.Add(label13);
             panel2.Location = new Point(428, 24);
             panel2.Name = "panel2";
             panel2.Size = new Size(120, 55);
             panel2.TabIndex = 40;
             // 
-            // lblTotalCheckIn
+            // lblTotalAwaiting
             // 
-            lblTotalCheckIn.AutoSize = true;
-            lblTotalCheckIn.Location = new Point(50, 33);
-            lblTotalCheckIn.Name = "lblTotalCheckIn";
-            lblTotalCheckIn.Size = new Size(13, 15);
-            lblTotalCheckIn.TabIndex = 1;
-            lblTotalCheckIn.Text = "0";
+            lblTotalAwaiting.AutoSize = true;
+            lblTotalAwaiting.Location = new Point(50, 33);
+            lblTotalAwaiting.Name = "lblTotalAwaiting";
+            lblTotalAwaiting.Size = new Size(13, 15);
+            lblTotalAwaiting.TabIndex = 1;
+            lblTotalAwaiting.Text = "0";
             // 
             // label13
             // 
@@ -793,11 +865,449 @@
             label13.TabIndex = 0;
             label13.Text = "Awaiting Check-In";
             // 
+            // pnlDownpayment
+            // 
+            pnlDownpayment.BackColor = SystemColors.ButtonFace;
+            pnlDownpayment.Controls.Add(btnCancel);
+            pnlDownpayment.Controls.Add(btnDpProcess);
+            pnlDownpayment.Controls.Add(lblChange);
+            pnlDownpayment.Controls.Add(label42);
+            pnlDownpayment.Controls.Add(label44);
+            pnlDownpayment.Controls.Add(cboPaymentMethod);
+            pnlDownpayment.Controls.Add(numPaymentReceived);
+            pnlDownpayment.Controls.Add(label43);
+            pnlDownpayment.Controls.Add(lblAmountToPay);
+            pnlDownpayment.Controls.Add(label40);
+            pnlDownpayment.Controls.Add(panel9);
+            pnlDownpayment.Controls.Add(panel8);
+            pnlDownpayment.Controls.Add(label18);
+            pnlDownpayment.Controls.Add(txtDpFullName);
+            pnlDownpayment.Controls.Add(label17);
+            pnlDownpayment.Controls.Add(txtDpReservationID);
+            pnlDownpayment.Controls.Add(label4);
+            pnlDownpayment.Controls.Add(lbl1);
+            pnlDownpayment.Location = new Point(1424, 102);
+            pnlDownpayment.Name = "pnlDownpayment";
+            pnlDownpayment.Size = new Size(370, 497);
+            pnlDownpayment.TabIndex = 41;
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Crimson;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.ForeColor = SystemColors.ButtonHighlight;
+            btnCancel.Location = new Point(188, 447);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 28);
+            btnCancel.TabIndex = 57;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnDpCancel_Click;
+            // 
+            // btnDpProcess
+            // 
+            btnDpProcess.BackColor = Color.Olive;
+            btnDpProcess.FlatStyle = FlatStyle.Flat;
+            btnDpProcess.ForeColor = SystemColors.ButtonFace;
+            btnDpProcess.Location = new Point(281, 447);
+            btnDpProcess.Name = "btnDpProcess";
+            btnDpProcess.Size = new Size(75, 28);
+            btnDpProcess.TabIndex = 56;
+            btnDpProcess.Text = "Process";
+            btnDpProcess.UseVisualStyleBackColor = false;
+            btnDpProcess.Click += btnDpProcess_Click;
+            // 
+            // lblChange
+            // 
+            lblChange.AutoSize = true;
+            lblChange.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblChange.ForeColor = Color.ForestGreen;
+            lblChange.Location = new Point(137, 420);
+            lblChange.Name = "lblChange";
+            lblChange.Size = new Size(12, 15);
+            lblChange.TabIndex = 55;
+            lblChange.Text = "-";
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label42.Location = new Point(80, 420);
+            label42.Name = "label42";
+            label42.Size = new Size(51, 15);
+            label42.TabIndex = 54;
+            label42.Text = "Change:";
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label44.Location = new Point(25, 376);
+            label44.Name = "label44";
+            label44.Size = new Size(106, 15);
+            label44.TabIndex = 53;
+            label44.Text = "Payment method:";
+            // 
+            // cboPaymentMethod
+            // 
+            cboPaymentMethod.FormattingEnabled = true;
+            cboPaymentMethod.Location = new Point(137, 372);
+            cboPaymentMethod.Name = "cboPaymentMethod";
+            cboPaymentMethod.Size = new Size(195, 23);
+            cboPaymentMethod.TabIndex = 52;
+            // 
+            // numPaymentReceived
+            // 
+            numPaymentReceived.Location = new Point(137, 339);
+            numPaymentReceived.Name = "numPaymentReceived";
+            numPaymentReceived.Size = new Size(195, 23);
+            numPaymentReceived.TabIndex = 51;
+            numPaymentReceived.ValueChanged += numPaymentReceived_ValueChanged;
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label43.Location = new Point(20, 346);
+            label43.Name = "label43";
+            label43.Size = new Size(111, 15);
+            label43.TabIndex = 49;
+            label43.Text = "Payment received:";
+            // 
+            // lblAmountToPay
+            // 
+            lblAmountToPay.AutoSize = true;
+            lblAmountToPay.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAmountToPay.ForeColor = Color.ForestGreen;
+            lblAmountToPay.Location = new Point(119, 313);
+            lblAmountToPay.Name = "lblAmountToPay";
+            lblAmountToPay.Size = new Size(12, 15);
+            lblAmountToPay.TabIndex = 46;
+            lblAmountToPay.Text = "-";
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label40.Location = new Point(20, 313);
+            label40.Name = "label40";
+            label40.Size = new Size(92, 15);
+            label40.TabIndex = 45;
+            label40.Text = "Amount to pay:";
+            // 
+            // panel9
+            // 
+            panel9.BackColor = SystemColors.ButtonFace;
+            panel9.Controls.Add(panel10);
+            panel9.Controls.Add(label36);
+            panel9.Controls.Add(textBox3);
+            panel9.Controls.Add(label37);
+            panel9.Controls.Add(textBox4);
+            panel9.Controls.Add(label38);
+            panel9.Controls.Add(label39);
+            panel9.Location = new Point(1551, 59);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(370, 497);
+            panel9.TabIndex = 44;
+            // 
+            // panel10
+            // 
+            panel10.BackColor = SystemColors.ControlLight;
+            panel10.Controls.Add(label30);
+            panel10.Controls.Add(label31);
+            panel10.Controls.Add(label32);
+            panel10.Controls.Add(label33);
+            panel10.Controls.Add(label34);
+            panel10.Controls.Add(label35);
+            panel10.Location = new Point(15, 164);
+            panel10.Name = "panel10";
+            panel10.Size = new Size(341, 111);
+            panel10.TabIndex = 34;
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.BackColor = SystemColors.ControlLight;
+            label30.Location = new Point(110, 79);
+            label30.Name = "label30";
+            label30.Size = new Size(12, 15);
+            label30.TabIndex = 38;
+            label30.Text = "-";
+            // 
+            // label31
+            // 
+            label31.AutoSize = true;
+            label31.BackColor = SystemColors.ControlLight;
+            label31.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label31.Location = new Point(16, 79);
+            label31.Name = "label31";
+            label31.Size = new Size(81, 15);
+            label31.TabIndex = 37;
+            label31.Text = "Total Night(s)";
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.BackColor = SystemColors.ControlLight;
+            label32.Location = new Point(110, 48);
+            label32.Name = "label32";
+            label32.Size = new Size(12, 15);
+            label32.TabIndex = 36;
+            label32.Text = "-";
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.BackColor = SystemColors.ControlLight;
+            label33.Location = new Point(110, 17);
+            label33.Name = "label33";
+            label33.Size = new Size(12, 15);
+            label33.TabIndex = 35;
+            label33.Text = "-";
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.BackColor = SystemColors.ControlLight;
+            label34.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label34.Location = new Point(65, 49);
+            label34.Name = "label34";
+            label34.Size = new Size(33, 15);
+            label34.TabIndex = 34;
+            label34.Text = "Rate";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.BackColor = SystemColors.ControlLight;
+            label35.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label35.Location = new Point(28, 17);
+            label35.Name = "label35";
+            label35.Size = new Size(69, 15);
+            label35.TabIndex = 33;
+            label35.Text = "Room Type";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Location = new Point(14, 139);
+            label36.Name = "label36";
+            label36.Size = new Size(61, 15);
+            label36.TabIndex = 8;
+            label36.Text = "Paying for";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(102, 87);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(198, 23);
+            textBox3.TabIndex = 7;
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Location = new Point(35, 94);
+            label37.Name = "label37";
+            label37.Size = new Size(61, 15);
+            label37.TabIndex = 6;
+            label37.Text = "Full Name";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(102, 47);
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(198, 23);
+            textBox4.TabIndex = 5;
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Location = new Point(14, 54);
+            label38.Name = "label38";
+            label38.Size = new Size(82, 15);
+            label38.TabIndex = 4;
+            label38.Text = "Reservation ID";
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Location = new Point(14, 19);
+            label39.Name = "label39";
+            label39.Size = new Size(123, 15);
+            label39.TabIndex = 3;
+            label39.Text = "Downpayment Details";
+            // 
+            // panel8
+            // 
+            panel8.BackColor = SystemColors.ControlLight;
+            panel8.Controls.Add(lblDpTotalNights);
+            panel8.Controls.Add(lblDpSubtotal);
+            panel8.Controls.Add(label22);
+            panel8.Controls.Add(label29);
+            panel8.Controls.Add(lblDpRate);
+            panel8.Controls.Add(lblDpRoomType);
+            panel8.Controls.Add(label26);
+            panel8.Controls.Add(label27);
+            panel8.Location = new Point(15, 164);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(341, 127);
+            panel8.TabIndex = 34;
+            // 
+            // lblDpTotalNights
+            // 
+            lblDpTotalNights.AutoSize = true;
+            lblDpTotalNights.BackColor = SystemColors.ControlLight;
+            lblDpTotalNights.Location = new Point(110, 79);
+            lblDpTotalNights.Name = "lblDpTotalNights";
+            lblDpTotalNights.Size = new Size(12, 15);
+            lblDpTotalNights.TabIndex = 38;
+            lblDpTotalNights.Text = "-";
+            // 
+            // lblDpSubtotal
+            // 
+            lblDpSubtotal.AutoSize = true;
+            lblDpSubtotal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDpSubtotal.ForeColor = Color.ForestGreen;
+            lblDpSubtotal.Location = new Point(110, 105);
+            lblDpSubtotal.Name = "lblDpSubtotal";
+            lblDpSubtotal.Size = new Size(12, 15);
+            lblDpSubtotal.TabIndex = 43;
+            lblDpSubtotal.Text = "-";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.BackColor = SystemColors.ControlLight;
+            label22.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label22.Location = new Point(16, 79);
+            label22.Name = "label22";
+            label22.Size = new Size(81, 15);
+            label22.TabIndex = 37;
+            label22.Text = "Total Night(s)";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label29.Location = new Point(40, 105);
+            label29.Name = "label29";
+            label29.Size = new Size(57, 15);
+            label29.TabIndex = 42;
+            label29.Text = "Subtotal:";
+            // 
+            // lblDpRate
+            // 
+            lblDpRate.AutoSize = true;
+            lblDpRate.BackColor = SystemColors.ControlLight;
+            lblDpRate.Location = new Point(110, 48);
+            lblDpRate.Name = "lblDpRate";
+            lblDpRate.Size = new Size(12, 15);
+            lblDpRate.TabIndex = 36;
+            lblDpRate.Text = "-";
+            // 
+            // lblDpRoomType
+            // 
+            lblDpRoomType.AutoSize = true;
+            lblDpRoomType.BackColor = SystemColors.ControlLight;
+            lblDpRoomType.Location = new Point(110, 17);
+            lblDpRoomType.Name = "lblDpRoomType";
+            lblDpRoomType.Size = new Size(12, 15);
+            lblDpRoomType.TabIndex = 35;
+            lblDpRoomType.Text = "-";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.BackColor = SystemColors.ControlLight;
+            label26.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label26.Location = new Point(65, 49);
+            label26.Name = "label26";
+            label26.Size = new Size(33, 15);
+            label26.TabIndex = 34;
+            label26.Text = "Rate";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.BackColor = SystemColors.ControlLight;
+            label27.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label27.Location = new Point(28, 17);
+            label27.Name = "label27";
+            label27.Size = new Size(69, 15);
+            label27.TabIndex = 33;
+            label27.Text = "Room Type";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(14, 139);
+            label18.Name = "label18";
+            label18.Size = new Size(61, 15);
+            label18.TabIndex = 8;
+            label18.Text = "Paying for";
+            // 
+            // txtDpFullName
+            // 
+            txtDpFullName.Location = new Point(102, 87);
+            txtDpFullName.Name = "txtDpFullName";
+            txtDpFullName.ReadOnly = true;
+            txtDpFullName.Size = new Size(198, 23);
+            txtDpFullName.TabIndex = 7;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(35, 94);
+            label17.Name = "label17";
+            label17.Size = new Size(61, 15);
+            label17.TabIndex = 6;
+            label17.Text = "Full Name";
+            // 
+            // txtDpReservationID
+            // 
+            txtDpReservationID.Location = new Point(102, 57);
+            txtDpReservationID.Name = "txtDpReservationID";
+            txtDpReservationID.ReadOnly = true;
+            txtDpReservationID.Size = new Size(198, 23);
+            txtDpReservationID.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(14, 60);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 15);
+            label4.TabIndex = 4;
+            label4.Text = "Reservation ID";
+            // 
+            // lbl1
+            // 
+            lbl1.AutoSize = true;
+            lbl1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl1.Location = new Point(14, 19);
+            lbl1.Name = "lbl1";
+            lbl1.Size = new Size(180, 21);
+            lbl1.TabIndex = 3;
+            lbl1.Text = "Downpayment Details";
+            // 
+            // btnReserveCancel
+            // 
+            btnReserveCancel.Location = new Point(431, 345);
+            btnReserveCancel.Name = "btnReserveCancel";
+            btnReserveCancel.Size = new Size(95, 29);
+            btnReserveCancel.TabIndex = 37;
+            btnReserveCancel.Text = "Cancel";
+            btnReserveCancel.UseVisualStyleBackColor = true;
+            btnReserveCancel.Click += btnReserveCancel_Click;
+            // 
             // frmReservation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1368, 674);
+            ClientSize = new Size(1924, 658);
+            Controls.Add(pnlDownpayment);
             Controls.Add(panel2);
             Controls.Add(pnlRoomList);
             Controls.Add(pnlGuestList);
@@ -843,6 +1353,15 @@
             ((System.ComponentModel.ISupportInitialize)dgvRoomList).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            pnlDownpayment.ResumeLayout(false);
+            pnlDownpayment.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numPaymentReceived).EndInit();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
+            panel10.ResumeLayout(false);
+            panel10.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -857,7 +1376,7 @@
         private Button btnRoom;
         private Button btnDashboard;
         private Panel panel3;
-        private Label lblTotalCheckOut;
+        private Label lblTotalCheckIn;
         private Label label6;
         private Panel panel4;
         private Label lblTotalPending;
@@ -870,7 +1389,7 @@
         private Label label2;
         private DataGridView dgvReservationList;
         private ContextMenuStrip contextMenuStrip1;
-        private ToolStripMenuItem reserveDetailsToolStripMenuItem;
+        private ToolStripMenuItem EditToolStripMenuItem;
         private Panel pnlReservationDetails;
         private Label label10;
         private Label label9;
@@ -917,7 +1436,51 @@
         private Button btnReserve;
         private Panel panel5;
         private Panel panel2;
-        private Label lblTotalCheckIn;
+        private Label lblTotalAwaiting;
         private Label label13;
+        private ToolStripMenuItem processPaymentToolStripMenuItem;
+        private ToolStripMenuItem awaitCheckInToolStripMenuItem;
+        private ToolStripMenuItem cancelToolStripMenuItem;
+        private Panel pnlDownpayment;
+        private Label lblDpSubtotal;
+        private Label label29;
+        private Panel panel9;
+        private Panel panel10;
+        private Label label30;
+        private Label label31;
+        private Label label32;
+        private Label label33;
+        private Label label34;
+        private Label label35;
+        private Label label36;
+        private TextBox textBox3;
+        private Label label37;
+        private TextBox textBox4;
+        private Label label38;
+        private Label label39;
+        private Panel panel8;
+        private Label lblDpTotalNights;
+        private Label label22;
+        private Label lblDpRate;
+        private Label lblDpRoomType;
+        private Label label26;
+        private Label label27;
+        private Label label18;
+        private TextBox txtDpFullName;
+        private Label label17;
+        private TextBox txtDpReservationID;
+        private Label label4;
+        private Label lbl1;
+        private Label label43;
+        private Label lblAmountToPay;
+        private Label label40;
+        private Label label44;
+        private ComboBox cboPaymentMethod;
+        private NumericUpDown numPaymentReceived;
+        private Label lblChange;
+        private Label label42;
+        private Button btnDpProcess;
+        private Button btnCancel;
+        private Button btnReserveCancel;
     }
 }

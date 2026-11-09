@@ -45,5 +45,55 @@ namespace HotelReservation.Businesslogic.Repository
 
             return dt;
         }
+        public void ConfirmDownpayment(int reservationId, decimal amount, string paymentMethod)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_ConfirmDownpayment", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ReservationID", reservationId);
+                cmd.Parameters.AddWithValue("@Amount", amount);
+                cmd.Parameters.AddWithValue("@PaymentMethod", paymentMethod);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateReservation(int reservationId, ReservationModel reservation)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_UpdateReservation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ReservationID", reservationId);
+                cmd.Parameters.AddWithValue("@RoomID", reservation.RoomID);
+                cmd.Parameters.AddWithValue("@CheckInDate", reservation.CheckInDate);
+                cmd.Parameters.AddWithValue("@CheckOutDate", reservation.CheckOutDate);
+                cmd.Parameters.AddWithValue("@NumberOfGuests", reservation.NumberOfGuests);
+                cmd.Parameters.AddWithValue("@TotalNights", reservation.TotalNights);
+                cmd.Parameters.AddWithValue("@RatePerNight", reservation.RatePerNight);
+                cmd.Parameters.AddWithValue("@TotalPrice", reservation.TotalPrice);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void CancelReservation(int reservationId)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_CancelReservation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ReservationID", reservationId);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
