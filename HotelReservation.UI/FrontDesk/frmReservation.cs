@@ -13,6 +13,8 @@ namespace HotelReservation.UI.FrontDesk
         private const int CheckOutHour = 12;   // 12:00 PM
         private const string DateTimeFormat = "MM/dd/yyyy hh:mm tt";
         private const string PesoFormat = "₱#,##0.00";
+        private const decimal DownpaymentRate = 0.50m;   // downpayment = 50% of the total             
+        private int? editingReservationId; // ===== Edit mode =====
 
         // ===== Selected values =====
         private int? selectedGuestId;
@@ -20,6 +22,10 @@ namespace HotelReservation.UI.FrontDesk
         private decimal selectedRoomPrice;
         private DateTime? checkInDate;
         private DateTime? checkOutDate;
+
+        // ===== Downpayment =====
+        private int? downpaymentReservationId;
+        private decimal downpaymentAmount;
 
         public frmReservation()
         {
@@ -35,6 +41,7 @@ namespace HotelReservation.UI.FrontDesk
             pnlReservationDetails.Visible = false;
             pnlGuestList.Visible = false;
             pnlRoomList.Visible = false;
+            pnlDownpayment.Visible = false;
 
             // Can only select today and future dates
             monthCalendarCheckIn.MinDate = DateTime.Today;
@@ -43,6 +50,153 @@ namespace HotelReservation.UI.FrontDesk
             // Number of guests cannot be 0
             numberOfGuest.Minimum = 1;
             numberOfGuest.Value = 1;
+
+            SetupDownpaymentControls();
+        }
+
+        private void SetupDownpaymentControls()
+        {
+            cboPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboPaymentMethod.Items.Clear();
+            cboPaymentMethod.Items.AddRange(new object[]
+            {
+                "Cash", "GCash", "Maya", "Credit/Debit Card", "Bank Transfer"
+            });
+
+            // The default maximum of a NumericUpDown is 100, which is too small for money
+            numPaymentReceived.DecimalPlaces = 2;
+            numPaymentReceived.Minimum = 0;
+            numPaymentReceived.Maximum = 10000000;
+        }
+
+        // =====================================================
+        //  RIGHT-CLICK MENU (reservation list)
+        // =====================================================
+        private void dgvReservationList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right || e.RowIndex < 0)
+                return;
+
+            // Select the row that was clicked
+            dgvReservationList.ClearSelection();
+            dgvReservationList.Rows[e.RowIndex].Selected = true;
+
+            if (e.ColumnIndex >= 0)
+                dgvReservationList.CurrentCell = dgvReservationList.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+            string status = dgvReservationList.Rows[e.RowIndex].Cells["Status"].Value.ToString();
+
+            bool isPending = status == "Pending Downpayment";
+            bool isAwaiting = status == "Awaiting Check-In";
+
+            // Pending: Edit, Process Payment, Cancel
+            EditToolStripMenuItem.Visible = isPending;
+            processPaymentToolStripMenuItem.Visible = isPending;
+
+            // Awaiting Check-In: only after the downpayment is done
+            awaitCheckInToolStripMenuItem.Visible = isAwaiting;
+
+            cancelToolStripMenuItem.Visible = isPending || isAwaiting;
+
+            // Checked-In, Checked-Out and Cancelled have no actions, so do not show an empty menu
+            if (!isPending && !isAwaiting)
+                return;
+
+            contextMenuStrip1.Show(Cursor.Position);
+        }
+
+        // =====================================================
+        //  DOWNPAYMENT
+        // =====================================================
+        private void processPaymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvReservationList.CurrentRow == null)
+                return;
+
+            DataGridViewRow row = dgvReservationList.CurrentRow;
+
+            downpaymentReservationId = Convert.ToInt32(row.Cells["ReservationID"].Value);
+
+            int nights = Convert.ToInt32(row.Cells["TotalNights"].Value);
+            decimal subtotal = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+            decimal rate = nights > 0 ? subtotal / nights : 0;
+
+            txtDpReservationID.Text = row.Cells["ReservationNumber"].Value.ToString();
+            txtDpFullName.Text = row.Cells["GuestName"].Value.ToString();
+
+            lblDpRoomType.Text = row.Cells["RoomTypeName"].Value.ToString();
+            lblDpRate.Text = rate.ToString(PesoFormat);
+            lblDpTotalNights.Text = nights.ToString();
+            lblDpSubtotal.Text = subtotal.ToString(PesoFormat);
+
+            downpaymentAmount = Math.Round(subtotal * DownpaymentRate, 2);
+            lblAmountToPay.Text = downpaymentAmount.ToString(PesoFormat);
+
+            numPaymentReceived.Value = 0;
+            cboPaymentMethod.SelectedIndex = -1;
+            lblChange.Text = "-";
+
+            pnlDownpayment.Visible = true;
+            pnlDownpayment.BringToFront();
+        }
+
+        private void numPaymentReceived_ValueChanged(object sender, EventArgs e)
+        {
+            decimal change = numPaymentReceived.Value - downpaymentAmount;
+
+            lblChange.Text = numPaymentReceived.Value > 0 && change >= 0
+                ? change.ToString(PesoFormat)
+                : "-";
+        }
+
+        private void btnDpCancel_Click(object sender, EventArgs e)
+        {
+            CloseDownpaymentPanel();
+        }
+
+        private void btnDpProcess_Click(object sender, EventArgs e)
+        {
+            if (downpaymentReservationId == null)
+                return;
+
+            if (cboPaymentMethod.SelectedIndex < 0)
+            {
+                ShowWarning("Please select a payment method.", "Payment Method Required");
+                return;
+            }
+
+            if (numPaymentReceived.Value < downpaymentAmount)
+            {
+                ShowWarning($"The payment received must be at least {downpaymentAmount.ToString(PesoFormat)}.",
+                    "Payment Not Enough");
+                return;
+            }
+
+            try
+            {
+                ReservationController controller = new ReservationController();
+                controller.ConfirmDownpayment(downpaymentReservationId.Value, downpaymentAmount, cboPaymentMethod.Text);
+
+                MessageBox.Show(
+                    $"Downpayment received.\nChange: {(numPaymentReceived.Value - downpaymentAmount).ToString(PesoFormat)}\n\n" +
+                    "The reservation is now Awaiting Check-In.",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CloseDownpaymentPanel();
+                LoadReservations();   // new status and counters
+                LoadRooms();          // the room is no longer Available
+            }
+            catch (Exception ex)
+            {
+                // For example: "This room was already taken by another guest."
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CloseDownpaymentPanel()
+        {
+            pnlDownpayment.Visible = false;
+            downpaymentReservationId = null;
         }
 
         // =====================================================
@@ -195,6 +349,9 @@ namespace HotelReservation.UI.FrontDesk
             SetupReadOnlyGrid(dgvReservationList);
 
             dgvReservationList.Columns["ReservationID"].Visible = false;
+            dgvReservationList.Columns["GuestID"].Visible = false;
+            dgvReservationList.Columns["RoomID"].Visible = false;
+            dgvReservationList.Columns["RatePerNight"].Visible = false;
 
             dgvReservationList.Columns["ReservationNumber"].HeaderText = "Reservation Number";
             dgvReservationList.Columns["GuestName"].HeaderText = "Guest Name";
@@ -216,12 +373,10 @@ namespace HotelReservation.UI.FrontDesk
 
         private void UpdateCounters(DataTable dt)
         {
-            lblTotalReservation.Text = dt.Rows.Count.ToString();
+            lblTotalReservation.Text = dt.Select("Status <> 'Cancelled'").Length.ToString();
             lblTotalPending.Text = dt.Select("Status = 'Pending Downpayment'").Length.ToString();
-
-            // For checkin at checkout mamaya
-            // lblTotalAwaitingCheckIn.Text = dt.Select("Status = 'Awaiting Check-In'").Length.ToString();
-            // lblTotalCheckIn.Text = dt.Select("Status = 'Checked-In'").Length.ToString();
+            lblTotalAwaiting.Text = dt.Select("Status = 'Awaiting Check-In'").Length.ToString();
+            lblTotalCheckIn.Text = dt.Select("Status = 'Checked-In'").Length.ToString();
         }
 
         // =====================================================
@@ -229,6 +384,9 @@ namespace HotelReservation.UI.FrontDesk
         // =====================================================
         private void btnReserveGuest_Click(object sender, EventArgs e)
         {
+            if (editingReservationId != null)
+                ExitEditMode();
+
             pnlReservationDetails.Visible = true;
         }
 
@@ -511,19 +669,29 @@ namespace HotelReservation.UI.FrontDesk
             try
             {
                 ReservationController controller = new ReservationController();
-                controller.AddReservation(reservation);
 
-                MessageBox.Show("Reservation saved. Proceed to downpayment.", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (editingReservationId != null)
+                {
+                    controller.UpdateReservation(editingReservationId.Value, reservation);
 
-                // Clear the form
-                ResetReservationDetails();
-                txtGuestName.Clear();
-                selectedGuestId = null;
+                    MessageBox.Show("Reservation updated.", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ExitEditMode();
+                }
+                else
+                {
+                    controller.AddReservation(reservation);
+
+                    MessageBox.Show("Reservation saved. Proceed to downpayment.", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ResetReservationDetails();
+                    txtGuestName.Clear();
+                    selectedGuestId = null;
+                }
+
                 pnlReservationDetails.Visible = false;
-
-                // The room status does not change until the downpayment,
-                // so only the reservation list needs to refresh
                 LoadReservations();
             }
             catch (Exception ex)
@@ -553,6 +721,106 @@ namespace HotelReservation.UI.FrontDesk
                 $"Convert(RoomNumber, 'System.String') LIKE '%{search}%' OR " +
                 $"RoomTypeName LIKE '%{search}%' OR " +
                 $"Status LIKE '%{search}%'";
+        }
+        // =====================================================
+        //  EDIT RESERVATION
+        // =====================================================
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvReservationList.CurrentRow == null)
+                return;
+
+            DataGridViewRow row = dgvReservationList.CurrentRow;
+
+            editingReservationId = Convert.ToInt32(row.Cells["ReservationID"].Value);
+
+            // Guest (cannot be changed)
+            selectedGuestId = Convert.ToInt32(row.Cells["GuestID"].Value);
+            txtGuestName.Text = row.Cells["GuestName"].Value.ToString();
+
+            // Number of guests first, because changing it clears the room
+            numberOfGuest.Value = Convert.ToInt32(row.Cells["NumberOfGuests"].Value);
+
+            // Dates
+            checkInDate = Convert.ToDateTime(row.Cells["CheckInDate"].Value);
+            checkOutDate = Convert.ToDateTime(row.Cells["CheckOutDate"].Value);
+            txtCheckInDate.Text = checkInDate.Value.ToString(DateTimeFormat);
+            txtCheckOutDate.Text = checkOutDate.Value.ToString(DateTimeFormat);
+            monthCalendarCheckOut.MinDate = checkInDate.Value.Date.AddDays(1);
+
+            // Room
+            selectedRoomId = Convert.ToInt32(row.Cells["RoomID"].Value);
+            selectedRoomPrice = Convert.ToDecimal(row.Cells["RatePerNight"].Value);
+            txtRoomNumber.Text = row.Cells["RoomNumber"].Value.ToString();
+            lblRoomType.Text = row.Cells["RoomTypeName"].Value.ToString();
+            lblRate.Text = selectedRoomPrice.ToString(PesoFormat);
+
+            UpdateTotalNights();   // also updates the total price
+
+            // Edit mode: the guest cannot be changed
+            btnSelectG.Enabled = false;
+            btnReserve.Text = "Save Changes";
+            pnlReservationDetails.Visible = true;
+        }
+
+        private void ExitEditMode()
+        {
+            editingReservationId = null;
+
+            btnSelectG.Enabled = true;
+            btnReserve.Text = "Reserve";
+
+            ResetReservationDetails();
+            txtGuestName.Clear();
+            selectedGuestId = null;
+        }
+
+        // =====================================================
+        //  CANCEL RESERVATION
+        // =====================================================
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgvReservationList.CurrentRow == null)
+                return;
+
+            DataGridViewRow row = dgvReservationList.CurrentRow;
+
+            int reservationId = Convert.ToInt32(row.Cells["ReservationID"].Value);
+            string number = row.Cells["ReservationNumber"].Value.ToString();
+            string guest = row.Cells["GuestName"].Value.ToString();
+            string status = row.Cells["Status"].Value.ToString();
+
+            string message = $"Cancel reservation {number} of {guest}?";
+
+            if (status == "Awaiting Check-In")
+                message += "\n\nThe room will be available again.";
+
+            DialogResult confirm = MessageBox.Show(message, "Cancel Reservation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            try
+            {
+                ReservationController controller = new ReservationController();
+                controller.CancelReservation(reservationId);
+
+                MessageBox.Show("The reservation was cancelled.", "Cancelled",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LoadReservations();   // new status and counters
+                LoadRooms();          // the room is available again
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReserveCancel_Click(object sender, EventArgs e)
+        {
+            pnlReservationDetails.Visible = false;
         }
     }
 }

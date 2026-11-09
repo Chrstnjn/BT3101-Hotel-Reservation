@@ -1,6 +1,8 @@
 ﻿CREATE PROCEDURE usp_ConfirmDownpayment
 (
-    @ReservationID INT
+    @ReservationID INT,
+    @Amount DECIMAL(18,2),
+    @PaymentMethod VARCHAR(30)
 )
 AS
 BEGIN
@@ -31,6 +33,9 @@ BEGIN
         ROLLBACK TRANSACTION;
         THROW 50003, 'This room was already taken by another guest.', 1;
     END
+
+    INSERT INTO DPayments (ReservationID, PaymentType, PaymentMethod, Amount)
+    VALUES (@ReservationID, 'Downpayment', @PaymentMethod, @Amount);
 
     UPDATE Reservations
     SET Status = 'Awaiting Check-In'

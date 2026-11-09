@@ -17,5 +17,17 @@ namespace HotelReservation.Businesslogic.Controller
         {
             return repo.GetReservations();
         }
+        public void ConfirmDownpayment(int reservationId, decimal amount, string paymentMethod)
+        {
+            repo.ConfirmDownpayment(reservationId, amount, paymentMethod);
+        }
+        public void UpdateReservation(int reservationId, ReservationModel reservation)
+        {
+            repo.UpdateReservation(reservationId, reservation);
+        }
+        public void CancelReservation(int reservationId)
+        {
+            repo.CancelReservation(reservationId);
+        }
     }
 }
