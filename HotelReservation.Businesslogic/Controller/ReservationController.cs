@@ -29,5 +29,9 @@ namespace HotelReservation.Businesslogic.Controller
         {
             repo.CancelReservation(reservationId);
         }
+        public void CheckInReservation(int reservationId)
+        {
+            repo.CheckInReservation(reservationId);
+        }
     }
 }

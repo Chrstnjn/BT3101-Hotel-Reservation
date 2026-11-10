@@ -95,5 +95,18 @@ namespace HotelReservation.Businesslogic.Repository
                 cmd.ExecuteNonQuery();
             }
         }
+        public void CheckInReservation(int reservationId)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_CheckInReservation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ReservationID", reservationId);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

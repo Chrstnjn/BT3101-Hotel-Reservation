@@ -55,6 +55,7 @@
             awaitCheckInToolStripMenuItem = new ToolStripMenuItem();
             cancelToolStripMenuItem = new ToolStripMenuItem();
             pnlReservationDetails = new Panel();
+            btnReserveCancel = new Button();
             btnReserve = new Button();
             lblTotalNight = new Label();
             pnlCheckInDate = new Panel();
@@ -142,7 +143,6 @@
             txtDpReservationID = new TextBox();
             label4 = new Label();
             lbl1 = new Label();
-            btnReserveCancel = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
@@ -190,6 +190,7 @@
             btnCheckIn.TabIndex = 18;
             btnCheckIn.Text = "Check In";
             btnCheckIn.UseVisualStyleBackColor = true;
+            btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnReservation
             // 
@@ -228,6 +229,7 @@
             btnDashboard.TabIndex = 14;
             btnDashboard.Text = "Dashboard";
             btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // panel3
             // 
@@ -376,6 +378,7 @@
             awaitCheckInToolStripMenuItem.Name = "awaitCheckInToolStripMenuItem";
             awaitCheckInToolStripMenuItem.Size = new Size(172, 22);
             awaitCheckInToolStripMenuItem.Text = "Awaiting Check-In";
+            awaitCheckInToolStripMenuItem.Click += awaitCheckInToolStripMenuItem_Click;
             // 
             // cancelToolStripMenuItem
             // 
@@ -421,6 +424,16 @@
             pnlReservationDetails.Size = new Size(638, 388);
             pnlReservationDetails.TabIndex = 34;
             // 
+            // btnReserveCancel
+            // 
+            btnReserveCancel.Location = new Point(431, 345);
+            btnReserveCancel.Name = "btnReserveCancel";
+            btnReserveCancel.Size = new Size(95, 29);
+            btnReserveCancel.TabIndex = 37;
+            btnReserveCancel.Text = "Cancel";
+            btnReserveCancel.UseVisualStyleBackColor = true;
+            btnReserveCancel.Click += btnReserveCancel_Click;
+            // 
             // btnReserve
             // 
             btnReserve.Location = new Point(532, 345);
@@ -444,7 +457,7 @@
             // pnlCheckInDate
             // 
             pnlCheckInDate.Controls.Add(monthCalendarCheckIn);
-            pnlCheckInDate.Location = new Point(354, 97);
+            pnlCheckInDate.Location = new Point(86, 95);
             pnlCheckInDate.Name = "pnlCheckInDate";
             pnlCheckInDate.Size = new Size(243, 178);
             pnlCheckInDate.TabIndex = 35;
@@ -460,7 +473,7 @@
             // pnlCheckOutDate
             // 
             pnlCheckOutDate.Controls.Add(monthCalendarCheckOut);
-            pnlCheckOutDate.Location = new Point(89, 95);
+            pnlCheckOutDate.Location = new Point(382, 94);
             pnlCheckOutDate.Name = "pnlCheckOutDate";
             pnlCheckOutDate.Size = new Size(243, 178);
             pnlCheckOutDate.TabIndex = 36;
@@ -735,7 +748,7 @@
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(13, 628);
+            btnLogout.Location = new Point(12, 543);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(108, 34);
             btnLogout.TabIndex = 37;
@@ -1291,16 +1304,6 @@
             lbl1.Size = new Size(180, 21);
             lbl1.TabIndex = 3;
             lbl1.Text = "Downpayment Details";
-            // 
-            // btnReserveCancel
-            // 
-            btnReserveCancel.Location = new Point(431, 345);
-            btnReserveCancel.Name = "btnReserveCancel";
-            btnReserveCancel.Size = new Size(95, 29);
-            btnReserveCancel.TabIndex = 37;
-            btnReserveCancel.Text = "Cancel";
-            btnReserveCancel.UseVisualStyleBackColor = true;
-            btnReserveCancel.Click += btnReserveCancel_Click;
             // 
             // frmReservation
             // 

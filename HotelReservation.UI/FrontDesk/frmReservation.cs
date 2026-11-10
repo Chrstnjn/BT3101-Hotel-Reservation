@@ -822,5 +822,26 @@ namespace HotelReservation.UI.FrontDesk
         {
             pnlReservationDetails.Visible = false;
         }
+
+        private void awaitCheckInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCheckIn frmCheckInGo = new frmCheckIn();
+            frmCheckInGo.Show();
+            this.Hide();
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            frmFrontDashboard frontDashboard = new frmFrontDashboard();
+            frontDashboard.Show();
+            this.Hide();
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            frmCheckIn frontCheckIn = new frmCheckIn();
+            frontCheckIn.Show();
+            this.Hide();
+        }
     }
 }

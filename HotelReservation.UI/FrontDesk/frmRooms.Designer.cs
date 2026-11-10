@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnPayment = new Button();
+            btnBilling = new Button();
             btnCheckOut = new Button();
             btnCheckIn = new Button();
             btnReservation = new Button();
@@ -50,6 +50,7 @@
             txtSearch = new TextBox();
             dgvRoomList = new DataGridView();
             dgvRoomTypeList = new DataGridView();
+            btnLogout = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -58,14 +59,14 @@
             ((System.ComponentModel.ISupportInitialize)dgvRoomTypeList).BeginInit();
             SuspendLayout();
             // 
-            // btnPayment
+            // btnBilling
             // 
-            btnPayment.Location = new Point(12, 342);
-            btnPayment.Name = "btnPayment";
-            btnPayment.Size = new Size(108, 34);
-            btnPayment.TabIndex = 20;
-            btnPayment.Text = "Payment";
-            btnPayment.UseVisualStyleBackColor = true;
+            btnBilling.Location = new Point(12, 342);
+            btnBilling.Name = "btnBilling";
+            btnBilling.Size = new Size(108, 34);
+            btnBilling.TabIndex = 20;
+            btnBilling.Text = "Billing";
+            btnBilling.UseVisualStyleBackColor = true;
             // 
             // btnCheckOut
             // 
@@ -84,6 +85,7 @@
             btnCheckIn.TabIndex = 18;
             btnCheckIn.Text = "Check In";
             btnCheckIn.UseVisualStyleBackColor = true;
+            btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnReservation
             // 
@@ -264,11 +266,22 @@
             dgvRoomTypeList.Size = new Size(630, 155);
             dgvRoomTypeList.TabIndex = 29;
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(12, 395);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(108, 34);
+            btnLogout.TabIndex = 30;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // frmRooms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(dgvRoomTypeList);
             Controls.Add(dgvRoomList);
             Controls.Add(txtSearch);
@@ -276,7 +289,7 @@
             Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(btnPayment);
+            Controls.Add(btnBilling);
             Controls.Add(btnCheckOut);
             Controls.Add(btnCheckIn);
             Controls.Add(btnReservation);
@@ -303,7 +316,7 @@
 
         #endregion
 
-        private Button btnPayment;
+        private Button btnBilling;
         private Button btnCheckOut;
         private Button btnCheckIn;
         private Button btnReservation;
@@ -325,5 +338,6 @@
         private TextBox txtSearch;
         private DataGridView dgvRoomList;
         private DataGridView dgvRoomTypeList;
+        private Button btnLogout;
     }
 }

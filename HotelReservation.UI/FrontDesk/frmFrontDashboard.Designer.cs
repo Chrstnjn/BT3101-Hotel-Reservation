@@ -35,7 +35,7 @@
             btnReservation = new Button();
             btnCheckIn = new Button();
             btnCheckOut = new Button();
-            btnPayment = new Button();
+            btnBilling = new Button();
             panel5 = new Panel();
             dgvAvailableRoom = new DataGridView();
             dtDate = new DateTimePicker();
@@ -153,6 +153,7 @@
             btnCheckIn.TabIndex = 4;
             btnCheckIn.Text = "CHECK IN";
             btnCheckIn.UseVisualStyleBackColor = false;
+            btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnCheckOut
             // 
@@ -167,18 +168,18 @@
             btnCheckOut.Text = "CHECK OUT";
             btnCheckOut.UseVisualStyleBackColor = false;
             // 
-            // btnPayment
+            // btnBilling
             // 
-            btnPayment.BackColor = Color.FromArgb(48, 91, 171);
-            btnPayment.FlatStyle = FlatStyle.Popup;
-            btnPayment.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
-            btnPayment.ForeColor = SystemColors.ButtonHighlight;
-            btnPayment.Location = new Point(35, 521);
-            btnPayment.Name = "btnPayment";
-            btnPayment.Size = new Size(263, 43);
-            btnPayment.TabIndex = 6;
-            btnPayment.Text = "PAYMENT";
-            btnPayment.UseVisualStyleBackColor = false;
+            btnBilling.BackColor = Color.FromArgb(48, 91, 171);
+            btnBilling.FlatStyle = FlatStyle.Popup;
+            btnBilling.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnBilling.ForeColor = SystemColors.ButtonHighlight;
+            btnBilling.Location = new Point(35, 521);
+            btnBilling.Name = "btnBilling";
+            btnBilling.Size = new Size(263, 43);
+            btnBilling.TabIndex = 6;
+            btnBilling.Text = "BILLING";
+            btnBilling.UseVisualStyleBackColor = false;
             // 
             // panel5
             // 
@@ -511,7 +512,7 @@
             panel8.Controls.Add(btnReservation);
             panel8.Controls.Add(btnCheckIn);
             panel8.Controls.Add(btnCheckOut);
-            panel8.Controls.Add(btnPayment);
+            panel8.Controls.Add(btnBilling);
             panel8.Location = new Point(0, -1);
             panel8.Name = "panel8";
             panel8.Size = new Size(336, 1044);
@@ -529,6 +530,7 @@
             btnLogout.TabIndex = 53;
             btnLogout.Text = "LOGOUT";
             btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // label2
             // 
@@ -609,7 +611,7 @@
         private Button btnReservation;
         private Button btnCheckIn;
         private Button btnCheckOut;
-        private Button btnPayment;
+        private Button btnBilling;
         private Panel panel5;
         private Panel panel7;
         private Panel panel3;

@@ -128,7 +128,9 @@ namespace HotelReservation.UI.FrontDesk
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
-
+            frmReservation formReserve = new frmReservation();
+            formReserve.Show();
+            this.Hide();
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -149,6 +151,20 @@ namespace HotelReservation.UI.FrontDesk
                     $"Convert(PricePerNight, 'System.String') LIKE '%{keyword}%' OR " +
                     $"Status LIKE '%{keyword}%'";
             }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            frmLogin formLogin = new frmLogin();
+            formLogin.Show();
+            this.Hide();
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            frmCheckIn formCheckIn = new frmCheckIn();
+            formCheckIn.Show();
+            this.Hide();
         }
     }
 }
