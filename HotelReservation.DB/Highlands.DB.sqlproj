@@ -75,6 +75,7 @@
     <Build Include="Table\DPayments.sql" />
     <Build Include="Stored Procedures\usp_UpdateReservation.sql" />
     <Build Include="Stored Procedures\usp_CancelReservation.sql" />
+    <Build Include="Stored Procedures\usp_CheckInReservation.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />

@@ -345,5 +345,26 @@ namespace HotelReservation.UI.FrontDesk
             frontRoom.Show();
             this.Hide();
         }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            frmReservation frontReservation = new frmReservation();
+            frontReservation.Show();
+            this.Hide();
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            frmCheckIn frontCheckIn = new frmCheckIn();
+            frontCheckIn.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            frmLogin formLogin = new frmLogin();
+            formLogin.Show();
+            this.Hide();
+        }
     }
 }

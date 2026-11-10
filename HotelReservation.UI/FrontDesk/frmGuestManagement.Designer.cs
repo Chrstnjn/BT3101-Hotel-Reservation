@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             dgvGuestsList = new DataGridView();
-            btnPayment = new Button();
+            btnBilling = new Button();
             btnCheckOut = new Button();
             btnCheckIn = new Button();
             btnReservation = new Button();
@@ -69,6 +69,7 @@
             cMenuGuest = new ContextMenuStrip(components);
             editToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
+            btnLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGuestsList).BeginInit();
             pnlAddGuest.SuspendLayout();
             cMenuGuest.SuspendLayout();
@@ -86,14 +87,14 @@
             dgvGuestsList.CellFormatting += dgvGuestsList_CellFormatting;
             dgvGuestsList.CellMouseDown += dgvGuestsList_CellMouseDown;
             // 
-            // btnPayment
+            // btnBilling
             // 
-            btnPayment.Location = new Point(12, 342);
-            btnPayment.Name = "btnPayment";
-            btnPayment.Size = new Size(108, 34);
-            btnPayment.TabIndex = 13;
-            btnPayment.Text = "Payment";
-            btnPayment.UseVisualStyleBackColor = true;
+            btnBilling.Location = new Point(12, 342);
+            btnBilling.Name = "btnBilling";
+            btnBilling.Size = new Size(108, 34);
+            btnBilling.TabIndex = 13;
+            btnBilling.Text = "Billing";
+            btnBilling.UseVisualStyleBackColor = true;
             // 
             // btnCheckOut
             // 
@@ -112,6 +113,7 @@
             btnCheckIn.TabIndex = 11;
             btnCheckIn.Text = "Check In";
             btnCheckIn.UseVisualStyleBackColor = true;
+            btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnReservation
             // 
@@ -121,6 +123,7 @@
             btnReservation.TabIndex = 10;
             btnReservation.Text = "Reservation";
             btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Click += btnReservation_Click;
             // 
             // btnGuestManagement
             // 
@@ -430,33 +433,44 @@
             // 
             cMenuGuest.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem, deleteToolStripMenuItem });
             cMenuGuest.Name = "cMenuGuest";
-            cMenuGuest.Size = new Size(181, 70);
+            cMenuGuest.Size = new Size(108, 48);
             // 
             // editToolStripMenuItem
             // 
             editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(180, 22);
+            editToolStripMenuItem.Size = new Size(107, 22);
             editToolStripMenuItem.Text = "Edit";
             editToolStripMenuItem.Click += editToolStripMenuItem_Click;
             // 
             // deleteToolStripMenuItem
             // 
             deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Size = new Size(180, 22);
+            deleteToolStripMenuItem.Size = new Size(107, 22);
             deleteToolStripMenuItem.Text = "Delete";
             deleteToolStripMenuItem.Click += deleteToolStripMenuItem_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(12, 404);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(108, 34);
+            btnLogout.TabIndex = 24;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // frmGuestManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(pnlAddGuest);
             Controls.Add(btnRefresh);
             Controls.Add(txtSearch);
             Controls.Add(btnAddGuest);
             Controls.Add(lblTotalGuest);
-            Controls.Add(btnPayment);
+            Controls.Add(btnBilling);
             Controls.Add(btnCheckOut);
             Controls.Add(btnCheckIn);
             Controls.Add(btnReservation);
@@ -479,7 +493,7 @@
         #endregion
 
         private DataGridView dgvGuestsList;
-        private Button btnPayment;
+        private Button btnBilling;
         private Button btnCheckOut;
         private Button btnCheckIn;
         private Button btnReservation;
@@ -518,5 +532,6 @@
         private ContextMenuStrip cMenuGuest;
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
+        private Button btnLogout;
     }
 }
