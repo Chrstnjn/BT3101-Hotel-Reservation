@@ -78,6 +78,7 @@
     <Build Include="Stored Procedures\usp_CheckInReservation.sql" />
     <Build Include="Stored Procedures\usp_GetCheckOuts.sql" />
     <Build Include="Stored Procedures\usp_CheckOutReservation.sql" />
+    <Build Include="Stored Procedures\usp_ProcessBilling.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />

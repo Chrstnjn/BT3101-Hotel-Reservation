@@ -136,5 +136,20 @@ namespace HotelReservation.Businesslogic.Repository
                 cmd.ExecuteNonQuery();
             }
         }
+        public void ProcessBilling(int reservationId, decimal amountReceived, string paymentMethod)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_ProcessBilling", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ReservationID", reservationId);
+                cmd.Parameters.AddWithValue("@AmountReceived", amountReceived);
+                cmd.Parameters.AddWithValue("@PaymentMethod", paymentMethod);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

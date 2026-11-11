@@ -181,6 +181,7 @@
             btnBilling.TabIndex = 6;
             btnBilling.Text = "BILLING PAYMENT";
             btnBilling.UseVisualStyleBackColor = false;
+            btnBilling.Click += btnBilling_Click;
             // 
             // panel5
             // 

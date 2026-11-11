@@ -42,5 +42,9 @@ namespace HotelReservation.Businesslogic.Controller
         {
             repo.CheckOutReservation(reservationId);
         }
+        public void ProcessBilling(int reservationId, decimal amountReceived, string paymentMethod)
+        {
+            repo.ProcessBilling(reservationId, amountReceived, paymentMethod);
+        }
     }
 }
