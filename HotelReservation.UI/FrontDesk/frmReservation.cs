@@ -352,6 +352,7 @@ namespace HotelReservation.UI.FrontDesk
             dgvReservationList.Columns["GuestID"].Visible = false;
             dgvReservationList.Columns["RoomID"].Visible = false;
             dgvReservationList.Columns["RatePerNight"].Visible = false;
+            dgvReservationList.Columns["PhoneNumber"].Visible = false;
 
             dgvReservationList.Columns["ReservationNumber"].HeaderText = "Reservation Number";
             dgvReservationList.Columns["GuestName"].HeaderText = "Guest Name";

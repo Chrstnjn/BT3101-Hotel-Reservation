@@ -155,6 +155,7 @@
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
             Load += frmLogin_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -57,5 +57,12 @@ namespace HotelReservation.UI.FrontDesk
             formLogin.Show();
             this.Hide();
         }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            frmCheckOut frontCheckOut = new frmCheckOut();
+            frontCheckOut.Show();
+            this.Hide();
+        }
     }
 }

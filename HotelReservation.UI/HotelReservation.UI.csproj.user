@@ -13,6 +13,9 @@
     <Compile Update="FrontDesk\frmCheckIn.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrontDesk\frmCheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrontDesk\frmFrontDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,7 +10,6 @@ namespace HotelReservation.UI.FrontDesk
             InitializeComponent();
         }
         private const string DateTimeFormat = "MM/dd/yyyy hh:mm tt";
-        private const string PesoFormat = "₱#,##0.00";
         private const string StatusAwaiting = "Awaiting Check-In";
 
         private DataTable reservations;
@@ -18,6 +17,7 @@ namespace HotelReservation.UI.FrontDesk
         {
             LoadAwaitingCheckIns();
         }
+
         private void LoadAwaitingCheckIns()
         {
             ReservationController controller = new ReservationController();
@@ -40,24 +40,36 @@ namespace HotelReservation.UI.FrontDesk
             dgvCheckIn.Columns["GuestID"].Visible = false;
             dgvCheckIn.Columns["RoomID"].Visible = false;
             dgvCheckIn.Columns["RatePerNight"].Visible = false;
+            dgvCheckIn.Columns["Status"].Visible = false;
+            dgvCheckIn.Columns["NumberOfGuests"].Visible = false;
+            dgvCheckIn.Columns["TotalPrice"].Visible = false;
 
             dgvCheckIn.Columns["ReservationNumber"].HeaderText = "Reservation Number";
             dgvCheckIn.Columns["GuestName"].HeaderText = "Guest Name";
+            dgvCheckIn.Columns["PhoneNumber"].HeaderText = "Phone Number";
+            dgvCheckIn.Columns["PhoneNumber"].DisplayIndex = dgvCheckIn.Columns["GuestName"].DisplayIndex + 1;
             dgvCheckIn.Columns["RoomNumber"].HeaderText = "Room Number";
             dgvCheckIn.Columns["RoomTypeName"].HeaderText = "Room Type";
-            dgvCheckIn.Columns["CheckInDate"].HeaderText = "Check-In";
-            dgvCheckIn.Columns["CheckOutDate"].HeaderText = "Check-Out";
-            dgvCheckIn.Columns["NumberOfGuests"].HeaderText = "Number of Guest(s)";
+            dgvCheckIn.Columns["CheckInDate"].HeaderText = "Check-In Date";
+            dgvCheckIn.Columns["CheckOutDate"].HeaderText = "Check-Out Date";
             dgvCheckIn.Columns["TotalNights"].HeaderText = "Total Night(s)";
-            dgvCheckIn.Columns["TotalPrice"].HeaderText = "Total Price";
-            dgvCheckIn.Columns["Status"].HeaderText = "Status";
 
             dgvCheckIn.Columns["CheckInDate"].DefaultCellStyle.Format = DateTimeFormat;
             dgvCheckIn.Columns["CheckOutDate"].DefaultCellStyle.Format = DateTimeFormat;
-            dgvCheckIn.Columns["TotalPrice"].DefaultCellStyle.Format = PesoFormat;
 
             ApplyCheckInFilter();
         }
+        //Phone number format
+        private void dgvCheckIn_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvCheckIn.Columns[e.ColumnIndex].Name == "PhoneNumber"
+                && e.Value != null)
+            {
+                e.Value = "(+63) " + e.Value.ToString();
+                e.FormattingApplied = true;
+            }
+        }
+
         // Shows only Awaiting Check-In, and also applies the search text
         private void ApplyCheckInFilter()
         {
@@ -73,6 +85,7 @@ namespace HotelReservation.UI.FrontDesk
                 filter += " AND (" +
                           $"ReservationNumber LIKE '%{search}%' OR " +
                           $"GuestName LIKE '%{search}%' OR " +
+                          $"PhoneNumber LIKE '%{search}%' OR " +
                           $"Convert(RoomNumber, 'System.String') LIKE '%{search}%' OR " +
                           $"RoomTypeName LIKE '%{search}%')";
             }

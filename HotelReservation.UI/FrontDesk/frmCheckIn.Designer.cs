@@ -56,7 +56,7 @@
             btnBilling.Name = "btnBilling";
             btnBilling.Size = new Size(108, 34);
             btnBilling.TabIndex = 27;
-            btnBilling.Text = "Billing";
+            btnBilling.Text = "Billing Payment";
             btnBilling.UseVisualStyleBackColor = true;
             // 
             // btnCheckOut
@@ -172,6 +172,7 @@
             dgvCheckIn.Name = "dgvCheckIn";
             dgvCheckIn.Size = new Size(633, 296);
             dgvCheckIn.TabIndex = 34;
+            dgvCheckIn.CellFormatting += dgvCheckIn_CellFormatting;
             dgvCheckIn.CellMouseDown += dgvCheckIn_CellMouseDown;
             // 
             // label2

@@ -170,7 +170,7 @@
             btnBilling.Name = "btnBilling";
             btnBilling.Size = new Size(108, 34);
             btnBilling.TabIndex = 20;
-            btnBilling.Text = "Billing";
+            btnBilling.Text = "Billing Payment";
             btnBilling.UseVisualStyleBackColor = true;
             // 
             // btnCheckOut
