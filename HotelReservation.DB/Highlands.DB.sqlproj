@@ -76,6 +76,8 @@
     <Build Include="Stored Procedures\usp_UpdateReservation.sql" />
     <Build Include="Stored Procedures\usp_CancelReservation.sql" />
     <Build Include="Stored Procedures\usp_CheckInReservation.sql" />
+    <Build Include="Stored Procedures\usp_GetCheckOuts.sql" />
+    <Build Include="Stored Procedures\usp_CheckOutReservation.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />

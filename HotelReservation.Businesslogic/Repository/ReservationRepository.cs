@@ -108,5 +108,33 @@ namespace HotelReservation.Businesslogic.Repository
                 cmd.ExecuteNonQuery();
             }
         }
+        public DataTable GetCheckOuts()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("usp_GetCheckOuts", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+
+        public void CheckOutReservation(int reservationId)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_CheckOutReservation", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ReservationID", reservationId);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

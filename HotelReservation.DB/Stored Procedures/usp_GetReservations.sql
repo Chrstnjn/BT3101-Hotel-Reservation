@@ -10,6 +10,7 @@ BEGIN
         r.RatePerNight,
         r.ReservationNumber,
         g.FirstName + ' ' + g.LastName AS GuestName,
+        g.PhoneNumber,
         rm.RoomNumber,
         rt.RoomTypeName,
         r.CheckInDate,

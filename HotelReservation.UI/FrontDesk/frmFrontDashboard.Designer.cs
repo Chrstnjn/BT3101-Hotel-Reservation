@@ -167,6 +167,7 @@
             btnCheckOut.TabIndex = 5;
             btnCheckOut.Text = "CHECK OUT";
             btnCheckOut.UseVisualStyleBackColor = false;
+            btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnBilling
             // 
@@ -178,7 +179,7 @@
             btnBilling.Name = "btnBilling";
             btnBilling.Size = new Size(263, 43);
             btnBilling.TabIndex = 6;
-            btnBilling.Text = "BILLING";
+            btnBilling.Text = "BILLING PAYMENT";
             btnBilling.UseVisualStyleBackColor = false;
             // 
             // panel5

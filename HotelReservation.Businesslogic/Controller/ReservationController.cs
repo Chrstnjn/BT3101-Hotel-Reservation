@@ -33,5 +33,14 @@ namespace HotelReservation.Businesslogic.Controller
         {
             repo.CheckInReservation(reservationId);
         }
+        public DataTable GetCheckOuts()
+        {
+            return repo.GetCheckOuts();
+        }
+
+        public void CheckOutReservation(int reservationId)
+        {
+            repo.CheckOutReservation(reservationId);
+        }
     }
 }
