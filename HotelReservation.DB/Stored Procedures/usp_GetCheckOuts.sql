@@ -12,6 +12,7 @@ BEGIN
         rt.RoomTypeName,
         r.CheckInDate,
         r.CheckOutDate,
+        ISNULL(r.CheckedInAt, r.CheckInDate) AS CheckedInAt,
         r.TotalNights,
         r.TotalPrice,
         ISNULL(p.TotalPaid, 0) AS Paid,

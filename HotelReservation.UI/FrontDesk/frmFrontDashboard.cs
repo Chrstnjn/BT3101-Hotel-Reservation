@@ -53,9 +53,18 @@ namespace HotelReservation.UI.FrontDesk
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            frmLogin formLogin = new frmLogin();
-            formLogin.Show();
-            this.Hide();
+            DialogResult result = MessageBox.Show(
+              "Are you sure you want to log out?",
+              "Log Out",
+              MessageBoxButtons.YesNo,
+              MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+            }
         }
 
         private void btnCheckOut_Click(object sender, EventArgs e)
@@ -69,6 +78,13 @@ namespace HotelReservation.UI.FrontDesk
         {
             frmBillingPayment frontBillingPayment = new frmBillingPayment();
             frontBillingPayment.Show();
+            this.Hide();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            frmFrontBillingRecord frontBillingRecord = new frmFrontBillingRecord();
+            frontBillingRecord.Show();
             this.Hide();
         }
     }

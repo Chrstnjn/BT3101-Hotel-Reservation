@@ -151,5 +151,19 @@ namespace HotelReservation.Businesslogic.Repository
                 cmd.ExecuteNonQuery();
             }
         }
+        public DataTable GetBillingRecords()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("usp_GetBillingRecords", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
     }
 }

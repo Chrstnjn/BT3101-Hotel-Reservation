@@ -70,6 +70,7 @@
             editToolStripMenuItem = new ToolStripMenuItem();
             deleteToolStripMenuItem = new ToolStripMenuItem();
             btnLogout = new Button();
+            btnRecords = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGuestsList).BeginInit();
             pnlAddGuest.SuspendLayout();
             cMenuGuest.SuspendLayout();
@@ -89,25 +90,27 @@
             // 
             // btnBilling
             // 
-            btnBilling.Location = new Point(12, 342);
+            btnBilling.Location = new Point(11, 298);
             btnBilling.Name = "btnBilling";
             btnBilling.Size = new Size(108, 34);
             btnBilling.TabIndex = 13;
             btnBilling.Text = "Billing Payment";
             btnBilling.UseVisualStyleBackColor = true;
+            btnBilling.Click += btnBilling_Click;
             // 
             // btnCheckOut
             // 
-            btnCheckOut.Location = new Point(12, 302);
+            btnCheckOut.Location = new Point(11, 258);
             btnCheckOut.Name = "btnCheckOut";
             btnCheckOut.Size = new Size(108, 34);
             btnCheckOut.TabIndex = 12;
             btnCheckOut.Text = "Check Out";
             btnCheckOut.UseVisualStyleBackColor = true;
+            btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnCheckIn
             // 
-            btnCheckIn.Location = new Point(13, 262);
+            btnCheckIn.Location = new Point(12, 218);
             btnCheckIn.Name = "btnCheckIn";
             btnCheckIn.Size = new Size(108, 34);
             btnCheckIn.TabIndex = 11;
@@ -117,7 +120,7 @@
             // 
             // btnReservation
             // 
-            btnReservation.Location = new Point(13, 222);
+            btnReservation.Location = new Point(12, 178);
             btnReservation.Name = "btnReservation";
             btnReservation.Size = new Size(108, 34);
             btnReservation.TabIndex = 10;
@@ -127,7 +130,7 @@
             // 
             // btnGuestManagement
             // 
-            btnGuestManagement.Location = new Point(13, 182);
+            btnGuestManagement.Location = new Point(12, 138);
             btnGuestManagement.Name = "btnGuestManagement";
             btnGuestManagement.Size = new Size(108, 34);
             btnGuestManagement.TabIndex = 9;
@@ -136,7 +139,7 @@
             // 
             // btnRoom
             // 
-            btnRoom.Location = new Point(13, 142);
+            btnRoom.Location = new Point(12, 98);
             btnRoom.Name = "btnRoom";
             btnRoom.Size = new Size(108, 34);
             btnRoom.TabIndex = 8;
@@ -146,7 +149,7 @@
             // 
             // btnDashboard
             // 
-            btnDashboard.Location = new Point(13, 102);
+            btnDashboard.Location = new Point(12, 58);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Size = new Size(108, 34);
             btnDashboard.TabIndex = 7;
@@ -459,11 +462,22 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // btnRecords
+            // 
+            btnRecords.Location = new Point(11, 338);
+            btnRecords.Name = "btnRecords";
+            btnRecords.Size = new Size(108, 34);
+            btnRecords.TabIndex = 37;
+            btnRecords.Text = "Billing Records";
+            btnRecords.UseVisualStyleBackColor = true;
+            btnRecords.Click += btnRecords_Click;
+            // 
             // frmGuestManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnRecords);
             Controls.Add(btnLogout);
             Controls.Add(pnlAddGuest);
             Controls.Add(btnRefresh);
@@ -533,5 +547,6 @@
         private ToolStripMenuItem editToolStripMenuItem;
         private ToolStripMenuItem deleteToolStripMenuItem;
         private Button btnLogout;
+        private Button btnRecords;
     }
 }

@@ -51,6 +51,7 @@
             dgvRoomList = new DataGridView();
             dgvRoomTypeList = new DataGridView();
             btnLogout = new Button();
+            btnRecords = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -61,25 +62,27 @@
             // 
             // btnBilling
             // 
-            btnBilling.Location = new Point(12, 342);
+            btnBilling.Location = new Point(11, 281);
             btnBilling.Name = "btnBilling";
             btnBilling.Size = new Size(108, 34);
             btnBilling.TabIndex = 20;
             btnBilling.Text = "Billing Payment";
             btnBilling.UseVisualStyleBackColor = true;
+            btnBilling.Click += btnBilling_Click;
             // 
             // btnCheckOut
             // 
-            btnCheckOut.Location = new Point(12, 302);
+            btnCheckOut.Location = new Point(11, 241);
             btnCheckOut.Name = "btnCheckOut";
             btnCheckOut.Size = new Size(108, 34);
             btnCheckOut.TabIndex = 19;
             btnCheckOut.Text = "Check Out";
             btnCheckOut.UseVisualStyleBackColor = true;
+            btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnCheckIn
             // 
-            btnCheckIn.Location = new Point(13, 262);
+            btnCheckIn.Location = new Point(12, 201);
             btnCheckIn.Name = "btnCheckIn";
             btnCheckIn.Size = new Size(108, 34);
             btnCheckIn.TabIndex = 18;
@@ -89,7 +92,7 @@
             // 
             // btnReservation
             // 
-            btnReservation.Location = new Point(13, 222);
+            btnReservation.Location = new Point(12, 161);
             btnReservation.Name = "btnReservation";
             btnReservation.Size = new Size(108, 34);
             btnReservation.TabIndex = 17;
@@ -99,7 +102,7 @@
             // 
             // btnGuestManagement
             // 
-            btnGuestManagement.Location = new Point(13, 182);
+            btnGuestManagement.Location = new Point(12, 121);
             btnGuestManagement.Name = "btnGuestManagement";
             btnGuestManagement.Size = new Size(108, 34);
             btnGuestManagement.TabIndex = 16;
@@ -109,7 +112,7 @@
             // 
             // btnRoom
             // 
-            btnRoom.Location = new Point(13, 142);
+            btnRoom.Location = new Point(12, 81);
             btnRoom.Name = "btnRoom";
             btnRoom.Size = new Size(108, 34);
             btnRoom.TabIndex = 15;
@@ -118,7 +121,7 @@
             // 
             // btnDashboard
             // 
-            btnDashboard.Location = new Point(13, 102);
+            btnDashboard.Location = new Point(12, 41);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Size = new Size(108, 34);
             btnDashboard.TabIndex = 14;
@@ -276,11 +279,22 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
+            // btnRecords
+            // 
+            btnRecords.Location = new Point(11, 321);
+            btnRecords.Name = "btnRecords";
+            btnRecords.Size = new Size(108, 34);
+            btnRecords.TabIndex = 37;
+            btnRecords.Text = "Billing Records";
+            btnRecords.UseVisualStyleBackColor = true;
+            btnRecords.Click += btnRecords_Click;
+            // 
             // frmRooms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnRecords);
             Controls.Add(btnLogout);
             Controls.Add(dgvRoomTypeList);
             Controls.Add(dgvRoomList);
@@ -339,5 +353,6 @@
         private DataGridView dgvRoomList;
         private DataGridView dgvRoomTypeList;
         private Button btnLogout;
+        private Button btnRecords;
     }
 }

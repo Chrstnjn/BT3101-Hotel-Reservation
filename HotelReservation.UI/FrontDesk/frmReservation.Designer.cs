@@ -143,6 +143,7 @@
             txtDpReservationID = new TextBox();
             label4 = new Label();
             lbl1 = new Label();
+            btnRecords = new Button();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
@@ -172,6 +173,7 @@
             btnBilling.TabIndex = 20;
             btnBilling.Text = "Billing Payment";
             btnBilling.UseVisualStyleBackColor = true;
+            btnBilling.Click += btnBilling_Click;
             // 
             // btnCheckOut
             // 
@@ -181,6 +183,7 @@
             btnCheckOut.TabIndex = 19;
             btnCheckOut.Text = "Check Out";
             btnCheckOut.UseVisualStyleBackColor = true;
+            btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnCheckIn
             // 
@@ -1305,11 +1308,22 @@
             lbl1.TabIndex = 3;
             lbl1.Text = "Downpayment Details";
             // 
+            // btnRecords
+            // 
+            btnRecords.Location = new Point(14, 389);
+            btnRecords.Name = "btnRecords";
+            btnRecords.Size = new Size(108, 34);
+            btnRecords.TabIndex = 42;
+            btnRecords.Text = "Billing Records";
+            btnRecords.UseVisualStyleBackColor = true;
+            btnRecords.Click += btnRecords_Click;
+            // 
             // frmReservation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1924, 658);
+            Controls.Add(btnRecords);
             Controls.Add(pnlDownpayment);
             Controls.Add(panel2);
             Controls.Add(pnlRoomList);
@@ -1485,5 +1499,6 @@
         private Button btnDpProcess;
         private Button btnCancel;
         private Button btnReserveCancel;
+        private Button btnRecords;
     }
 }

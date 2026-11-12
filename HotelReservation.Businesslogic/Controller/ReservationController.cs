@@ -46,5 +46,9 @@ namespace HotelReservation.Businesslogic.Controller
         {
             repo.ProcessBilling(reservationId, amountReceived, paymentMethod);
         }
+        public DataTable GetBillingRecords()
+        {
+            return repo.GetBillingRecords();
+        }
     }
 }

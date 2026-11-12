@@ -36,7 +36,8 @@ BEGIN
     WHERE RoomID = @RoomID;
 
     UPDATE Reservations
-    SET Status = 'Checked-Out'
+    SET Status = 'Checked-Out',
+        CheckedOutAt = GETDATE()
     WHERE ReservationID = @ReservationID;
 
     COMMIT TRANSACTION;

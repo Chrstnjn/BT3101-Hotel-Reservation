@@ -66,6 +66,7 @@
             panel6 = new Panel();
             label3 = new Label();
             panel8 = new Panel();
+            btnRecords = new Button();
             btnLogout = new Button();
             label2 = new Label();
             pictureBox1 = new PictureBox();
@@ -505,6 +506,7 @@
             // panel8
             // 
             panel8.BackColor = Color.FromArgb(19, 52, 113);
+            panel8.Controls.Add(btnRecords);
             panel8.Controls.Add(btnLogout);
             panel8.Controls.Add(label2);
             panel8.Controls.Add(pictureBox1);
@@ -519,6 +521,20 @@
             panel8.Name = "panel8";
             panel8.Size = new Size(336, 1044);
             panel8.TabIndex = 19;
+            // 
+            // btnRecords
+            // 
+            btnRecords.BackColor = Color.FromArgb(48, 91, 171);
+            btnRecords.FlatStyle = FlatStyle.Popup;
+            btnRecords.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnRecords.ForeColor = SystemColors.ButtonHighlight;
+            btnRecords.Location = new Point(35, 579);
+            btnRecords.Name = "btnRecords";
+            btnRecords.Size = new Size(263, 43);
+            btnRecords.TabIndex = 54;
+            btnRecords.Text = "BILLING RECORDS";
+            btnRecords.UseVisualStyleBackColor = false;
+            btnRecords.Click += btnRecords_Click;
             // 
             // btnLogout
             // 
@@ -647,5 +663,6 @@
         private PictureBox pictureBox2;
         private Label label3;
         private Button btnLogout;
+        private Button btnRecords;
     }
 }

@@ -103,6 +103,7 @@
             btnLogout.TabIndex = 51;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnBilling
             // 
@@ -121,6 +122,7 @@
             btnCheckOut.TabIndex = 49;
             btnCheckOut.Text = "Check Out";
             btnCheckOut.UseVisualStyleBackColor = true;
+            btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnCheckIn
             // 
@@ -130,6 +132,7 @@
             btnCheckIn.TabIndex = 48;
             btnCheckIn.Text = "Check In";
             btnCheckIn.UseVisualStyleBackColor = true;
+            btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnReservation
             // 
@@ -139,6 +142,7 @@
             btnReservation.TabIndex = 47;
             btnReservation.Text = "Reservation";
             btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Click += btnReservation_Click;
             // 
             // btnGuestManagement
             // 
@@ -148,6 +152,7 @@
             btnGuestManagement.TabIndex = 46;
             btnGuestManagement.Text = "Guest";
             btnGuestManagement.UseVisualStyleBackColor = true;
+            btnGuestManagement.Click += btnGuestManagement_Click;
             // 
             // btnRoom
             // 
@@ -157,6 +162,7 @@
             btnRoom.TabIndex = 45;
             btnRoom.Text = "Room";
             btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Click += btnRoom_Click;
             // 
             // btnDashboard
             // 
@@ -166,6 +172,7 @@
             btnDashboard.TabIndex = 44;
             btnDashboard.Text = "Dashboard";
             btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // txtSearch
             // 
@@ -227,9 +234,9 @@
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
-            panel3.Location = new Point(11, 193);
+            panel3.Location = new Point(11, 192);
             panel3.Name = "panel3";
-            panel3.Size = new Size(341, 96);
+            panel3.Size = new Size(341, 97);
             panel3.TabIndex = 67;
             // 
             // lblSTotalCharge
@@ -272,7 +279,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(16, 9);
+            label2.Location = new Point(16, 17);
             label2.Name = "label2";
             label2.Size = new Size(67, 17);
             label2.TabIndex = 44;
@@ -306,7 +313,7 @@
             lblBalance.AutoSize = true;
             lblBalance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBalance.ForeColor = SystemColors.ButtonFace;
-            lblBalance.Location = new Point(269, 5);
+            lblBalance.Location = new Point(244, 5);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(16, 21);
             lblBalance.TabIndex = 48;
@@ -353,7 +360,7 @@
             // 
             lblPdTotalNights.AutoSize = true;
             lblPdTotalNights.BackColor = SystemColors.ControlLight;
-            lblPdTotalNights.Location = new Point(110, 79);
+            lblPdTotalNights.Location = new Point(110, 72);
             lblPdTotalNights.Name = "lblPdTotalNights";
             lblPdTotalNights.Size = new Size(12, 15);
             lblPdTotalNights.TabIndex = 38;
@@ -364,7 +371,7 @@
             label22.AutoSize = true;
             label22.BackColor = SystemColors.ControlLight;
             label22.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(16, 79);
+            label22.Location = new Point(16, 72);
             label22.Name = "label22";
             label22.Size = new Size(81, 15);
             label22.TabIndex = 37;
@@ -374,7 +381,7 @@
             // 
             lblPdRate.AutoSize = true;
             lblPdRate.BackColor = SystemColors.ControlLight;
-            lblPdRate.Location = new Point(110, 48);
+            lblPdRate.Location = new Point(110, 41);
             lblPdRate.Name = "lblPdRate";
             lblPdRate.Size = new Size(12, 15);
             lblPdRate.TabIndex = 36;
@@ -384,7 +391,7 @@
             // 
             lblPdRoomType.AutoSize = true;
             lblPdRoomType.BackColor = SystemColors.ControlLight;
-            lblPdRoomType.Location = new Point(110, 17);
+            lblPdRoomType.Location = new Point(110, 10);
             lblPdRoomType.Name = "lblPdRoomType";
             lblPdRoomType.Size = new Size(12, 15);
             lblPdRoomType.TabIndex = 35;
@@ -395,7 +402,7 @@
             label26.AutoSize = true;
             label26.BackColor = SystemColors.ControlLight;
             label26.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label26.Location = new Point(65, 49);
+            label26.Location = new Point(65, 42);
             label26.Name = "label26";
             label26.Size = new Size(33, 15);
             label26.TabIndex = 34;
@@ -406,7 +413,7 @@
             label27.AutoSize = true;
             label27.BackColor = SystemColors.ControlLight;
             label27.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label27.Location = new Point(28, 17);
+            label27.Location = new Point(28, 10);
             label27.Name = "label27";
             label27.Size = new Size(69, 15);
             label27.TabIndex = 33;
@@ -548,6 +555,7 @@
             dgvReservationList.Name = "dgvReservationList";
             dgvReservationList.Size = new Size(684, 190);
             dgvReservationList.TabIndex = 68;
+            dgvReservationList.CellFormatting += dgvGuestsList_CellFormatting;
             dgvReservationList.SelectionChanged += dgvReservationList_SelectionChanged;
             // 
             // panel4
@@ -578,12 +586,13 @@
             // 
             // btnBRecords
             // 
-            btnBRecords.Location = new Point(12, 398);
+            btnBRecords.Location = new Point(12, 389);
             btnBRecords.Name = "btnBRecords";
             btnBRecords.Size = new Size(108, 34);
             btnBRecords.TabIndex = 70;
             btnBRecords.Text = "Billing Records";
             btnBRecords.UseVisualStyleBackColor = true;
+            btnBRecords.Click += btnRecords_Click;
             // 
             // frmBillingPayment
             // 

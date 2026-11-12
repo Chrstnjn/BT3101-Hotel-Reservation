@@ -20,6 +20,8 @@
 
     Status VARCHAR(50) NOT NULL DEFAULT 'Pending Downpayment',
     CreatedDate DATETIME NOT NULL DEFAULT GETDATE(),
+    CheckedInAt DATETIME NULL,
+    CheckedOutAt DATETIME NULL,
 
     CONSTRAINT FK_Reservations_Guests FOREIGN KEY (GuestID) REFERENCES Guests(GuestID),
     CONSTRAINT FK_Reservations_Rooms FOREIGN KEY (RoomID) REFERENCES Rooms(RoomID),
