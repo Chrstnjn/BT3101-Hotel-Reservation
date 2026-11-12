@@ -380,7 +380,7 @@
             // 
             awaitCheckInToolStripMenuItem.Name = "awaitCheckInToolStripMenuItem";
             awaitCheckInToolStripMenuItem.Size = new Size(172, 22);
-            awaitCheckInToolStripMenuItem.Text = "Awaiting Check-In";
+            awaitCheckInToolStripMenuItem.Text = "Reserved";
             awaitCheckInToolStripMenuItem.Click += awaitCheckInToolStripMenuItem_Click;
             // 
             // cancelToolStripMenuItem
@@ -879,7 +879,7 @@
             label13.Name = "label13";
             label13.Size = new Size(105, 15);
             label13.TabIndex = 0;
-            label13.Text = "Awaiting Check-In";
+            label13.Text = "Reserved";
             // 
             // pnlDownpayment
             // 

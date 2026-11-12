@@ -66,7 +66,22 @@ namespace HotelReservation.Businesslogic.Repository
 
             return dt;
         }
+        // Rooms with their status on the chosen date
+        public DataTable GetRoomsByDate(DateTime date)
+        {
+            DataTable dt = new DataTable();
 
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("usp_GetRoomsByDate", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@Date", date.Date);
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
         public bool RoomNumberExists(string roomNumber)
         {
             using (SqlConnection con = new SqlConnection(connectionString))

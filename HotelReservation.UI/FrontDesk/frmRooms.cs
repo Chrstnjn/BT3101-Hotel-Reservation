@@ -5,6 +5,7 @@ namespace HotelReservation.UI.FrontDesk
 {
     public partial class frmRooms : Form
     {
+        private DateTime selectedDate = DateTime.Today;
         public frmRooms()
         {
             InitializeComponent();
@@ -38,6 +39,9 @@ namespace HotelReservation.UI.FrontDesk
             LoadTotalRoomType();
             LoadRooms();
             LoadRoomTypes();
+
+            monthCalendarDate.Visible = false;
+            txtDateDisplay.Text = DateTime.Today.ToString("MM/dd/yyyy");
         }
 
         //datagrid view room
@@ -45,7 +49,7 @@ namespace HotelReservation.UI.FrontDesk
         {
             RoomRepository repo = new RoomRepository();
 
-            dgvRoomList.DataSource = repo.GetRooms();
+            dgvRoomList.DataSource = repo.GetRoomsByDate(selectedDate);
 
             // Read-only
             dgvRoomList.ReadOnly = true;
@@ -66,6 +70,25 @@ namespace HotelReservation.UI.FrontDesk
             dgvRoomList.Columns["PricePerNight"].DefaultCellStyle.Format = "₱#,##0.00";
 
             UpdateRoomStatistics();
+            SearchRooms(txtSearch.Text.Trim());
+        }
+        // =====================================================
+        //  DATE (see the rooms on another day)
+        // =====================================================
+        private void btnDate_Click(object sender, EventArgs e)
+        {
+            monthCalendarDate.Visible = !monthCalendarDate.Visible; 
+            pnlDateAvailable.Visible = !pnlDateAvailable.Visible;
+        }
+
+        private void monthCalendarDate_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            selectedDate = e.Start.Date;
+            txtDateDisplay.Text = selectedDate.ToString("MM/dd/yyyy");
+            pnlDateAvailable.Visible = false;
+            monthCalendarDate.Visible = false;
+
+            LoadRooms();   // the list and the cards use the new date
         }
         private void UpdateRoomStatistics()
         {

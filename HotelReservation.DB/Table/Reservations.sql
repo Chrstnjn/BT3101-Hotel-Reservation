@@ -28,5 +28,5 @@
 
     CONSTRAINT CK_Reservations_Dates CHECK (CheckOutDate > CheckInDate),
     CONSTRAINT CK_Reservations_Status CHECK
-        (Status IN ('Pending Downpayment', 'Awaiting Check-In', 'Checked-In', 'Checked-Out', 'Cancelled'))
+        (Status IN ('Pending Downpayment', 'Reserved', 'Checked-In', 'Checked-Out', 'Cancelled'))
 );

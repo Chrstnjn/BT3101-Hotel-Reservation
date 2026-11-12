@@ -11,7 +11,7 @@ namespace HotelReservation.UI.FrontDesk
         }
         private const string DateTimeFormat = "MM/dd/yyyy hh:mm tt";
         private const string PesoFormat = "₱#,##0.00";
-
+        private const string NegaPesoFormat = "-₱#,##0.00";
         private DataTable billings;
         private decimal currentBalance;
 
@@ -143,7 +143,7 @@ namespace HotelReservation.UI.FrontDesk
 
             // Summary
             lblSTotalCharge.Text = totalCharges.ToString(PesoFormat);
-            lblSTotalPaid.Text = totalPaid.ToString(PesoFormat);
+            lblSTotalPaid.Text = totalPaid.ToString(NegaPesoFormat);
             lblBalance.Text = currentBalance.ToString(PesoFormat);
 
             // Start a new payment

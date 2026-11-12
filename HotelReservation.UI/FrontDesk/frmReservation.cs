@@ -87,13 +87,13 @@ namespace HotelReservation.UI.FrontDesk
             string status = dgvReservationList.Rows[e.RowIndex].Cells["Status"].Value.ToString();
 
             bool isPending = status == "Pending Downpayment";
-            bool isAwaiting = status == "Awaiting Check-In";
+            bool isAwaiting = status == "Reserved";
 
             // Pending: Edit, Process Payment, Cancel
             EditToolStripMenuItem.Visible = isPending;
             processPaymentToolStripMenuItem.Visible = isPending;
 
-            // Awaiting Check-In: only after the downpayment is done
+            // Reserved: only after the downpayment is done
             awaitCheckInToolStripMenuItem.Visible = isAwaiting;
 
             cancelToolStripMenuItem.Visible = isPending || isAwaiting;
@@ -179,7 +179,7 @@ namespace HotelReservation.UI.FrontDesk
 
                 MessageBox.Show(
                     $"Downpayment received.\nChange: {(numPaymentReceived.Value - downpaymentAmount).ToString(PesoFormat)}\n\n" +
-                    "The reservation is now Awaiting Check-In.",
+                    "The reservation is now Reserved.",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 CloseDownpaymentPanel();
@@ -355,7 +355,7 @@ namespace HotelReservation.UI.FrontDesk
         {
             lblTotalReservation.Text = dt.Select("Status <> 'Cancelled'").Length.ToString();
             lblTotalPending.Text = dt.Select("Status = 'Pending Downpayment'").Length.ToString();
-            lblTotalAwaiting.Text = dt.Select("Status = 'Awaiting Check-In'").Length.ToString();
+            lblTotalAwaiting.Text = dt.Select("Status = 'Reserved'").Length.ToString();
             lblTotalCheckIn.Text = dt.Select("Status = 'Checked-In'").Length.ToString();
         }
 
@@ -772,7 +772,7 @@ namespace HotelReservation.UI.FrontDesk
 
             string message = $"Cancel reservation {number} of {guest}?";
 
-            if (status == "Awaiting Check-In")
+            if (status == "Reserved")
                 message += "\n\nThe room will be available again.";
 
             DialogResult confirm = MessageBox.Show(message, "Cancel Reservation",

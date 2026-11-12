@@ -10,7 +10,7 @@ namespace HotelReservation.UI.FrontDesk
             InitializeComponent();
         }
         private const string DateTimeFormat = "MM/dd/yyyy hh:mm tt";
-        private const string StatusAwaiting = "Awaiting Check-In";
+        private const string StatusAwaiting = "Reserved";
 
         private DataTable reservations;
         private void frmCheckIn_Load(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace HotelReservation.UI.FrontDesk
             }
         }
 
-        // Shows only Awaiting Check-In, and also applies the search text
+        // Shows only Reserved, and also applies the search text
         private void ApplyCheckInFilter()
         {
             if (reservations == null)

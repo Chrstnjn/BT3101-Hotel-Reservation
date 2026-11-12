@@ -80,6 +80,9 @@
     <Build Include="Stored Procedures\usp_CheckOutReservation.sql" />
     <Build Include="Stored Procedures\usp_ProcessBilling.sql" />
     <Build Include="Stored Procedures\usp_GetBillingRecords.sql" />
+    <Build Include="Stored Procedures\usp_GetAvailableRooms.sql" />
+    <Build Include="Stored Procedures\usp_GetRoomsByDate.sql" />
+    <Build Include="Stored Procedures\usp_GetRecentActivity.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />

@@ -242,6 +242,7 @@
             // lblSTotalCharge
             // 
             lblSTotalCharge.AutoSize = true;
+            lblSTotalCharge.ForeColor = Color.OliveDrab;
             lblSTotalCharge.Location = new Point(144, 41);
             lblSTotalCharge.Name = "lblSTotalCharge";
             lblSTotalCharge.Size = new Size(12, 15);
@@ -251,6 +252,7 @@
             // lblSTotalPaid
             // 
             lblSTotalPaid.AutoSize = true;
+            lblSTotalPaid.ForeColor = Color.IndianRed;
             lblSTotalPaid.Location = new Point(144, 71);
             lblSTotalPaid.Name = "lblSTotalPaid";
             lblSTotalPaid.Size = new Size(12, 15);
