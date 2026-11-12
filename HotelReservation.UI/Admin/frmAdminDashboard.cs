@@ -37,8 +37,48 @@ namespace HotelReservation.UI.Admin
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            frmLogin BackToLogin = new frmLogin();
-            BackToLogin.Show();
+            DialogResult result = MessageBox.Show(
+             "Are you sure you want to log out?",
+             "Log Out",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+            }
+        }
+
+        private void lbl2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuest_Click(object sender, EventArgs e)
+        {
+            frmAdminGuest adminGuest = new frmAdminGuest();
+            adminGuest.Show();
+            this.Hide();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            frmAdminBillingRecords adminBillingRecords = new frmAdminBillingRecords();
+            adminBillingRecords.Show();
+            this.Hide();
+        }
+
+        private void btnReserved_Click(object sender, EventArgs e)
+        {
+            frmAdminReserved adminReserved = new frmAdminReserved();
+            adminReserved.Show();
             this.Hide();
         }
     }
