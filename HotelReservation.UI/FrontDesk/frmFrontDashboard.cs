@@ -64,5 +64,12 @@ namespace HotelReservation.UI.FrontDesk
             frontCheckOut.Show();
             this.Hide();
         }
+
+        private void btnBilling_Click(object sender, EventArgs e)
+        {
+            frmBillingPayment frontBillingPayment = new frmBillingPayment();
+            frontBillingPayment.Show();
+            this.Hide();
+        }
     }
 }
