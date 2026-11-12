@@ -58,13 +58,13 @@
             btnDate = new Button();
             txtDateDisplay = new TextBox();
             panel5 = new Panel();
+            label2 = new Label();
+            pictureBox1 = new PictureBox();
             panel6 = new Panel();
             label3 = new Label();
-            pictureBox1 = new PictureBox();
-            label2 = new Label();
             panel7 = new Panel();
-            panel8 = new Panel();
             label16 = new Label();
+            panel8 = new Panel();
             label17 = new Label();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -74,8 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvRoomTypeList).BeginInit();
             pnlDateAvailable.SuspendLayout();
             panel5.SuspendLayout();
-            panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             SuspendLayout();
@@ -360,7 +360,7 @@
             btnRecords.Name = "btnRecords";
             btnRecords.Size = new Size(263, 43);
             btnRecords.TabIndex = 37;
-            btnRecords.Text = "BILLING RECORDS";
+            btnRecords.Text = "BOOKED RECORDS";
             btnRecords.UseVisualStyleBackColor = false;
             btnRecords.Click += btnRecords_Click;
             // 
@@ -368,7 +368,7 @@
             // 
             pnlDateAvailable.BackColor = Color.FromArgb(7, 31, 77);
             pnlDateAvailable.Controls.Add(monthCalendarDate);
-            pnlDateAvailable.Location = new Point(1634, 269);
+            pnlDateAvailable.Location = new Point(1620, 285);
             pnlDateAvailable.Name = "pnlDateAvailable";
             pnlDateAvailable.Size = new Size(243, 178);
             pnlDateAvailable.TabIndex = 41;
@@ -389,7 +389,7 @@
             btnDate.FlatStyle = FlatStyle.Flat;
             btnDate.ForeColor = Color.Transparent;
             btnDate.Image = (Image)resources.GetObject("btnDate.Image");
-            btnDate.Location = new Point(1854, 240);
+            btnDate.Location = new Point(1825, 240);
             btnDate.Name = "btnDate";
             btnDate.Size = new Size(38, 39);
             btnDate.TabIndex = 39;
@@ -425,6 +425,32 @@
             panel5.Size = new Size(336, 1044);
             panel5.TabIndex = 42;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(101, 138, 208);
+            label2.Location = new Point(27, 160);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 15);
+            label2.TabIndex = 44;
+            label2.Text = "NAVIGATIONS";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(215, 218, 224);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(35, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(263, 93);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 44;
+            pictureBox1.TabStop = false;
+            // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(7, 31, 77);
@@ -445,32 +471,6 @@
             label3.TabIndex = 0;
             label3.Text = "Rooms";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.FromArgb(215, 218, 224);
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
-            pictureBox1.Location = new Point(35, 15);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(263, 93);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 44;
-            pictureBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.FromArgb(101, 138, 208);
-            label2.Location = new Point(27, 160);
-            label2.Name = "label2";
-            label2.Size = new Size(86, 15);
-            label2.TabIndex = 44;
-            label2.Text = "NAVIGATIONS";
-            // 
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(48, 91, 171);
@@ -480,16 +480,6 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(1543, 360);
             panel7.TabIndex = 44;
-            // 
-            // panel8
-            // 
-            panel8.BackColor = Color.FromArgb(48, 91, 171);
-            panel8.Controls.Add(label17);
-            panel8.Controls.Add(dgvRoomTypeList);
-            panel8.Location = new Point(349, 673);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(1543, 356);
-            panel8.TabIndex = 45;
             // 
             // label16
             // 
@@ -501,6 +491,16 @@
             label16.Size = new Size(98, 22);
             label16.TabIndex = 53;
             label16.Text = "Room List";
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.FromArgb(48, 91, 171);
+            panel8.Controls.Add(label17);
+            panel8.Controls.Add(dgvRoomTypeList);
+            panel8.Location = new Point(349, 673);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(1543, 356);
+            panel8.TabIndex = 45;
             // 
             // label17
             // 
@@ -547,9 +547,9 @@
             pnlDateAvailable.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel8.ResumeLayout(false);

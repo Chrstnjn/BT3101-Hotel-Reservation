@@ -46,11 +46,11 @@
             btnLogout = new Button();
             btnRecords = new Button();
             panel5 = new Panel();
-            lblTotalAvailable = new Label();
-            dataGridView1 = new DataGridView();
+            lblAvailable = new Label();
+            dgvAvailable = new DataGridView();
             lbl2 = new Label();
             panel6 = new Panel();
-            dataGridView2 = new DataGridView();
+            dgvRecentBooked = new DataGridView();
             label3 = new Label();
             btnReserved = new Button();
             panel3.SuspendLayout();
@@ -58,9 +58,9 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAvailable).BeginInit();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecentBooked).BeginInit();
             SuspendLayout();
             // 
             // panel3
@@ -85,11 +85,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(25, 9);
+            label6.Location = new Point(3, 9);
             label6.Name = "label6";
-            label6.Size = new Size(64, 15);
+            label6.Size = new Size(107, 15);
             label6.TabIndex = 0;
-            label6.Text = "Total Billed";
+            label6.Text = "Total Checked-Out";
             // 
             // panel4
             // 
@@ -115,7 +115,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(18, 9);
             label8.Name = "label8";
-            label8.Size = new Size(75, 15);
+            label8.Size = new Size(76, 15);
             label8.TabIndex = 0;
             label8.Text = "Total Booked";
             // 
@@ -143,10 +143,9 @@
             label4.AutoSize = true;
             label4.Location = new Point(27, 9);
             label4.Name = "label4";
-            label4.Size = new Size(65, 15);
+            label4.Size = new Size(66, 15);
             label4.TabIndex = 0;
             label4.Text = "Total Guest";
-            label4.Click += label4_Click;
             // 
             // panel1
             // 
@@ -172,7 +171,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(36, 9);
             label1.Name = "label1";
-            label1.Size = new Size(72, 15);
+            label1.Size = new Size(73, 15);
             label1.TabIndex = 0;
             label1.Text = "Total Rooms";
             // 
@@ -228,31 +227,31 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(19, 52, 113);
-            panel5.Controls.Add(lblTotalAvailable);
-            panel5.Controls.Add(dataGridView1);
+            panel5.Controls.Add(lblAvailable);
+            panel5.Controls.Add(dgvAvailable);
             panel5.Controls.Add(lbl2);
             panel5.Location = new Point(161, 95);
             panel5.Name = "panel5";
             panel5.Size = new Size(315, 343);
             panel5.TabIndex = 45;
             // 
-            // lblTotalAvailable
+            // lblAvailable
             // 
-            lblTotalAvailable.AutoSize = true;
-            lblTotalAvailable.ForeColor = SystemColors.ButtonFace;
-            lblTotalAvailable.Location = new Point(75, 19);
-            lblTotalAvailable.Name = "lblTotalAvailable";
-            lblTotalAvailable.Size = new Size(12, 15);
-            lblTotalAvailable.TabIndex = 2;
-            lblTotalAvailable.Text = "-";
+            lblAvailable.AutoSize = true;
+            lblAvailable.ForeColor = SystemColors.ButtonFace;
+            lblAvailable.Location = new Point(75, 19);
+            lblAvailable.Name = "lblAvailable";
+            lblAvailable.Size = new Size(12, 15);
+            lblAvailable.TabIndex = 2;
+            lblAvailable.Text = "-";
             // 
-            // dataGridView1
+            // dgvAvailable
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(6, 49);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(297, 275);
-            dataGridView1.TabIndex = 1;
+            dgvAvailable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAvailable.Location = new Point(6, 49);
+            dgvAvailable.Name = "dgvAvailable";
+            dgvAvailable.Size = new Size(297, 275);
+            dgvAvailable.TabIndex = 1;
             // 
             // lbl2
             // 
@@ -263,25 +262,24 @@
             lbl2.Size = new Size(55, 15);
             lbl2.TabIndex = 0;
             lbl2.Text = "Available";
-            lbl2.Click += lbl2_Click;
             // 
             // panel6
             // 
             panel6.BackColor = Color.FromArgb(19, 52, 113);
-            panel6.Controls.Add(dataGridView2);
+            panel6.Controls.Add(dgvRecentBooked);
             panel6.Controls.Add(label3);
             panel6.Location = new Point(487, 95);
             panel6.Name = "panel6";
             panel6.Size = new Size(310, 343);
             panel6.TabIndex = 46;
             // 
-            // dataGridView2
+            // dgvRecentBooked
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(10, 49);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(290, 275);
-            dataGridView2.TabIndex = 2;
+            dgvRecentBooked.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRecentBooked.Location = new Point(10, 49);
+            dgvRecentBooked.Name = "dgvRecentBooked";
+            dgvRecentBooked.Size = new Size(290, 275);
+            dgvRecentBooked.TabIndex = 2;
             // 
             // label3
             // 
@@ -333,10 +331,10 @@
             panel1.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAvailable).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecentBooked).EndInit();
             ResumeLayout(false);
         }
 
@@ -361,11 +359,11 @@
         private Button btnRecords;
         private Panel panel5;
         private Panel panel6;
-        private DataGridView dataGridView1;
+        private DataGridView dgvAvailable;
         private Label lbl2;
-        private DataGridView dataGridView2;
+        private DataGridView dgvRecentBooked;
         private Label label3;
-        private Label lblTotalAvailable;
+        private Label lblAvailable;
         private Button btnReserved;
     }
 }

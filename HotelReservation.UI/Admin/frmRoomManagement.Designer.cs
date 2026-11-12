@@ -133,7 +133,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.BackColor = Color.FromArgb(19, 52, 113);
+            btnCancel.BackColor = Color.Firebrick;
             btnCancel.Font = new Font("Cambria", 12F, FontStyle.Bold);
             btnCancel.ForeColor = Color.White;
             btnCancel.Location = new Point(347, 380);
@@ -146,7 +146,7 @@
             // 
             // btnAdd
             // 
-            btnAdd.BackColor = Color.FromArgb(19, 52, 113);
+            btnAdd.BackColor = Color.DarkGreen;
             btnAdd.Font = new Font("Cambria", 12F, FontStyle.Bold);
             btnAdd.ForeColor = Color.White;
             btnAdd.Location = new Point(219, 380);
@@ -459,6 +459,7 @@
             btnCheckIn.TabIndex = 35;
             btnCheckIn.Text = "INVOICED";
             btnCheckIn.UseVisualStyleBackColor = false;
+            btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnReservation
             // 
@@ -486,6 +487,7 @@
             btnGuestManagement.TabIndex = 33;
             btnGuestManagement.Text = "GUEST";
             btnGuestManagement.UseVisualStyleBackColor = false;
+            btnGuestManagement.Click += btnGuestManagement_Click;
             // 
             // btnRoom
             // 
@@ -544,7 +546,7 @@
             // 
             // btnBack
             // 
-            btnBack.BackColor = Color.FromArgb(19, 52, 113);
+            btnBack.BackColor = Color.Firebrick;
             btnBack.Font = new Font("Cambria", 12F, FontStyle.Bold);
             btnBack.ForeColor = Color.White;
             btnBack.Location = new Point(345, 305);
@@ -557,7 +559,7 @@
             // 
             // btnRoomAdd
             // 
-            btnRoomAdd.BackColor = Color.FromArgb(19, 52, 113);
+            btnRoomAdd.BackColor = Color.DarkGreen;
             btnRoomAdd.Font = new Font("Cambria", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRoomAdd.ForeColor = Color.White;
             btnRoomAdd.Location = new Point(225, 305);
@@ -790,7 +792,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 749);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(panel8);
             Controls.Add(pnlRoom);
             Controls.Add(pnlRoomType);

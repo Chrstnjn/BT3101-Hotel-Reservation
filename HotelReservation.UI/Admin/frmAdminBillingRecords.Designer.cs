@@ -51,6 +51,7 @@
             btnPrint.TabIndex = 93;
             btnPrint.Text = "View Receipt";
             btnPrint.UseVisualStyleBackColor = true;
+            btnPrint.Click += btnPrint_Click;
             // 
             // dgvCheckOut
             // 
@@ -62,6 +63,7 @@
             dgvCheckOut.Name = "dgvCheckOut";
             dgvCheckOut.Size = new Size(633, 321);
             dgvCheckOut.TabIndex = 92;
+            dgvCheckOut.CellFormatting += dgvGuestsList_CellFormatting;
             // 
             // txtSearch
             // 
@@ -69,6 +71,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(633, 23);
             txtSearch.TabIndex = 91;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // lblTotalCheckOut
             // 
@@ -84,7 +87,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(165, 66);
             label3.Name = "label3";
-            label3.Size = new Size(98, 15);
+            label3.Size = new Size(99, 15);
             label3.TabIndex = 89;
             label3.Text = "Total Check-Outs";
             // 
@@ -175,6 +178,7 @@
             Controls.Add(label1);
             Name = "frmAdminBillingRecords";
             Text = "frmAdminBillingRecords";
+            Load += frmFrontBillingRecord_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCheckOut).EndInit();
             ResumeLayout(false);
             PerformLayout();

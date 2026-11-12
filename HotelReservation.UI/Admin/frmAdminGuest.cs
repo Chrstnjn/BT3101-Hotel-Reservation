@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelReservation.Businesslogic.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,72 @@ namespace HotelReservation.UI.Admin
             frmAdminReserved adminReserved = new frmAdminReserved();
             adminReserved.Show();
             this.Hide();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dt = (DataTable)dgvGuestsList.DataSource;
+
+            if (dt == null)
+                return;
+
+            string searchText = txtSearch.Text.Trim();
+
+            // Show all records when textbox is empty
+            if (string.IsNullOrWhiteSpace(searchText) ||
+                searchText == "Search for...")
+            {
+                dt.DefaultView.RowFilter = "";
+                return;
+            }
+
+            dt.DefaultView.RowFilter =
+           $"FirstName LIKE '%{searchText}%' OR " +
+           $"LastName LIKE '%{searchText}%' OR " +
+           $"PhoneNumber LIKE '%{searchText}%' OR " +
+           $"StreetAddress LIKE '%{searchText}%' OR " +
+           $"City LIKE '%{searchText}%' OR " +
+           $"Province LIKE '%{searchText}%' OR " +
+           $"Gender = '{searchText}'";
+        }
+
+        private void dgvGuestsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvGuestsList.Columns[e.ColumnIndex].Name == "PhoneNumber"
+                && e.Value != null)
+            {
+                e.Value = "(+63) " + e.Value.ToString();
+                e.FormattingApplied = true;
+            }
+
+            if (dgvGuestsList.Columns[e.ColumnIndex].Name == "EmergencyContactNumber"
+            && e.Value != null)
+            {
+                e.Value = "(+63) " + e.Value.ToString();
+                e.FormattingApplied = true;
+            }
+        }
+
+        private void frmAdminGuest_Load(object sender, EventArgs e)
+        {
+            LoadGuests();
+            RefreshGuest();
+        }
+        private void RefreshGuest()
+        {
+            GuestController guestController = new GuestController();
+            dgvGuestsList.DataSource = guestController.GetGuests();
+        }
+        private void LoadGuests()
+        {
+            GuestController controller = new GuestController();
+
+            dgvGuestsList.DataSource = controller.GetGuests();
+
+            dgvGuestsList.Columns["GuestID"].Visible = false;
+
+            lblTotalGuest.Text = "" + dgvGuestsList.Rows.Cast<DataGridViewRow>().Count(r => !r.IsNewRow);
+
         }
     }
 }

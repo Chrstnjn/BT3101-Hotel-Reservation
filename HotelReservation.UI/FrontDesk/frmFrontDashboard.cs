@@ -56,9 +56,22 @@ namespace HotelReservation.UI.FrontDesk
             ReservationController controller = new ReservationController();
             DataTable dt = controller.GetRecentActivity();
 
-            // Only the Checked-In and Checked-Out status are shown
-            dt.DefaultView.RowFilter = "Status IN ('Reserved','Checked-In', 'Checked-Out')";
-            dgvRecentReserve.DataSource = dt.DefaultView;
+            // Show only Reserved, Checked-In, Checked-Out
+            DataView view = dt.DefaultView;
+            view.RowFilter = "Status IN ('Reserved', 'Checked-In', 'Checked-Out')";
+
+            // Get only latest 10 records
+            DataTable recent10 = view.ToTable();
+
+            if (recent10.Rows.Count > 10)
+            {
+                recent10 = recent10.AsEnumerable()
+                                   .OrderByDescending(r => r.Field<DateTime>("ActivityDate"))
+                                   .Take(10)
+                                   .CopyToDataTable();
+            }
+
+            dgvRecentReserve.DataSource = recent10;
 
             dgvRecentReserve.ReadOnly = true;
             dgvRecentReserve.AllowUserToAddRows = false;

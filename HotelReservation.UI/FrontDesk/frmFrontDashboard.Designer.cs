@@ -399,7 +399,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Constantia", 18F, FontStyle.Bold);
             label8.ForeColor = Color.FromArgb(102, 108, 130);
-            label8.Location = new Point(166, 10);
+            label8.Location = new Point(174, 10);
             label8.Name = "label8";
             label8.Size = new Size(130, 29);
             label8.TabIndex = 0;
@@ -445,11 +445,11 @@
             label4.AutoSize = true;
             label4.Font = new Font("Constantia", 18F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(102, 108, 130);
-            label4.Location = new Point(158, 10);
+            label4.Location = new Point(186, 10);
             label4.Name = "label4";
-            label4.Size = new Size(178, 29);
+            label4.Size = new Size(136, 29);
             label4.TabIndex = 0;
-            label4.Text = "RESERVATION";
+            label4.Text = "RESERVED";
             // 
             // panel1
             // 
@@ -546,7 +546,7 @@
             btnRecords.Name = "btnRecords";
             btnRecords.Size = new Size(263, 43);
             btnRecords.TabIndex = 54;
-            btnRecords.Text = "BILLING RECORDS";
+            btnRecords.Text = "BOOKED RECORDS";
             btnRecords.UseVisualStyleBackColor = false;
             btnRecords.Click += btnRecords_Click;
             // 

@@ -48,6 +48,7 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(661, 23);
             txtSearch.TabIndex = 21;
+            txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // lblTotalGuest
             // 
@@ -67,6 +68,7 @@
             dgvGuestsList.Name = "dgvGuestsList";
             dgvGuestsList.Size = new Size(661, 340);
             dgvGuestsList.TabIndex = 19;
+            dgvGuestsList.CellFormatting += dgvGuestsList_CellFormatting;
             // 
             // btnRecords
             // 
@@ -122,7 +124,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(127, 52);
             label1.Name = "label1";
-            label1.Size = new Size(73, 15);
+            label1.Size = new Size(74, 15);
             label1.TabIndex = 50;
             label1.Text = "Total Guests:";
             // 
@@ -163,6 +165,7 @@
             Controls.Add(dgvGuestsList);
             Name = "frmAdminGuest";
             Text = "frmAdminGuest";
+            Load += frmAdminGuest_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGuestsList).EndInit();
             ResumeLayout(false);
             PerformLayout();

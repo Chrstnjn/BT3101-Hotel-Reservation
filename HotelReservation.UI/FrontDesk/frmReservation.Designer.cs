@@ -56,12 +56,24 @@
             awaitCheckInToolStripMenuItem = new ToolStripMenuItem();
             cancelToolStripMenuItem = new ToolStripMenuItem();
             pnlReservationDetails = new Panel();
+            pnlGuestList = new Panel();
+            btnCancelGuest = new Button();
+            btnSelectGuest = new Button();
+            txtSearchGuest = new TextBox();
+            label3 = new Label();
+            dgvGuestList = new DataGridView();
+            pnlRoomList = new Panel();
+            btnCancelRoom = new Button();
+            btnSelectRoom = new Button();
+            txtSearchRoom = new TextBox();
+            label23 = new Label();
+            dgvRoomList = new DataGridView();
             btnReserveCancel = new Button();
+            pnlCheckOutDate = new Panel();
+            monthCalendarCheckOut = new MonthCalendar();
             btnReserve = new Button();
             pnlCheckInDate = new Panel();
             monthCalendarCheckIn = new MonthCalendar();
-            pnlCheckOutDate = new Panel();
-            monthCalendarCheckOut = new MonthCalendar();
             panel7 = new Panel();
             btnSelectG = new Button();
             txtRoomNumber = new TextBox();
@@ -88,19 +100,7 @@
             label21 = new Label();
             lblTotalPrice = new Label();
             label19 = new Label();
-            txtSearchGuest = new TextBox();
-            dgvGuestList = new DataGridView();
-            label3 = new Label();
             btnLogout = new Button();
-            pnlGuestList = new Panel();
-            btnCancelGuest = new Button();
-            btnSelectGuest = new Button();
-            pnlRoomList = new Panel();
-            btnCancelRoom = new Button();
-            btnSelectRoom = new Button();
-            txtSearchRoom = new TextBox();
-            label23 = new Label();
-            dgvRoomList = new DataGridView();
             panel2 = new Panel();
             lblTotalAwaiting = new Label();
             label13 = new Label();
@@ -146,25 +146,25 @@
             lbl1 = new Label();
             btnRecords = new Button();
             panel6 = new Panel();
-            panel11 = new Panel();
-            panel12 = new Panel();
-            label20 = new Label();
             pictureBox1 = new PictureBox();
+            label20 = new Label();
+            panel11 = new Panel();
             label24 = new Label();
+            panel12 = new Panel();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReservationList).BeginInit();
             contextMenuStrip1.SuspendLayout();
             pnlReservationDetails.SuspendLayout();
-            pnlCheckInDate.SuspendLayout();
-            pnlCheckOutDate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numberOfGuest).BeginInit();
-            panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvGuestList).BeginInit();
             pnlGuestList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvGuestList).BeginInit();
             pnlRoomList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRoomList).BeginInit();
+            pnlCheckOutDate.SuspendLayout();
+            pnlCheckInDate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numberOfGuest).BeginInit();
+            panel5.SuspendLayout();
             panel2.SuspendLayout();
             pnlDownpayment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numPaymentReceived).BeginInit();
@@ -172,9 +172,9 @@
             panel10.SuspendLayout();
             panel8.SuspendLayout();
             panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel11.SuspendLayout();
             panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnBilling
@@ -410,7 +410,7 @@
             dgvReservationList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvReservationList.Location = new Point(30, 56);
             dgvReservationList.Name = "dgvReservationList";
-            dgvReservationList.Size = new Size(1487, 633);
+            dgvReservationList.Size = new Size(1487, 646);
             dgvReservationList.TabIndex = 32;
             dgvReservationList.CellMouseDown += dgvReservationList_CellMouseDown;
             // 
@@ -418,43 +418,45 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { EditToolStripMenuItem, processPaymentToolStripMenuItem, awaitCheckInToolStripMenuItem, cancelToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(165, 92);
+            contextMenuStrip1.Size = new Size(179, 92);
             // 
             // EditToolStripMenuItem
             // 
             EditToolStripMenuItem.Name = "EditToolStripMenuItem";
-            EditToolStripMenuItem.Size = new Size(164, 22);
+            EditToolStripMenuItem.Size = new Size(178, 22);
             EditToolStripMenuItem.Text = "Edit";
             EditToolStripMenuItem.Click += EditToolStripMenuItem_Click;
             // 
             // processPaymentToolStripMenuItem
             // 
             processPaymentToolStripMenuItem.Name = "processPaymentToolStripMenuItem";
-            processPaymentToolStripMenuItem.Size = new Size(164, 22);
+            processPaymentToolStripMenuItem.Size = new Size(178, 22);
             processPaymentToolStripMenuItem.Text = "Process payment";
             processPaymentToolStripMenuItem.Click += processPaymentToolStripMenuItem_Click;
             // 
             // awaitCheckInToolStripMenuItem
             // 
             awaitCheckInToolStripMenuItem.Name = "awaitCheckInToolStripMenuItem";
-            awaitCheckInToolStripMenuItem.Size = new Size(164, 22);
-            awaitCheckInToolStripMenuItem.Text = "Reserved";
+            awaitCheckInToolStripMenuItem.Size = new Size(178, 22);
+            awaitCheckInToolStripMenuItem.Text = "Process Reservation";
             awaitCheckInToolStripMenuItem.Click += awaitCheckInToolStripMenuItem_Click;
             // 
             // cancelToolStripMenuItem
             // 
             cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            cancelToolStripMenuItem.Size = new Size(164, 22);
+            cancelToolStripMenuItem.Size = new Size(178, 22);
             cancelToolStripMenuItem.Text = "Cancel";
             cancelToolStripMenuItem.Click += cancelToolStripMenuItem_Click;
             // 
             // pnlReservationDetails
             // 
-            pnlReservationDetails.BackColor = Color.FromArgb(7, 31, 77);
+            pnlReservationDetails.BackColor = Color.FromArgb(19, 52, 113);
+            pnlReservationDetails.Controls.Add(pnlGuestList);
+            pnlReservationDetails.Controls.Add(pnlRoomList);
             pnlReservationDetails.Controls.Add(btnReserveCancel);
+            pnlReservationDetails.Controls.Add(pnlCheckOutDate);
             pnlReservationDetails.Controls.Add(btnReserve);
             pnlReservationDetails.Controls.Add(pnlCheckInDate);
-            pnlReservationDetails.Controls.Add(pnlCheckOutDate);
             pnlReservationDetails.Controls.Add(panel7);
             pnlReservationDetails.Controls.Add(btnSelectG);
             pnlReservationDetails.Controls.Add(txtRoomNumber);
@@ -473,18 +475,162 @@
             pnlReservationDetails.Controls.Add(txtGuestName);
             pnlReservationDetails.Controls.Add(label5);
             pnlReservationDetails.Controls.Add(panel5);
-            pnlReservationDetails.Location = new Point(262, 111);
+            pnlReservationDetails.Location = new Point(455, 67);
             pnlReservationDetails.Name = "pnlReservationDetails";
-            pnlReservationDetails.Size = new Size(803, 538);
+            pnlReservationDetails.Size = new Size(803, 556);
             pnlReservationDetails.TabIndex = 34;
+            // 
+            // pnlGuestList
+            // 
+            pnlGuestList.BackColor = Color.FromArgb(48, 91, 171);
+            pnlGuestList.Controls.Add(btnCancelGuest);
+            pnlGuestList.Controls.Add(btnSelectGuest);
+            pnlGuestList.Controls.Add(txtSearchGuest);
+            pnlGuestList.Controls.Add(label3);
+            pnlGuestList.Controls.Add(dgvGuestList);
+            pnlGuestList.Location = new Point(54, 89);
+            pnlGuestList.Name = "pnlGuestList";
+            pnlGuestList.Size = new Size(732, 355);
+            pnlGuestList.TabIndex = 38;
+            // 
+            // btnCancelGuest
+            // 
+            btnCancelGuest.BackColor = Color.Firebrick;
+            btnCancelGuest.FlatStyle = FlatStyle.Flat;
+            btnCancelGuest.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            btnCancelGuest.ForeColor = SystemColors.ButtonHighlight;
+            btnCancelGuest.Location = new Point(606, 307);
+            btnCancelGuest.Name = "btnCancelGuest";
+            btnCancelGuest.Size = new Size(112, 32);
+            btnCancelGuest.TabIndex = 4;
+            btnCancelGuest.Text = "Cancel";
+            btnCancelGuest.UseVisualStyleBackColor = false;
+            btnCancelGuest.Click += btnCancelGuest_Click;
+            // 
+            // btnSelectGuest
+            // 
+            btnSelectGuest.BackColor = Color.Green;
+            btnSelectGuest.FlatStyle = FlatStyle.Flat;
+            btnSelectGuest.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            btnSelectGuest.ForeColor = SystemColors.ButtonHighlight;
+            btnSelectGuest.Location = new Point(480, 307);
+            btnSelectGuest.Name = "btnSelectGuest";
+            btnSelectGuest.Size = new Size(112, 32);
+            btnSelectGuest.TabIndex = 3;
+            btnSelectGuest.Text = "Select";
+            btnSelectGuest.UseVisualStyleBackColor = false;
+            btnSelectGuest.Click += btnSelectGuest_Click;
+            // 
+            // txtSearchGuest
+            // 
+            txtSearchGuest.Font = new Font("Segoe UI", 11.25F);
+            txtSearchGuest.Location = new Point(17, 50);
+            txtSearchGuest.Name = "txtSearchGuest";
+            txtSearchGuest.Size = new Size(699, 27);
+            txtSearchGuest.TabIndex = 2;
+            txtSearchGuest.TextChanged += txtSearchGuest_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Constantia", 14.25F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ButtonHighlight;
+            label3.Location = new Point(17, 16);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 23);
+            label3.TabIndex = 0;
+            label3.Text = "Guest List";
+            // 
+            // dgvGuestList
+            // 
+            dgvGuestList.AllowUserToAddRows = false;
+            dgvGuestList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGuestList.BackgroundColor = SystemColors.ActiveCaption;
+            dgvGuestList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvGuestList.Location = new Point(17, 88);
+            dgvGuestList.Name = "dgvGuestList";
+            dgvGuestList.Size = new Size(699, 202);
+            dgvGuestList.TabIndex = 1;
+            // 
+            // pnlRoomList
+            // 
+            pnlRoomList.BackColor = Color.FromArgb(48, 91, 171);
+            pnlRoomList.Controls.Add(btnCancelRoom);
+            pnlRoomList.Controls.Add(btnSelectRoom);
+            pnlRoomList.Controls.Add(txtSearchRoom);
+            pnlRoomList.Controls.Add(label23);
+            pnlRoomList.Controls.Add(dgvRoomList);
+            pnlRoomList.Location = new Point(42, 222);
+            pnlRoomList.Name = "pnlRoomList";
+            pnlRoomList.Size = new Size(732, 318);
+            pnlRoomList.TabIndex = 39;
+            // 
+            // btnCancelRoom
+            // 
+            btnCancelRoom.BackColor = Color.Firebrick;
+            btnCancelRoom.FlatStyle = FlatStyle.Flat;
+            btnCancelRoom.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            btnCancelRoom.ForeColor = SystemColors.ButtonHighlight;
+            btnCancelRoom.Location = new Point(606, 276);
+            btnCancelRoom.Name = "btnCancelRoom";
+            btnCancelRoom.Size = new Size(112, 32);
+            btnCancelRoom.TabIndex = 6;
+            btnCancelRoom.Text = "Cancel";
+            btnCancelRoom.UseVisualStyleBackColor = false;
+            btnCancelRoom.Click += btnCancelRoom_Click;
+            // 
+            // btnSelectRoom
+            // 
+            btnSelectRoom.BackColor = Color.Green;
+            btnSelectRoom.FlatStyle = FlatStyle.Flat;
+            btnSelectRoom.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            btnSelectRoom.ForeColor = SystemColors.ButtonHighlight;
+            btnSelectRoom.Location = new Point(482, 276);
+            btnSelectRoom.Name = "btnSelectRoom";
+            btnSelectRoom.Size = new Size(112, 32);
+            btnSelectRoom.TabIndex = 5;
+            btnSelectRoom.Text = "Select";
+            btnSelectRoom.UseVisualStyleBackColor = false;
+            btnSelectRoom.Click += btnSelectRoom_Click;
+            // 
+            // txtSearchRoom
+            // 
+            txtSearchRoom.Font = new Font("Segoe UI", 11.25F);
+            txtSearchRoom.Location = new Point(20, 51);
+            txtSearchRoom.Name = "txtSearchRoom";
+            txtSearchRoom.Size = new Size(699, 27);
+            txtSearchRoom.TabIndex = 2;
+            txtSearchRoom.TextChanged += txtSearchRoom_TextChanged;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Constantia", 14.25F, FontStyle.Bold);
+            label23.ForeColor = SystemColors.ButtonHighlight;
+            label23.Location = new Point(23, 19);
+            label23.Name = "label23";
+            label23.Size = new Size(101, 23);
+            label23.TabIndex = 0;
+            label23.Text = "Room List";
+            // 
+            // dgvRoomList
+            // 
+            dgvRoomList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRoomList.BackgroundColor = SystemColors.ActiveCaption;
+            dgvRoomList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRoomList.Location = new Point(20, 86);
+            dgvRoomList.Name = "dgvRoomList";
+            dgvRoomList.Size = new Size(699, 181);
+            dgvRoomList.TabIndex = 1;
+            dgvRoomList.Tag = "";
             // 
             // btnReserveCancel
             // 
-            btnReserveCancel.BackColor = Color.Maroon;
+            btnReserveCancel.BackColor = Color.Firebrick;
             btnReserveCancel.FlatStyle = FlatStyle.Flat;
             btnReserveCancel.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
             btnReserveCancel.ForeColor = SystemColors.ButtonHighlight;
-            btnReserveCancel.Location = new Point(674, 490);
+            btnReserveCancel.Location = new Point(674, 495);
             btnReserveCancel.Name = "btnReserveCancel";
             btnReserveCancel.Size = new Size(112, 32);
             btnReserveCancel.TabIndex = 37;
@@ -492,42 +638,11 @@
             btnReserveCancel.UseVisualStyleBackColor = false;
             btnReserveCancel.Click += btnReserveCancel_Click;
             // 
-            // btnReserve
-            // 
-            btnReserve.BackColor = Color.DarkGreen;
-            btnReserve.FlatStyle = FlatStyle.Flat;
-            btnReserve.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
-            btnReserve.ForeColor = SystemColors.ButtonHighlight;
-            btnReserve.Location = new Point(543, 490);
-            btnReserve.Name = "btnReserve";
-            btnReserve.Size = new Size(112, 32);
-            btnReserve.TabIndex = 34;
-            btnReserve.Text = "Reserve";
-            btnReserve.UseVisualStyleBackColor = false;
-            btnReserve.Click += btnReserve_Click;
-            // 
-            // pnlCheckInDate
-            // 
-            pnlCheckInDate.BackColor = Color.FromArgb(48, 91, 171);
-            pnlCheckInDate.Controls.Add(monthCalendarCheckIn);
-            pnlCheckInDate.Location = new Point(152, 125);
-            pnlCheckInDate.Name = "pnlCheckInDate";
-            pnlCheckInDate.Size = new Size(243, 178);
-            pnlCheckInDate.TabIndex = 35;
-            pnlCheckInDate.Visible = false;
-            // 
-            // monthCalendarCheckIn
-            // 
-            monthCalendarCheckIn.Location = new Point(9, 9);
-            monthCalendarCheckIn.Name = "monthCalendarCheckIn";
-            monthCalendarCheckIn.TabIndex = 0;
-            monthCalendarCheckIn.DateSelected += monthCalendarCheckIn_DateSelected;
-            // 
             // pnlCheckOutDate
             // 
             pnlCheckOutDate.BackColor = Color.FromArgb(48, 91, 171);
             pnlCheckOutDate.Controls.Add(monthCalendarCheckOut);
-            pnlCheckOutDate.Location = new Point(534, 125);
+            pnlCheckOutDate.Location = new Point(540, 134);
             pnlCheckOutDate.Name = "pnlCheckOutDate";
             pnlCheckOutDate.Size = new Size(243, 178);
             pnlCheckOutDate.TabIndex = 36;
@@ -539,6 +654,37 @@
             monthCalendarCheckOut.Name = "monthCalendarCheckOut";
             monthCalendarCheckOut.TabIndex = 0;
             monthCalendarCheckOut.DateSelected += monthCalendarCheckOut_DateSelected;
+            // 
+            // btnReserve
+            // 
+            btnReserve.BackColor = Color.DarkGreen;
+            btnReserve.FlatStyle = FlatStyle.Flat;
+            btnReserve.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
+            btnReserve.ForeColor = SystemColors.ButtonHighlight;
+            btnReserve.Location = new Point(543, 495);
+            btnReserve.Name = "btnReserve";
+            btnReserve.Size = new Size(112, 32);
+            btnReserve.TabIndex = 34;
+            btnReserve.Text = "Reserve";
+            btnReserve.UseVisualStyleBackColor = false;
+            btnReserve.Click += btnReserve_Click;
+            // 
+            // pnlCheckInDate
+            // 
+            pnlCheckInDate.BackColor = Color.FromArgb(48, 91, 171);
+            pnlCheckInDate.Controls.Add(monthCalendarCheckIn);
+            pnlCheckInDate.Location = new Point(152, 133);
+            pnlCheckInDate.Name = "pnlCheckInDate";
+            pnlCheckInDate.Size = new Size(243, 178);
+            pnlCheckInDate.TabIndex = 35;
+            pnlCheckInDate.Visible = false;
+            // 
+            // monthCalendarCheckIn
+            // 
+            monthCalendarCheckIn.Location = new Point(9, 9);
+            monthCalendarCheckIn.Name = "monthCalendarCheckIn";
+            monthCalendarCheckIn.TabIndex = 0;
+            monthCalendarCheckIn.DateSelected += monthCalendarCheckIn_DateSelected;
             // 
             // panel7
             // 
@@ -647,10 +793,11 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(397, 107);
+            label11.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.ButtonHighlight;
+            label11.Location = new Point(400, 104);
             label11.Name = "label11";
-            label11.Size = new Size(10, 15);
+            label11.Size = new Size(13, 20);
             label11.TabIndex = 10;
             label11.Text = ":";
             // 
@@ -810,37 +957,6 @@
             label19.TabIndex = 27;
             label19.Text = "Total:";
             // 
-            // txtSearchGuest
-            // 
-            txtSearchGuest.Font = new Font("Segoe UI", 11.25F);
-            txtSearchGuest.Location = new Point(17, 68);
-            txtSearchGuest.Name = "txtSearchGuest";
-            txtSearchGuest.Size = new Size(699, 27);
-            txtSearchGuest.TabIndex = 2;
-            txtSearchGuest.TextChanged += txtSearchGuest_TextChanged;
-            // 
-            // dgvGuestList
-            // 
-            dgvGuestList.AllowUserToAddRows = false;
-            dgvGuestList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvGuestList.BackgroundColor = SystemColors.ActiveCaption;
-            dgvGuestList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGuestList.Location = new Point(17, 104);
-            dgvGuestList.Name = "dgvGuestList";
-            dgvGuestList.Size = new Size(699, 357);
-            dgvGuestList.TabIndex = 1;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Constantia", 14.25F, FontStyle.Bold);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(17, 16);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 23);
-            label3.TabIndex = 0;
-            label3.Text = "Guest List";
-            // 
             // btnLogout
             // 
             btnLogout.BackColor = Color.FromArgb(255, 100, 100);
@@ -854,119 +970,6 @@
             btnLogout.Text = "LOGOUT";
             btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
-            // 
-            // pnlGuestList
-            // 
-            pnlGuestList.BackColor = Color.FromArgb(7, 31, 77);
-            pnlGuestList.Controls.Add(btnCancelGuest);
-            pnlGuestList.Controls.Add(btnSelectGuest);
-            pnlGuestList.Controls.Add(txtSearchGuest);
-            pnlGuestList.Controls.Add(label3);
-            pnlGuestList.Controls.Add(dgvGuestList);
-            pnlGuestList.Location = new Point(285, 91);
-            pnlGuestList.Name = "pnlGuestList";
-            pnlGuestList.Size = new Size(732, 518);
-            pnlGuestList.TabIndex = 38;
-            // 
-            // btnCancelGuest
-            // 
-            btnCancelGuest.BackColor = Color.Maroon;
-            btnCancelGuest.FlatStyle = FlatStyle.Flat;
-            btnCancelGuest.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
-            btnCancelGuest.ForeColor = SystemColors.ButtonHighlight;
-            btnCancelGuest.Location = new Point(607, 473);
-            btnCancelGuest.Name = "btnCancelGuest";
-            btnCancelGuest.Size = new Size(112, 32);
-            btnCancelGuest.TabIndex = 4;
-            btnCancelGuest.Text = "Cancel";
-            btnCancelGuest.UseVisualStyleBackColor = false;
-            btnCancelGuest.Click += btnCancelGuest_Click;
-            // 
-            // btnSelectGuest
-            // 
-            btnSelectGuest.BackColor = Color.Green;
-            btnSelectGuest.FlatStyle = FlatStyle.Flat;
-            btnSelectGuest.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
-            btnSelectGuest.ForeColor = SystemColors.ButtonHighlight;
-            btnSelectGuest.Location = new Point(481, 473);
-            btnSelectGuest.Name = "btnSelectGuest";
-            btnSelectGuest.Size = new Size(112, 32);
-            btnSelectGuest.TabIndex = 3;
-            btnSelectGuest.Text = "Select";
-            btnSelectGuest.UseVisualStyleBackColor = false;
-            btnSelectGuest.Click += btnSelectGuest_Click;
-            // 
-            // pnlRoomList
-            // 
-            pnlRoomList.BackColor = Color.FromArgb(7, 31, 77);
-            pnlRoomList.Controls.Add(btnCancelRoom);
-            pnlRoomList.Controls.Add(btnSelectRoom);
-            pnlRoomList.Controls.Add(txtSearchRoom);
-            pnlRoomList.Controls.Add(label23);
-            pnlRoomList.Controls.Add(dgvRoomList);
-            pnlRoomList.Location = new Point(316, 71);
-            pnlRoomList.Name = "pnlRoomList";
-            pnlRoomList.Size = new Size(732, 518);
-            pnlRoomList.TabIndex = 39;
-            // 
-            // btnCancelRoom
-            // 
-            btnCancelRoom.BackColor = Color.Maroon;
-            btnCancelRoom.FlatStyle = FlatStyle.Flat;
-            btnCancelRoom.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
-            btnCancelRoom.ForeColor = SystemColors.ButtonHighlight;
-            btnCancelRoom.Location = new Point(607, 472);
-            btnCancelRoom.Name = "btnCancelRoom";
-            btnCancelRoom.Size = new Size(112, 32);
-            btnCancelRoom.TabIndex = 6;
-            btnCancelRoom.Text = "Cancel";
-            btnCancelRoom.UseVisualStyleBackColor = false;
-            btnCancelRoom.Click += btnCancelRoom_Click;
-            // 
-            // btnSelectRoom
-            // 
-            btnSelectRoom.BackColor = Color.Green;
-            btnSelectRoom.FlatStyle = FlatStyle.Flat;
-            btnSelectRoom.Font = new Font("Constantia", 11.25F, FontStyle.Bold);
-            btnSelectRoom.ForeColor = SystemColors.ButtonHighlight;
-            btnSelectRoom.Location = new Point(481, 472);
-            btnSelectRoom.Name = "btnSelectRoom";
-            btnSelectRoom.Size = new Size(112, 32);
-            btnSelectRoom.TabIndex = 5;
-            btnSelectRoom.Text = "Select";
-            btnSelectRoom.UseVisualStyleBackColor = false;
-            btnSelectRoom.Click += btnSelectRoom_Click;
-            // 
-            // txtSearchRoom
-            // 
-            txtSearchRoom.Font = new Font("Segoe UI", 11.25F);
-            txtSearchRoom.Location = new Point(20, 62);
-            txtSearchRoom.Name = "txtSearchRoom";
-            txtSearchRoom.Size = new Size(699, 27);
-            txtSearchRoom.TabIndex = 2;
-            txtSearchRoom.TextChanged += txtSearchRoom_TextChanged;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Constantia", 14.25F, FontStyle.Bold);
-            label23.ForeColor = SystemColors.ButtonHighlight;
-            label23.Location = new Point(23, 19);
-            label23.Name = "label23";
-            label23.Size = new Size(101, 23);
-            label23.TabIndex = 0;
-            label23.Text = "Room List";
-            // 
-            // dgvRoomList
-            // 
-            dgvRoomList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvRoomList.BackgroundColor = SystemColors.ActiveCaption;
-            dgvRoomList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRoomList.Location = new Point(20, 99);
-            dgvRoomList.Name = "dgvRoomList";
-            dgvRoomList.Size = new Size(699, 357);
-            dgvRoomList.TabIndex = 1;
-            dgvRoomList.Tag = "";
             // 
             // panel2
             // 
@@ -1002,7 +1005,7 @@
             // 
             // pnlDownpayment
             // 
-            pnlDownpayment.BackColor = SystemColors.ButtonFace;
+            pnlDownpayment.BackColor = Color.LightSteelBlue;
             pnlDownpayment.Controls.Add(btnCancel);
             pnlDownpayment.Controls.Add(btnDpProcess);
             pnlDownpayment.Controls.Add(lblChange);
@@ -1021,18 +1024,18 @@
             pnlDownpayment.Controls.Add(txtDpReservationID);
             pnlDownpayment.Controls.Add(label4);
             pnlDownpayment.Controls.Add(lbl1);
-            pnlDownpayment.Location = new Point(438, 13);
+            pnlDownpayment.Location = new Point(605, 63);
             pnlDownpayment.Name = "pnlDownpayment";
-            pnlDownpayment.Size = new Size(518, 666);
+            pnlDownpayment.Size = new Size(518, 622);
             pnlDownpayment.TabIndex = 41;
             // 
             // btnCancel
             // 
-            btnCancel.BackColor = Color.Crimson;
+            btnCancel.BackColor = Color.Firebrick;
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
             btnCancel.ForeColor = SystemColors.ButtonHighlight;
-            btnCancel.Location = new Point(380, 615);
+            btnCancel.Location = new Point(380, 578);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(108, 34);
             btnCancel.TabIndex = 57;
@@ -1042,11 +1045,11 @@
             // 
             // btnDpProcess
             // 
-            btnDpProcess.BackColor = Color.Green;
+            btnDpProcess.BackColor = Color.ForestGreen;
             btnDpProcess.FlatStyle = FlatStyle.Flat;
             btnDpProcess.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
             btnDpProcess.ForeColor = SystemColors.ButtonFace;
-            btnDpProcess.Location = new Point(262, 615);
+            btnDpProcess.Location = new Point(262, 578);
             btnDpProcess.Name = "btnDpProcess";
             btnDpProcess.Size = new Size(108, 34);
             btnDpProcess.TabIndex = 56;
@@ -1280,7 +1283,7 @@
             // 
             // panel8
             // 
-            panel8.BackColor = SystemColors.ControlLight;
+            panel8.BackColor = SystemColors.GradientInactiveCaption;
             panel8.Controls.Add(lblDpTotalNights);
             panel8.Controls.Add(lblDpSubtotal);
             panel8.Controls.Add(label22);
@@ -1297,7 +1300,7 @@
             // lblDpTotalNights
             // 
             lblDpTotalNights.AutoSize = true;
-            lblDpTotalNights.BackColor = SystemColors.ControlLight;
+            lblDpTotalNights.BackColor = SystemColors.GradientInactiveCaption;
             lblDpTotalNights.Font = new Font("Microsoft Sans Serif", 9.75F);
             lblDpTotalNights.Location = new Point(164, 95);
             lblDpTotalNights.Name = "lblDpTotalNights";
@@ -1319,7 +1322,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.BackColor = SystemColors.ControlLight;
+            label22.BackColor = SystemColors.GradientInactiveCaption;
             label22.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
             label22.Location = new Point(19, 97);
             label22.Name = "label22";
@@ -1340,7 +1343,7 @@
             // lblDpRate
             // 
             lblDpRate.AutoSize = true;
-            lblDpRate.BackColor = SystemColors.ControlLight;
+            lblDpRate.BackColor = SystemColors.GradientInactiveCaption;
             lblDpRate.Font = new Font("Microsoft Sans Serif", 9.75F);
             lblDpRate.Location = new Point(164, 60);
             lblDpRate.Name = "lblDpRate";
@@ -1351,7 +1354,7 @@
             // lblDpRoomType
             // 
             lblDpRoomType.AutoSize = true;
-            lblDpRoomType.BackColor = SystemColors.ControlLight;
+            lblDpRoomType.BackColor = SystemColors.GradientInactiveCaption;
             lblDpRoomType.Font = new Font("Microsoft Sans Serif", 9.75F);
             lblDpRoomType.Location = new Point(164, 22);
             lblDpRoomType.Name = "lblDpRoomType";
@@ -1362,7 +1365,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.BackColor = SystemColors.ControlLight;
+            label26.BackColor = SystemColors.GradientInactiveCaption;
             label26.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
             label26.Location = new Point(80, 60);
             label26.Name = "label26";
@@ -1373,7 +1376,7 @@
             // label27
             // 
             label27.AutoSize = true;
-            label27.BackColor = SystemColors.ControlLight;
+            label27.BackColor = SystemColors.GradientInactiveCaption;
             label27.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
             label27.Location = new Point(32, 22);
             label27.Name = "label27";
@@ -1449,7 +1452,7 @@
             btnRecords.Name = "btnRecords";
             btnRecords.Size = new Size(263, 43);
             btnRecords.TabIndex = 42;
-            btnRecords.Text = "BILLING RECORDS";
+            btnRecords.Text = "BOOKED RECORDS";
             btnRecords.UseVisualStyleBackColor = false;
             btnRecords.Click += btnRecords_Click;
             // 
@@ -1472,40 +1475,6 @@
             panel6.Size = new Size(336, 1044);
             panel6.TabIndex = 43;
             // 
-            // panel11
-            // 
-            panel11.BackColor = Color.FromArgb(7, 31, 77);
-            panel11.Controls.Add(label24);
-            panel11.Location = new Point(334, -1);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(1572, 108);
-            panel11.TabIndex = 44;
-            // 
-            // panel12
-            // 
-            panel12.BackColor = Color.FromArgb(48, 91, 171);
-            panel12.Controls.Add(pnlDownpayment);
-            panel12.Controls.Add(pnlRoomList);
-            panel12.Controls.Add(pnlGuestList);
-            panel12.Controls.Add(pnlReservationDetails);
-            panel12.Controls.Add(dgvReservationList);
-            panel12.Controls.Add(label2);
-            panel12.Location = new Point(349, 313);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(1543, 716);
-            panel12.TabIndex = 45;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.FromArgb(101, 138, 208);
-            label20.Location = new Point(27, 160);
-            label20.Name = "label20";
-            label20.Size = new Size(86, 15);
-            label20.TabIndex = 72;
-            label20.Text = "NAVIGATIONS";
-            // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(215, 218, 224);
@@ -1521,6 +1490,26 @@
             pictureBox1.TabIndex = 73;
             pictureBox1.TabStop = false;
             // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.ForeColor = Color.FromArgb(101, 138, 208);
+            label20.Location = new Point(27, 160);
+            label20.Name = "label20";
+            label20.Size = new Size(86, 15);
+            label20.TabIndex = 72;
+            label20.Text = "NAVIGATIONS";
+            // 
+            // panel11
+            // 
+            panel11.BackColor = Color.FromArgb(7, 31, 77);
+            panel11.Controls.Add(label24);
+            panel11.Location = new Point(334, -1);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(1572, 108);
+            panel11.TabIndex = 44;
+            // 
             // label24
             // 
             label24.AutoSize = true;
@@ -1531,6 +1520,18 @@
             label24.Size = new Size(195, 36);
             label24.TabIndex = 44;
             label24.Text = "Reservations";
+            // 
+            // panel12
+            // 
+            panel12.BackColor = Color.FromArgb(48, 91, 171);
+            panel12.Controls.Add(pnlDownpayment);
+            panel12.Controls.Add(pnlReservationDetails);
+            panel12.Controls.Add(dgvReservationList);
+            panel12.Controls.Add(label2);
+            panel12.Location = new Point(349, 313);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(1543, 716);
+            panel12.TabIndex = 45;
             // 
             // frmReservation
             // 
@@ -1561,17 +1562,17 @@
             contextMenuStrip1.ResumeLayout(false);
             pnlReservationDetails.ResumeLayout(false);
             pnlReservationDetails.PerformLayout();
-            pnlCheckInDate.ResumeLayout(false);
-            pnlCheckOutDate.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numberOfGuest).EndInit();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvGuestList).EndInit();
             pnlGuestList.ResumeLayout(false);
             pnlGuestList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvGuestList).EndInit();
             pnlRoomList.ResumeLayout(false);
             pnlRoomList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRoomList).EndInit();
+            pnlCheckOutDate.ResumeLayout(false);
+            pnlCheckInDate.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numberOfGuest).EndInit();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             pnlDownpayment.ResumeLayout(false);
@@ -1585,11 +1586,11 @@
             panel8.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel11.ResumeLayout(false);
             panel11.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

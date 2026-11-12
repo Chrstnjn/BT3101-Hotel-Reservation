@@ -52,7 +52,7 @@
             btnRecords.Name = "btnRecords";
             btnRecords.Size = new Size(108, 34);
             btnRecords.TabIndex = 80;
-            btnRecords.Text = "Billing Records";
+            btnRecords.Text = "Booked Records";
             btnRecords.UseVisualStyleBackColor = true;
             // 
             // btnLogout
@@ -184,11 +184,11 @@
             // 
             // btnPrint
             // 
-            btnPrint.Location = new Point(702, 50);
+            btnPrint.Location = new Point(681, 50);
             btnPrint.Name = "btnPrint";
-            btnPrint.Size = new Size(75, 23);
+            btnPrint.Size = new Size(96, 23);
             btnPrint.TabIndex = 87;
-            btnPrint.Text = "Print";
+            btnPrint.Text = "View Receipt";
             btnPrint.UseVisualStyleBackColor = true;
             btnPrint.Click += btnPrint_Click;
             // 

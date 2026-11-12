@@ -73,18 +73,18 @@
             btnLogout = new Button();
             btnRecords = new Button();
             panel1 = new Panel();
-            panel2 = new Panel();
+            label13 = new Label();
             pictureBox1 = new PictureBox();
+            panel2 = new Panel();
+            label2 = new Label();
             panel3 = new Panel();
             label1 = new Label();
-            label2 = new Label();
-            label13 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvGuestsList).BeginInit();
             pnlAddGuest.SuspendLayout();
             cMenuGuest.SuspendLayout();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
             // 
@@ -236,7 +236,7 @@
             // 
             // pnlAddGuest
             // 
-            pnlAddGuest.BackColor = Color.FromArgb(7, 31, 77);
+            pnlAddGuest.BackColor = Color.FromArgb(19, 52, 113);
             pnlAddGuest.Controls.Add(textBox2);
             pnlAddGuest.Controls.Add(textBox1);
             pnlAddGuest.Controls.Add(btnCancel);
@@ -261,11 +261,10 @@
             pnlAddGuest.Controls.Add(label12);
             pnlAddGuest.Controls.Add(txtLastName);
             pnlAddGuest.Controls.Add(txtFirstName);
-            pnlAddGuest.Location = new Point(425, 196);
+            pnlAddGuest.Location = new Point(459, 192);
             pnlAddGuest.Name = "pnlAddGuest";
             pnlAddGuest.Size = new Size(477, 643);
             pnlAddGuest.TabIndex = 22;
-            pnlAddGuest.Paint += pnlAddGuest_Paint;
             // 
             // textBox2
             // 
@@ -286,11 +285,10 @@
             textBox1.Size = new Size(52, 29);
             textBox1.TabIndex = 45;
             textBox1.Text = "(+63) -/";
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // btnCancel
             // 
-            btnCancel.BackColor = Color.IndianRed;
+            btnCancel.BackColor = Color.Firebrick;
             btnCancel.FlatStyle = FlatStyle.Popup;
             btnCancel.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
             btnCancel.ForeColor = SystemColors.ButtonHighlight;
@@ -567,7 +565,7 @@
             btnRecords.Name = "btnRecords";
             btnRecords.Size = new Size(263, 43);
             btnRecords.TabIndex = 37;
-            btnRecords.Text = "BILLING RECORDS";
+            btnRecords.Text = "BOOKED RECORDS";
             btnRecords.UseVisualStyleBackColor = false;
             btnRecords.Click += btnRecords_Click;
             // 
@@ -590,14 +588,16 @@
             panel1.Size = new Size(336, 1044);
             panel1.TabIndex = 38;
             // 
-            // panel2
+            // label13
             // 
-            panel2.BackColor = Color.FromArgb(7, 31, 77);
-            panel2.Controls.Add(label2);
-            panel2.Location = new Point(334, -1);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1572, 108);
-            panel2.TabIndex = 39;
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.ForeColor = Color.FromArgb(101, 138, 208);
+            label13.Location = new Point(27, 160);
+            label13.Name = "label13";
+            label13.Size = new Size(86, 15);
+            label13.TabIndex = 46;
+            label13.Text = "NAVIGATIONS";
             // 
             // pictureBox1
             // 
@@ -613,6 +613,26 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 45;
             pictureBox1.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(7, 31, 77);
+            panel2.Controls.Add(label2);
+            panel2.Location = new Point(334, -1);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1572, 108);
+            panel2.TabIndex = 39;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Constantia", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(32, 36);
+            label2.Name = "label2";
+            label2.Size = new Size(282, 36);
+            label2.TabIndex = 1;
+            label2.Text = "Guest Management";
             // 
             // panel3
             // 
@@ -640,28 +660,6 @@
             label1.TabIndex = 24;
             label1.Text = "Total Guest";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Constantia", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(32, 36);
-            label2.Name = "label2";
-            label2.Size = new Size(282, 36);
-            label2.TabIndex = 1;
-            label2.Text = "Guest Management";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.ForeColor = Color.FromArgb(101, 138, 208);
-            label13.Location = new Point(27, 160);
-            label13.Name = "label13";
-            label13.Size = new Size(86, 15);
-            label13.TabIndex = 46;
-            label13.Text = "NAVIGATIONS";
-            // 
             // frmGuestManagement
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -680,9 +678,9 @@
             cMenuGuest.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ResumeLayout(false);
