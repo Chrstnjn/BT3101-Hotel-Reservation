@@ -205,6 +205,7 @@
             processBillingToolStripMenuItem.Name = "processBillingToolStripMenuItem";
             processBillingToolStripMenuItem.Size = new Size(175, 22);
             processBillingToolStripMenuItem.Text = "Process Billing";
+            processBillingToolStripMenuItem.Click += btnBilling_Click;
             // 
             // btnRecords
             // 

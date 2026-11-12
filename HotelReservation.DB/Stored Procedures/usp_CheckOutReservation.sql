@@ -32,7 +32,7 @@ BEGIN
     END
 
     UPDATE Rooms
-    SET Status = 'Checked-Out'
+    SET Status = 'Available'
     WHERE RoomID = @RoomID;
 
     UPDATE Reservations

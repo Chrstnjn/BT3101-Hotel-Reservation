@@ -50,5 +50,14 @@ namespace HotelReservation.Businesslogic.Controller
         {
             return repo.GetBillingRecords();
         }
+        public DataTable GetAvailableRooms(DateTime date)
+        {
+            return repo.GetAvailableRooms(date);
+        }
+
+        public DataTable GetRecentActivity()
+        {
+            return repo.GetRecentActivity();
+        }
     }
 }

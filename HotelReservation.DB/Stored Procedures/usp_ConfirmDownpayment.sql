@@ -25,7 +25,7 @@ BEGIN
 
     -- The room is taken only now, and only if nobody else paid for it first
     UPDATE Rooms
-    SET Status = 'Awaiting Check-In'
+    SET Status = 'Reserved'
     WHERE RoomID = @RoomID AND Status = 'Available';
 
     IF @@ROWCOUNT = 0
@@ -38,7 +38,7 @@ BEGIN
     VALUES (@ReservationID, 'Downpayment', @PaymentMethod, @Amount);
 
     UPDATE Reservations
-    SET Status = 'Awaiting Check-In'
+    SET Status = 'Reserved'
     WHERE ReservationID = @ReservationID;
 
     COMMIT TRANSACTION;

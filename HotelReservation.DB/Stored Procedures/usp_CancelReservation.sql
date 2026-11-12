@@ -15,18 +15,18 @@ BEGIN
     FROM Reservations
     WHERE ReservationID = @ReservationID;
 
-    IF @Status IS NULL OR @Status NOT IN ('Pending Downpayment', 'Awaiting Check-In')
+    IF @Status IS NULL OR @Status NOT IN ('Pending Downpayment', 'Reserved')
     BEGIN
         ROLLBACK TRANSACTION;
         THROW 50005, 'Only a pending or awaiting check-in reservation can be cancelled.', 1;
     END
 
     -- Only a paid reservation holds the room, so only then is the room freed
-    IF @Status = 'Awaiting Check-In'
+    IF @Status = 'Reserved'
     BEGIN
         UPDATE Rooms
         SET Status = 'Available'
-        WHERE RoomID = @RoomID AND Status = 'Awaiting Check-In';
+        WHERE RoomID = @RoomID AND Status = 'Reserved';
     END
 
     UPDATE Reservations

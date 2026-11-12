@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRooms));
             btnBilling = new Button();
             btnCheckOut = new Button();
             btnCheckIn = new Button();
@@ -52,12 +53,17 @@
             dgvRoomTypeList = new DataGridView();
             btnLogout = new Button();
             btnRecords = new Button();
+            pnlDateAvailable = new Panel();
+            monthCalendarDate = new MonthCalendar();
+            btnDate = new Button();
+            txtDateDisplay = new TextBox();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRoomList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvRoomTypeList).BeginInit();
+            pnlDateAvailable.SuspendLayout();
             SuspendLayout();
             // 
             // btnBilling
@@ -245,7 +251,7 @@
             // 
             txtSearch.Location = new Point(142, 98);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(630, 23);
+            txtSearch.Size = new Size(402, 23);
             txtSearch.TabIndex = 27;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
@@ -289,11 +295,54 @@
             btnRecords.UseVisualStyleBackColor = true;
             btnRecords.Click += btnRecords_Click;
             // 
+            // pnlDateAvailable
+            // 
+            pnlDateAvailable.BackColor = SystemColors.ActiveCaption;
+            pnlDateAvailable.Controls.Add(monthCalendarDate);
+            pnlDateAvailable.Location = new Point(535, 127);
+            pnlDateAvailable.Name = "pnlDateAvailable";
+            pnlDateAvailable.Size = new Size(243, 178);
+            pnlDateAvailable.TabIndex = 41;
+            pnlDateAvailable.Visible = false;
+            // 
+            // monthCalendarDate
+            // 
+            monthCalendarDate.Location = new Point(9, 9);
+            monthCalendarDate.Name = "monthCalendarDate";
+            monthCalendarDate.TabIndex = 0;
+            monthCalendarDate.DateSelected += monthCalendarDate_DateSelected;
+            // 
+            // btnDate
+            // 
+            btnDate.BackColor = Color.White;
+            btnDate.BackgroundImage = (Image)resources.GetObject("btnDate.BackgroundImage");
+            btnDate.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDate.FlatStyle = FlatStyle.Flat;
+            btnDate.ForeColor = Color.Transparent;
+            btnDate.Image = (Image)resources.GetObject("btnDate.Image");
+            btnDate.Location = new Point(755, 98);
+            btnDate.Name = "btnDate";
+            btnDate.Size = new Size(23, 23);
+            btnDate.TabIndex = 39;
+            btnDate.UseVisualStyleBackColor = false;
+            btnDate.Click += btnDate_Click;
+            // 
+            // txtDateDisplay
+            // 
+            txtDateDisplay.Location = new Point(636, 98);
+            txtDateDisplay.Name = "txtDateDisplay";
+            txtDateDisplay.ReadOnly = true;
+            txtDateDisplay.Size = new Size(113, 23);
+            txtDateDisplay.TabIndex = 40;
+            // 
             // frmRooms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pnlDateAvailable);
+            Controls.Add(btnDate);
+            Controls.Add(txtDateDisplay);
             Controls.Add(btnRecords);
             Controls.Add(btnLogout);
             Controls.Add(dgvRoomTypeList);
@@ -324,6 +373,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRoomList).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvRoomTypeList).EndInit();
+            pnlDateAvailable.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -354,5 +404,9 @@
         private DataGridView dgvRoomTypeList;
         private Button btnLogout;
         private Button btnRecords;
+        private Panel pnlDateAvailable;
+        private MonthCalendar monthCalendarDate;
+        private Button btnDate;
+        private TextBox txtDateDisplay;
     }
 }

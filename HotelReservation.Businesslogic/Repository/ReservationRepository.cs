@@ -165,5 +165,35 @@ namespace HotelReservation.Businesslogic.Repository
 
             return dt;
         }
+        public DataTable GetAvailableRooms(DateTime date)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("usp_GetAvailableRooms", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@Date", date.Date);
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+
+        public DataTable GetRecentActivity()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("usp_GetRecentActivity", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
     }
 }

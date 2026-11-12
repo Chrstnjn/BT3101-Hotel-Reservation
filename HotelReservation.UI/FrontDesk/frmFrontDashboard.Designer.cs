@@ -37,16 +37,17 @@
             btnCheckOut = new Button();
             btnBilling = new Button();
             panel5 = new Panel();
+            pnlDateAvailable = new Panel();
+            monthCalendarDate = new MonthCalendar();
+            btnDate = new Button();
+            txtDateDisplay = new TextBox();
             dgvAvailableRoom = new DataGridView();
-            dtDate = new DateTimePicker();
-            lblDateForAvailRoom = new Label();
             label12 = new Label();
             lblAvailRoom = new Label();
             label10 = new Label();
             panel7 = new Panel();
             label9 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            dgvHistory = new DataGridView();
+            dgvRecentReserve = new DataGridView();
             panel3 = new Panel();
             pictureBox5 = new PictureBox();
             lblTotalCheckOut = new Label();
@@ -71,9 +72,10 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             panel5.SuspendLayout();
+            pnlDateAvailable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAvailableRoom).BeginInit();
             panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvHistory).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecentReserve).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             panel4.SuspendLayout();
@@ -187,9 +189,10 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(19, 52, 113);
+            panel5.Controls.Add(pnlDateAvailable);
+            panel5.Controls.Add(btnDate);
+            panel5.Controls.Add(txtDateDisplay);
             panel5.Controls.Add(dgvAvailableRoom);
-            panel5.Controls.Add(dtDate);
-            panel5.Controls.Add(lblDateForAvailRoom);
             panel5.Controls.Add(label12);
             panel5.Controls.Add(lblAvailRoom);
             panel5.Controls.Add(label10);
@@ -197,6 +200,45 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(753, 598);
             panel5.TabIndex = 11;
+            // 
+            // pnlDateAvailable
+            // 
+            pnlDateAvailable.BackColor = SystemColors.ActiveCaption;
+            pnlDateAvailable.Controls.Add(monthCalendarDate);
+            pnlDateAvailable.Location = new Point(159, 41);
+            pnlDateAvailable.Name = "pnlDateAvailable";
+            pnlDateAvailable.Size = new Size(243, 178);
+            pnlDateAvailable.TabIndex = 36;
+            // 
+            // monthCalendarDate
+            // 
+            monthCalendarDate.Location = new Point(9, 9);
+            monthCalendarDate.Name = "monthCalendarDate";
+            monthCalendarDate.TabIndex = 0;
+            monthCalendarDate.DateSelected += monthCalendarDate_DateSelected;
+            // 
+            // btnDate
+            // 
+            btnDate.BackColor = Color.White;
+            btnDate.BackgroundImage = (Image)resources.GetObject("btnDate.BackgroundImage");
+            btnDate.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDate.FlatStyle = FlatStyle.Flat;
+            btnDate.ForeColor = Color.Transparent;
+            btnDate.Image = (Image)resources.GetObject("btnDate.Image");
+            btnDate.Location = new Point(335, 9);
+            btnDate.Name = "btnDate";
+            btnDate.Size = new Size(23, 23);
+            btnDate.TabIndex = 5;
+            btnDate.UseVisualStyleBackColor = false;
+            btnDate.Click += btnDate_Click;
+            // 
+            // txtDateDisplay
+            // 
+            txtDateDisplay.Location = new Point(159, 9);
+            txtDateDisplay.Name = "txtDateDisplay";
+            txtDateDisplay.ReadOnly = true;
+            txtDateDisplay.Size = new Size(183, 23);
+            txtDateDisplay.TabIndex = 6;
             // 
             // dgvAvailableRoom
             // 
@@ -207,25 +249,6 @@
             dgvAvailableRoom.Name = "dgvAvailableRoom";
             dgvAvailableRoom.Size = new Size(728, 511);
             dgvAvailableRoom.TabIndex = 4;
-            // 
-            // dtDate
-            // 
-            dtDate.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            dtDate.Location = new Point(461, 23);
-            dtDate.Name = "dtDate";
-            dtDate.Size = new Size(256, 29);
-            dtDate.TabIndex = 0;
-            // 
-            // lblDateForAvailRoom
-            // 
-            lblDateForAvailRoom.AutoSize = true;
-            lblDateForAvailRoom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblDateForAvailRoom.ForeColor = SystemColors.Control;
-            lblDateForAvailRoom.Location = new Point(160, 10);
-            lblDateForAvailRoom.Name = "lblDateForAvailRoom";
-            lblDateForAvailRoom.Size = new Size(19, 21);
-            lblDateForAvailRoom.TabIndex = 3;
-            lblDateForAvailRoom.Text = "0";
             // 
             // label12
             // 
@@ -243,7 +266,7 @@
             lblAvailRoom.AutoSize = true;
             lblAvailRoom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblAvailRoom.ForeColor = SystemColors.Control;
-            lblAvailRoom.Location = new Point(160, 39);
+            lblAvailRoom.Location = new Point(159, 41);
             lblAvailRoom.Name = "lblAvailRoom";
             lblAvailRoom.Size = new Size(19, 21);
             lblAvailRoom.TabIndex = 1;
@@ -264,8 +287,7 @@
             // 
             panel7.BackColor = Color.FromArgb(19, 52, 113);
             panel7.Controls.Add(label9);
-            panel7.Controls.Add(dateTimePicker1);
-            panel7.Controls.Add(dgvHistory);
+            panel7.Controls.Add(dgvRecentReserve);
             panel7.Location = new Point(1129, 420);
             panel7.Name = "panel7";
             panel7.Size = new Size(753, 598);
@@ -278,26 +300,18 @@
             label9.ForeColor = SystemColors.Control;
             label9.Location = new Point(29, 23);
             label9.Name = "label9";
-            label9.Size = new Size(66, 21);
+            label9.Size = new Size(138, 21);
             label9.TabIndex = 3;
-            label9.Text = "History";
+            label9.Text = "Recently Booked";
             // 
-            // dateTimePicker1
+            // dgvRecentReserve
             // 
-            dateTimePicker1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic);
-            dateTimePicker1.Location = new Point(463, 23);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(256, 29);
-            dateTimePicker1.TabIndex = 2;
-            // 
-            // dgvHistory
-            // 
-            dgvHistory.BackgroundColor = SystemColors.ControlLight;
-            dgvHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistory.Location = new Point(13, 75);
-            dgvHistory.Name = "dgvHistory";
-            dgvHistory.Size = new Size(728, 511);
-            dgvHistory.TabIndex = 1;
+            dgvRecentReserve.BackgroundColor = SystemColors.ControlLight;
+            dgvRecentReserve.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRecentReserve.Location = new Point(13, 75);
+            dgvRecentReserve.Name = "dgvRecentReserve";
+            dgvRecentReserve.Size = new Size(728, 511);
+            dgvRecentReserve.TabIndex = 1;
             // 
             // panel3
             // 
@@ -597,10 +611,11 @@
             Load += frmFrontDashboard_Load;
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            pnlDateAvailable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAvailableRoom).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvHistory).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRecentReserve).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
@@ -645,13 +660,10 @@
         private Label lblTotalGuest;
         private Label label1;
         private DataGridView dgvAvailableRoom;
-        private Label lblDateForAvailRoom;
         private Label label12;
         private Label lblAvailRoom;
         private Label label10;
-        private DateTimePicker dtDate;
-        private DateTimePicker dateTimePicker1;
-        private DataGridView dgvHistory;
+        private DataGridView dgvRecentReserve;
         private Label label9;
         private Panel panel6;
         private Panel panel8;
@@ -664,5 +676,9 @@
         private Label label3;
         private Button btnLogout;
         private Button btnRecords;
+        private Button btnDate;
+        private TextBox txtDateDisplay;
+        private Panel pnlDateAvailable;
+        private MonthCalendar monthCalendarDate;
     }
 }
