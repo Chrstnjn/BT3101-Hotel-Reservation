@@ -39,6 +39,7 @@ namespace HotelReservation.UI.FrontDesk
             // Hidden columns (the data is still there for the menu)
             dgvCheckOut.Columns["ReservationID"].Visible = false;
             dgvCheckOut.Columns["TotalPrice"].Visible = false;
+            dgvCheckOut.Columns["CheckedInAt"].Visible = false;
 
             dgvCheckOut.Columns["ReservationNumber"].HeaderText = "Reservation Number";
             dgvCheckOut.Columns["GuestName"].HeaderText = "Guest Name";
@@ -144,7 +145,7 @@ namespace HotelReservation.UI.FrontDesk
             string room = row.Cells["RoomNumber"].Value.ToString();
             decimal balance = Convert.ToDecimal(row.Cells["Balance"].Value);
 
-            // The guest cannot check out while there is a balance
+
             if (balance > 0)
             {
                 MessageBox.Show(
@@ -162,6 +163,29 @@ namespace HotelReservation.UI.FrontDesk
             if (confirm != DialogResult.Yes)
                 return;
 
+            // Copy the data NOW, because the guest leaves the grid after check-out
+            int nights = Convert.ToInt32(row.Cells["TotalNights"].Value);
+            decimal totalCharges = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+
+            ReceiptData receiptData = new ReceiptData
+            {
+                ReservationNumber = number,
+                GuestName = guest,
+                PhoneNumber = row.Cells["PhoneNumber"].Value.ToString(),
+                RoomNumber = room,
+                RoomType = row.Cells["RoomTypeName"].Value.ToString(),
+                CheckIn = Convert.ToDateTime(row.Cells["CheckInDate"].Value),
+                CheckOut = Convert.ToDateTime(row.Cells["CheckOutDate"].Value),
+                Nights = nights,
+                Rate = nights > 0 ? totalCharges / nights : 0,
+                TotalCharges = totalCharges,
+                Paid = Convert.ToDecimal(row.Cells["Paid"].Value),
+                Balance = balance,
+                CheckedInAt = Convert.ToDateTime(row.Cells["CheckedInAt"].Value),
+                CheckedOutAt = DateTime.Now
+
+            };
+
             try
             {
                 ReservationController controller = new ReservationController();
@@ -170,7 +194,9 @@ namespace HotelReservation.UI.FrontDesk
                 MessageBox.Show($"{guest} is now checked out of room {room}.", "Check-Out Successful",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                LoadCheckOuts();   // the guest leaves this list
+                ReceiptPrinter.Show(this, receiptData);
+
+                LoadCheckOuts();            // the guest leaves this list
             }
             catch (Exception ex)
             {
@@ -189,11 +215,68 @@ namespace HotelReservation.UI.FrontDesk
             }
         }
 
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            frmFrontDashboard formFrontDashboard = new frmFrontDashboard();
+            formFrontDashboard.Show();
+            this.Hide();
+        }
+
+        private void btnRoom_Click(object sender, EventArgs e)
+        {
+            frmRooms formRooms = new frmRooms();
+            formRooms.Show();
+            this.Hide();
+        }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            frmReservation formReservation = new frmReservation();
+            formReservation.Show();
+            this.Hide();
+        }
+
+        private void btnGuestManagement_Click(object sender, EventArgs e)
+        {
+            frmGuestManagement formGuestManagement = new frmGuestManagement();
+            formGuestManagement.Show();
+            this.Hide();
+        }
+
+        private void btnBilling_Click(object sender, EventArgs e)
+        {
+            frmBillingPayment formBillingPayment = new frmBillingPayment();
+            formBillingPayment.Show();
+            this.Hide();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            frmFrontBillingRecord formFrontBillingRecord = new frmFrontBillingRecord();
+            formFrontBillingRecord.Show();
+            this.Hide();
+        }
         private void btnCheckIn_Click(object sender, EventArgs e)
         {
             frmCheckIn frontCheckIn = new frmCheckIn();
             frontCheckIn.Show();
             this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to log out?",
+                "Log Out",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+            }
         }
     }
 }

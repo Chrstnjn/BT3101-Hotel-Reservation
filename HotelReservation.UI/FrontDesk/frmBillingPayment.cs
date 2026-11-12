@@ -1,11 +1,5 @@
 ﻿using HotelReservation.Businesslogic.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 
 namespace HotelReservation.UI.FrontDesk
 {
@@ -63,8 +57,8 @@ namespace HotelReservation.UI.FrontDesk
             // The other columns stay in the data for the details on the right.
             string[] hiddenColumns =
             {
-        "ReservationID", "ReservationNumber", "RoomTypeName", "TotalNights",
-        "TotalPrice", "Paid", "Balance", "Status"
+       "ReservationID", "ReservationNumber", "RoomTypeName", "TotalNights",
+        "TotalPrice", "Paid", "Balance", "Status", "CheckedInAt"
     };
 
             foreach (string column in hiddenColumns)
@@ -105,6 +99,15 @@ namespace HotelReservation.UI.FrontDesk
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             ApplyBillingFilter();
+        }
+        private void dgvGuestsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvReservationList.Columns[e.ColumnIndex].Name == "PhoneNumber"
+                && e.Value != null)
+            {
+                e.Value = "(+63) " + e.Value.ToString();
+                e.FormattingApplied = true;
+            }
         }
 
         // =====================================================
@@ -326,5 +329,67 @@ namespace HotelReservation.UI.FrontDesk
             dgvReservationList.ClearSelection();
             ClearDetails();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+               "Are you sure you want to log out?",
+               "Log Out",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+            }
+        }
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            frmFrontDashboard formFrontDashboard = new frmFrontDashboard();
+            formFrontDashboard.Show();
+            this.Hide();
+        }
+
+        private void btnRoom_Click(object sender, EventArgs e)
+        {
+            frmRooms formRooms = new frmRooms();
+            formRooms.Show();
+            this.Hide();
+        }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            frmReservation formReservation = new frmReservation();
+            formReservation.Show();
+            this.Hide();
+        }
+
+        private void btnGuestManagement_Click(object sender, EventArgs e)
+        {
+            frmGuestManagement formGuestManagement = new frmGuestManagement();
+            formGuestManagement.Show();
+            this.Hide();
+        }
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            frmCheckIn formCheckIn = new frmCheckIn();
+            formCheckIn.Show();
+            this.Hide();
+        }
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            frmCheckOut formCheckOut = new frmCheckOut();
+            formCheckOut.Show();
+            this.Hide();
+        }
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            frmFrontBillingRecord formFrontBillingRecord = new frmFrontBillingRecord();
+            formFrontBillingRecord.Show();
+            this.Hide();
+        }
+
     }
 }

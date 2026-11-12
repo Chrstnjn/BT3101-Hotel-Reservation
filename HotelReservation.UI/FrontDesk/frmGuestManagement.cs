@@ -90,8 +90,7 @@ namespace HotelReservation.UI.FrontDesk
                 txtSearch.ForeColor = Color.Gray;
             }
         }
-        private void dgvGuestsList_CellFormatting(object sender,
-    DataGridViewCellFormattingEventArgs e)
+        private void dgvGuestsList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgvGuestsList.Columns[e.ColumnIndex].Name == "PhoneNumber"
                 && e.Value != null)
@@ -362,8 +361,38 @@ namespace HotelReservation.UI.FrontDesk
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            frmLogin formLogin = new frmLogin();
-            formLogin.Show();
+            DialogResult result = MessageBox.Show(
+               "Are you sure you want to log out?",
+               "Log Out",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+            }
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            frmCheckOut formCheckOut = new frmCheckOut();
+            formCheckOut.Show();
+            this.Hide();
+        }
+
+        private void btnBilling_Click(object sender, EventArgs e)
+        {
+            frmBillingPayment formBillingPayment = new frmBillingPayment();
+            formBillingPayment.Show();
+            this.Hide();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            frmFrontBillingRecord formFrontBillingRecord = new frmFrontBillingRecord();
+            formFrontBillingRecord.Show();
             this.Hide();
         }
     }

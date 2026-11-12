@@ -200,27 +200,6 @@ namespace HotelReservation.UI.FrontDesk
         }
 
         // =====================================================
-        //  NAVIGATION
-        // =====================================================
-        private void btnGuestManagement_Click(object sender, EventArgs e)
-        {
-            new frmGuestManagement().Show();
-            Hide();
-        }
-
-        private void btnRoom_Click(object sender, EventArgs e)
-        {
-            new frmRooms().Show();
-            Hide();
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            new frmLogin().Show();
-            Hide();
-        }
-
-        // =====================================================
         //  HELPERS
         // =====================================================
         private static void ShowWarning(string message, string title)
@@ -844,5 +823,52 @@ namespace HotelReservation.UI.FrontDesk
             frontCheckIn.Show();
             this.Hide();
         }
+        private void btnGuestManagement_Click(object sender, EventArgs e)
+        {
+            new frmGuestManagement().Show();
+            Hide();
+        }
+        private void btnRoom_Click(object sender, EventArgs e)
+        {
+            new frmRooms().Show();
+            Hide();
+        }
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            frmCheckOut formCheckOut = new frmCheckOut();
+            formCheckOut.Show();
+            this.Hide();
+        }
+
+        private void btnBilling_Click(object sender, EventArgs e)
+        {
+            frmBillingPayment formBillingPayment = new frmBillingPayment();
+            formBillingPayment.Show();
+            this.Hide();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+            frmFrontBillingRecord formFrontBillingRecord = new frmFrontBillingRecord();
+            formFrontBillingRecord.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+           "Are you sure you want to log out?",
+           "Log Out",
+           MessageBoxButtons.YesNo,
+           MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+            }
+        }
+
     }
 }
