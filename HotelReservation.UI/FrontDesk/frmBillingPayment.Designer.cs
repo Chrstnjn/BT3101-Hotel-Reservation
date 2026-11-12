@@ -662,7 +662,7 @@
             btnBRecords.Name = "btnBRecords";
             btnBRecords.Size = new Size(263, 43);
             btnBRecords.TabIndex = 70;
-            btnBRecords.Text = "BILLING RECORDS";
+            btnBRecords.Text = "BOOKED RECORDS";
             btnBRecords.UseVisualStyleBackColor = false;
             btnBRecords.Click += btnRecords_Click;
             // 

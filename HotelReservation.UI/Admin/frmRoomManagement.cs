@@ -184,8 +184,6 @@ namespace HotelReservation.UI.Admin
             this.Hide();
         }
 
-
-
         private void LoadRooms()
         {
             RoomController controller = new RoomController();
@@ -571,6 +569,20 @@ namespace HotelReservation.UI.Admin
         {
             frmAdminReserved adminReserved = new frmAdminReserved();
             adminReserved.Show();
+            this.Hide();
+        }
+
+        private void btnGuestManagement_Click(object sender, EventArgs e)
+        {
+            frmAdminGuest formAdminGuest = new frmAdminGuest();
+            formAdminGuest.Show();
+            this.Hide();
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            frmAdminBillingRecords adminBillingRecords = new frmAdminBillingRecords();
+            adminBillingRecords.Show();
             this.Hide();
         }
     }

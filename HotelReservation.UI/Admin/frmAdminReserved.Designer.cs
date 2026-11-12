@@ -37,9 +37,9 @@
             label2 = new Label();
             label1 = new Label();
             txtSearch = new TextBox();
-            lblTotalGuest = new Label();
-            dgvGuestsList = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgvGuestsList).BeginInit();
+            lblTotalBooked = new Label();
+            dgvBooked = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvBooked).BeginInit();
             SuspendLayout();
             // 
             // btnReserved
@@ -59,6 +59,7 @@
             btnRecords.TabIndex = 56;
             btnRecords.Text = "Invoiced";
             btnRecords.UseVisualStyleBackColor = true;
+            btnRecords.Click += btnRecords_Click;
             // 
             // btnLogout
             // 
@@ -77,6 +78,7 @@
             btnGuest.TabIndex = 54;
             btnGuest.Text = "Guest";
             btnGuest.UseVisualStyleBackColor = true;
+            btnGuest.Click += btnGuest_Click;
             // 
             // btnRoom
             // 
@@ -86,6 +88,7 @@
             btnRoom.TabIndex = 53;
             btnRoom.Text = "Rooms";
             btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Click += btnRoom_Click;
             // 
             // btnDashboard
             // 
@@ -95,6 +98,7 @@
             btnDashboard.TabIndex = 52;
             btnDashboard.Text = "Dashboard";
             btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // label2
             // 
@@ -110,9 +114,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(127, 48);
             label1.Name = "label1";
-            label1.Size = new Size(85, 15);
+            label1.Size = new Size(79, 15);
             label1.TabIndex = 61;
-            label1.Text = "Total Reserved:";
+            label1.Text = "Total Booked:";
             // 
             // txtSearch
             // 
@@ -121,24 +125,24 @@
             txtSearch.Size = new Size(661, 23);
             txtSearch.TabIndex = 60;
             // 
-            // lblTotalGuest
+            // lblTotalBooked
             // 
-            lblTotalGuest.AutoSize = true;
-            lblTotalGuest.Location = new Point(213, 48);
-            lblTotalGuest.Name = "lblTotalGuest";
-            lblTotalGuest.Size = new Size(13, 15);
-            lblTotalGuest.TabIndex = 59;
-            lblTotalGuest.Text = "0";
+            lblTotalBooked.AutoSize = true;
+            lblTotalBooked.Location = new Point(213, 48);
+            lblTotalBooked.Name = "lblTotalBooked";
+            lblTotalBooked.Size = new Size(13, 15);
+            lblTotalBooked.TabIndex = 59;
+            lblTotalBooked.Text = "0";
             // 
-            // dgvGuestsList
+            // dgvBooked
             // 
-            dgvGuestsList.AllowUserToAddRows = false;
-            dgvGuestsList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvGuestsList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGuestsList.Location = new Point(127, 98);
-            dgvGuestsList.Name = "dgvGuestsList";
-            dgvGuestsList.Size = new Size(661, 340);
-            dgvGuestsList.TabIndex = 58;
+            dgvBooked.AllowUserToAddRows = false;
+            dgvBooked.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvBooked.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBooked.Location = new Point(127, 98);
+            dgvBooked.Name = "dgvBooked";
+            dgvBooked.Size = new Size(661, 340);
+            dgvBooked.TabIndex = 58;
             // 
             // frmAdminReserved
             // 
@@ -148,8 +152,8 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtSearch);
-            Controls.Add(lblTotalGuest);
-            Controls.Add(dgvGuestsList);
+            Controls.Add(lblTotalBooked);
+            Controls.Add(dgvBooked);
             Controls.Add(btnReserved);
             Controls.Add(btnRecords);
             Controls.Add(btnLogout);
@@ -158,7 +162,8 @@
             Controls.Add(btnDashboard);
             Name = "frmAdminReserved";
             Text = "frmAdminReserved";
-            ((System.ComponentModel.ISupportInitialize)dgvGuestsList).EndInit();
+            Load += frmAdminReserved_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvBooked).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -174,7 +179,7 @@
         private Label label2;
         private Label label1;
         private TextBox txtSearch;
-        private Label lblTotalGuest;
-        private DataGridView dgvGuestsList;
+        private Label lblTotalBooked;
+        private DataGridView dgvBooked;
     }
 }

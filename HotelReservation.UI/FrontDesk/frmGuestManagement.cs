@@ -19,9 +19,7 @@ namespace HotelReservation.UI.FrontDesk
 
             dgvGuestsList.Columns["GuestID"].Visible = false;
 
-            lblTotalGuest.Text = "Total Guest : " +
-      dgvGuestsList.Rows.Cast<DataGridViewRow>()
-                    .Count(r => !r.IsNewRow);
+            lblTotalGuest.Text ="" + dgvGuestsList.Rows.Cast<DataGridViewRow>().Count(r => !r.IsNewRow);
 
         }
         private void frmGuestManagement_Load(object sender, EventArgs e)
@@ -106,15 +104,6 @@ namespace HotelReservation.UI.FrontDesk
                 e.FormattingApplied = true;
             }
         }
-        private void btnClearSearch_Click(object sender, EventArgs e)
-        {
-            txtSearch.Clear();
-        }
-
-        private void ucAddGuest1_Load(object sender, EventArgs e)
-        {
-
-        }
         private void ClearFields()
         {
             txtFirstName.Clear();
@@ -144,12 +133,6 @@ namespace HotelReservation.UI.FrontDesk
 
             RefreshGuest();
         }
-
-        private void pnlAddGuest_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Phone validation
@@ -229,11 +212,6 @@ namespace HotelReservation.UI.FrontDesk
         private void btnCancel_Click(object sender, EventArgs e)
         {
             pnlAddGuest.Visible = false;
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
