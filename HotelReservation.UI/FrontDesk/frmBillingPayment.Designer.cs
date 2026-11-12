@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBillingPayment));
             label1 = new Label();
             btnLogout = new Button();
             btnBilling = new Button();
@@ -77,6 +78,11 @@
             panel4 = new Panel();
             label20 = new Label();
             btnBRecords = new Button();
+            panel5 = new Panel();
+            pictureBox1 = new PictureBox();
+            label5 = new Label();
+            panel6 = new Panel();
+            panel7 = new Panel();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -84,111 +90,150 @@
             ((System.ComponentModel.ISupportInitialize)numPaymentReceived).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvReservationList).BeginInit();
             panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(136, 25);
+            label1.Font = new Font("Constantia", 21.75F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(32, 36);
             label1.Name = "label1";
-            label1.Size = new Size(90, 15);
+            label1.Size = new Size(238, 36);
             label1.TabIndex = 43;
             label1.Text = "Billing Payment";
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(12, 460);
+            btnLogout.BackColor = Color.FromArgb(255, 100, 100);
+            btnLogout.FlatStyle = FlatStyle.Popup;
+            btnLogout.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(35, 973);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(108, 34);
+            btnLogout.Size = new Size(263, 43);
             btnLogout.TabIndex = 51;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
             // btnBilling
             // 
-            btnBilling.Location = new Point(12, 352);
+            btnBilling.BackColor = Color.FromArgb(48, 91, 171);
+            btnBilling.FlatStyle = FlatStyle.Popup;
+            btnBilling.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnBilling.ForeColor = SystemColors.ButtonHighlight;
+            btnBilling.Location = new Point(35, 521);
             btnBilling.Name = "btnBilling";
-            btnBilling.Size = new Size(108, 34);
+            btnBilling.Size = new Size(263, 43);
             btnBilling.TabIndex = 50;
-            btnBilling.Text = "Billing Payment";
-            btnBilling.UseVisualStyleBackColor = true;
+            btnBilling.Text = "BILLING PAYMENTS";
+            btnBilling.UseVisualStyleBackColor = false;
             // 
             // btnCheckOut
             // 
-            btnCheckOut.Location = new Point(12, 312);
+            btnCheckOut.BackColor = Color.FromArgb(48, 91, 171);
+            btnCheckOut.FlatStyle = FlatStyle.Popup;
+            btnCheckOut.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnCheckOut.ForeColor = SystemColors.ButtonHighlight;
+            btnCheckOut.Location = new Point(35, 463);
             btnCheckOut.Name = "btnCheckOut";
-            btnCheckOut.Size = new Size(108, 34);
+            btnCheckOut.Size = new Size(263, 43);
             btnCheckOut.TabIndex = 49;
-            btnCheckOut.Text = "Check Out";
-            btnCheckOut.UseVisualStyleBackColor = true;
+            btnCheckOut.Text = "CHECK OUT";
+            btnCheckOut.UseVisualStyleBackColor = false;
             btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnCheckIn
             // 
-            btnCheckIn.Location = new Point(13, 272);
+            btnCheckIn.BackColor = Color.FromArgb(48, 91, 171);
+            btnCheckIn.FlatStyle = FlatStyle.Popup;
+            btnCheckIn.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnCheckIn.ForeColor = SystemColors.ButtonHighlight;
+            btnCheckIn.Location = new Point(35, 405);
             btnCheckIn.Name = "btnCheckIn";
-            btnCheckIn.Size = new Size(108, 34);
+            btnCheckIn.Size = new Size(263, 43);
             btnCheckIn.TabIndex = 48;
-            btnCheckIn.Text = "Check In";
-            btnCheckIn.UseVisualStyleBackColor = true;
+            btnCheckIn.Text = "CHECK IN";
+            btnCheckIn.UseVisualStyleBackColor = false;
             btnCheckIn.Click += btnCheckIn_Click;
             // 
             // btnReservation
             // 
-            btnReservation.Location = new Point(13, 232);
+            btnReservation.BackColor = Color.FromArgb(48, 91, 171);
+            btnReservation.FlatStyle = FlatStyle.Popup;
+            btnReservation.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnReservation.ForeColor = SystemColors.ButtonHighlight;
+            btnReservation.Location = new Point(35, 348);
             btnReservation.Name = "btnReservation";
-            btnReservation.Size = new Size(108, 34);
+            btnReservation.Size = new Size(263, 43);
             btnReservation.TabIndex = 47;
-            btnReservation.Text = "Reservation";
-            btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Text = "RESERVATION";
+            btnReservation.UseVisualStyleBackColor = false;
             btnReservation.Click += btnReservation_Click;
             // 
             // btnGuestManagement
             // 
-            btnGuestManagement.Location = new Point(13, 192);
+            btnGuestManagement.BackColor = Color.FromArgb(48, 91, 171);
+            btnGuestManagement.FlatStyle = FlatStyle.Popup;
+            btnGuestManagement.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnGuestManagement.ForeColor = SystemColors.ButtonHighlight;
+            btnGuestManagement.Location = new Point(35, 293);
             btnGuestManagement.Name = "btnGuestManagement";
-            btnGuestManagement.Size = new Size(108, 34);
+            btnGuestManagement.Size = new Size(263, 43);
             btnGuestManagement.TabIndex = 46;
-            btnGuestManagement.Text = "Guest";
-            btnGuestManagement.UseVisualStyleBackColor = true;
+            btnGuestManagement.Text = "GUEST";
+            btnGuestManagement.UseVisualStyleBackColor = false;
             btnGuestManagement.Click += btnGuestManagement_Click;
             // 
             // btnRoom
             // 
-            btnRoom.Location = new Point(13, 152);
+            btnRoom.BackColor = Color.FromArgb(48, 91, 171);
+            btnRoom.FlatStyle = FlatStyle.Popup;
+            btnRoom.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnRoom.ForeColor = SystemColors.ButtonHighlight;
+            btnRoom.Location = new Point(35, 237);
             btnRoom.Name = "btnRoom";
-            btnRoom.Size = new Size(108, 34);
+            btnRoom.Size = new Size(263, 43);
             btnRoom.TabIndex = 45;
-            btnRoom.Text = "Room";
-            btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Text = "ROOM";
+            btnRoom.UseVisualStyleBackColor = false;
             btnRoom.Click += btnRoom_Click;
             // 
             // btnDashboard
             // 
-            btnDashboard.Location = new Point(13, 112);
+            btnDashboard.BackColor = Color.FromArgb(48, 91, 171);
+            btnDashboard.FlatStyle = FlatStyle.Popup;
+            btnDashboard.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnDashboard.ForeColor = SystemColors.ButtonHighlight;
+            btnDashboard.Location = new Point(35, 181);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(108, 34);
+            btnDashboard.Size = new Size(263, 43);
             btnDashboard.TabIndex = 44;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Text = "DASHBOARD";
+            btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(148, 57);
+            txtSearch.Font = new Font("Segoe UI", 18F);
+            txtSearch.Location = new Point(27, 30);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(684, 23);
+            txtSearch.Size = new Size(854, 39);
             txtSearch.TabIndex = 52;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(10, 15);
+            label13.Font = new Font("Constantia", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(17, 14);
             label13.Name = "label13";
-            label13.Size = new Size(123, 20);
+            label13.Size = new Size(242, 36);
             label13.TabIndex = 44;
             label13.Text = "Payment Details";
             // 
@@ -208,19 +253,20 @@
             panel1.Controls.Add(numPaymentReceived);
             panel1.Controls.Add(label43);
             panel1.Controls.Add(cboPaymentMethod);
-            panel1.Location = new Point(847, 40);
+            panel1.Location = new Point(1282, 129);
             panel1.Name = "panel1";
-            panel1.Size = new Size(358, 491);
+            panel1.Size = new Size(603, 892);
             panel1.TabIndex = 66;
             // 
             // btnCancel
             // 
             btnCancel.BackColor = Color.Crimson;
             btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Constantia", 14.25F, FontStyle.Bold);
             btnCancel.ForeColor = SystemColors.ButtonHighlight;
-            btnCancel.Location = new Point(169, 446);
+            btnCancel.Location = new Point(457, 833);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 28);
+            btnCancel.Size = new Size(129, 36);
             btnCancel.TabIndex = 77;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
@@ -234,67 +280,72 @@
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
-            panel3.Location = new Point(11, 192);
+            panel3.Location = new Point(17, 351);
             panel3.Name = "panel3";
-            panel3.Size = new Size(341, 97);
+            panel3.Size = new Size(569, 169);
             panel3.TabIndex = 67;
             // 
             // lblSTotalCharge
             // 
             lblSTotalCharge.AutoSize = true;
+            lblSTotalCharge.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             lblSTotalCharge.ForeColor = Color.OliveDrab;
-            lblSTotalCharge.Location = new Point(144, 41);
+            lblSTotalCharge.Location = new Point(166, 58);
             lblSTotalCharge.Name = "lblSTotalCharge";
-            lblSTotalCharge.Size = new Size(12, 15);
+            lblSTotalCharge.Size = new Size(16, 23);
             lblSTotalCharge.TabIndex = 48;
             lblSTotalCharge.Text = "-";
             // 
             // lblSTotalPaid
             // 
             lblSTotalPaid.AutoSize = true;
+            lblSTotalPaid.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             lblSTotalPaid.ForeColor = Color.IndianRed;
-            lblSTotalPaid.Location = new Point(144, 71);
+            lblSTotalPaid.Location = new Point(166, 116);
             lblSTotalPaid.Name = "lblSTotalPaid";
-            lblSTotalPaid.Size = new Size(12, 15);
+            lblSTotalPaid.Size = new Size(16, 23);
             lblSTotalPaid.TabIndex = 47;
             lblSTotalPaid.Text = "-";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(70, 71);
+            label4.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label4.Location = new Point(53, 116);
             label4.Name = "label4";
-            label4.Size = new Size(62, 15);
+            label4.Size = new Size(91, 23);
             label4.TabIndex = 46;
             label4.Text = "Total Paid:";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 41);
+            label3.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label3.Location = new Point(24, 58);
             label3.Name = "label3";
-            label3.Size = new Size(82, 15);
+            label3.Size = new Size(120, 23);
             label3.TabIndex = 45;
             label3.Text = "Total Charges:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(16, 17);
+            label2.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label2.Location = new Point(17, 13);
             label2.Name = "label2";
-            label2.Size = new Size(67, 17);
+            label2.Size = new Size(84, 23);
             label2.TabIndex = 44;
             label2.Text = "Summary";
             // 
             // btnDpProcess
             // 
-            btnDpProcess.BackColor = Color.Olive;
+            btnDpProcess.BackColor = Color.OliveDrab;
             btnDpProcess.FlatStyle = FlatStyle.Flat;
+            btnDpProcess.Font = new Font("Constantia", 14.25F, FontStyle.Bold);
             btnDpProcess.ForeColor = SystemColors.ButtonFace;
-            btnDpProcess.Location = new Point(264, 446);
+            btnDpProcess.Location = new Point(311, 833);
             btnDpProcess.Name = "btnDpProcess";
-            btnDpProcess.Size = new Size(75, 28);
+            btnDpProcess.Size = new Size(129, 36);
             btnDpProcess.TabIndex = 76;
             btnDpProcess.Text = "Process";
             btnDpProcess.UseVisualStyleBackColor = false;
@@ -305,41 +356,41 @@
             panel2.BackColor = Color.OliveDrab;
             panel2.Controls.Add(lblBalance);
             panel2.Controls.Add(label7);
-            panel2.Location = new Point(11, 292);
+            panel2.Location = new Point(17, 542);
             panel2.Name = "panel2";
-            panel2.Size = new Size(341, 34);
+            panel2.Size = new Size(569, 51);
             panel2.TabIndex = 49;
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBalance.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             lblBalance.ForeColor = SystemColors.ButtonFace;
-            lblBalance.Location = new Point(244, 5);
+            lblBalance.Location = new Point(236, 14);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(16, 21);
+            lblBalance.Size = new Size(16, 23);
             lblBalance.TabIndex = 48;
             lblBalance.Text = "-";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(32, 7);
+            label7.Location = new Point(62, 14);
             label7.Name = "label7";
-            label7.Size = new Size(74, 21);
+            label7.Size = new Size(77, 23);
             label7.TabIndex = 47;
             label7.Text = "Balance:";
             // 
             // lblChange
             // 
             lblChange.AutoSize = true;
-            lblChange.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblChange.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             lblChange.ForeColor = Color.ForestGreen;
-            lblChange.Location = new Point(131, 409);
+            lblChange.Location = new Point(215, 755);
             lblChange.Name = "lblChange";
-            lblChange.Size = new Size(12, 15);
+            lblChange.Size = new Size(16, 23);
             lblChange.TabIndex = 75;
             lblChange.Text = "-";
             lblChange.TextChanged += lblChange_TextChanged;
@@ -353,18 +404,19 @@
             panel8.Controls.Add(lblPdRoomType);
             panel8.Controls.Add(label26);
             panel8.Controls.Add(label27);
-            panel8.Location = new Point(11, 73);
+            panel8.Location = new Point(17, 135);
             panel8.Name = "panel8";
-            panel8.Size = new Size(341, 117);
+            panel8.Size = new Size(569, 192);
             panel8.TabIndex = 57;
             // 
             // lblPdTotalNights
             // 
             lblPdTotalNights.AutoSize = true;
             lblPdTotalNights.BackColor = SystemColors.ControlLight;
-            lblPdTotalNights.Location = new Point(110, 72);
+            lblPdTotalNights.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblPdTotalNights.Location = new Point(166, 132);
             lblPdTotalNights.Name = "lblPdTotalNights";
-            lblPdTotalNights.Size = new Size(12, 15);
+            lblPdTotalNights.Size = new Size(16, 23);
             lblPdTotalNights.TabIndex = 38;
             lblPdTotalNights.Text = "-";
             // 
@@ -372,10 +424,10 @@
             // 
             label22.AutoSize = true;
             label22.BackColor = SystemColors.ControlLight;
-            label22.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(16, 72);
+            label22.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label22.Location = new Point(22, 132);
             label22.Name = "label22";
-            label22.Size = new Size(81, 15);
+            label22.Size = new Size(116, 23);
             label22.TabIndex = 37;
             label22.Text = "Total Night(s)";
             // 
@@ -383,9 +435,10 @@
             // 
             lblPdRate.AutoSize = true;
             lblPdRate.BackColor = SystemColors.ControlLight;
-            lblPdRate.Location = new Point(110, 41);
+            lblPdRate.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblPdRate.Location = new Point(166, 75);
             lblPdRate.Name = "lblPdRate";
-            lblPdRate.Size = new Size(12, 15);
+            lblPdRate.Size = new Size(16, 23);
             lblPdRate.TabIndex = 36;
             lblPdRate.Text = "-";
             // 
@@ -393,9 +446,10 @@
             // 
             lblPdRoomType.AutoSize = true;
             lblPdRoomType.BackColor = SystemColors.ControlLight;
-            lblPdRoomType.Location = new Point(110, 10);
+            lblPdRoomType.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblPdRoomType.Location = new Point(166, 20);
             lblPdRoomType.Name = "lblPdRoomType";
-            lblPdRoomType.Size = new Size(12, 15);
+            lblPdRoomType.Size = new Size(16, 23);
             lblPdRoomType.TabIndex = 35;
             lblPdRoomType.Text = "-";
             // 
@@ -403,10 +457,10 @@
             // 
             label26.AutoSize = true;
             label26.BackColor = SystemColors.ControlLight;
-            label26.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label26.Location = new Point(65, 42);
+            label26.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label26.Location = new Point(91, 75);
             label26.Name = "label26";
-            label26.Size = new Size(33, 15);
+            label26.Size = new Size(47, 23);
             label26.TabIndex = 34;
             label26.Text = "Rate";
             // 
@@ -414,137 +468,148 @@
             // 
             label27.AutoSize = true;
             label27.BackColor = SystemColors.ControlLight;
-            label27.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label27.Location = new Point(28, 10);
+            label27.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label27.Location = new Point(41, 20);
             label27.Name = "label27";
-            label27.Size = new Size(69, 15);
+            label27.Size = new Size(97, 23);
             label27.TabIndex = 33;
             label27.Text = "Room Type";
             // 
             // label42
             // 
             label42.AutoSize = true;
-            label42.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label42.Location = new Point(76, 409);
+            label42.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label42.Location = new Point(102, 755);
             label42.Name = "label42";
-            label42.Size = new Size(51, 15);
+            label42.Size = new Size(73, 23);
             label42.TabIndex = 74;
             label42.Text = "Change:";
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(11, 53);
+            label18.Font = new Font("Constantia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Location = new Point(17, 88);
             label18.Name = "label18";
-            label18.Size = new Size(61, 15);
+            label18.Size = new Size(101, 23);
             label18.TabIndex = 55;
             label18.Text = "Paying for";
             // 
             // label44
             // 
             label44.AutoSize = true;
-            label44.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label44.Location = new Point(20, 368);
+            label44.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label44.Location = new Point(24, 700);
             label44.Name = "label44";
-            label44.Size = new Size(106, 15);
+            label44.Size = new Size(151, 23);
             label44.TabIndex = 73;
             label44.Text = "Payment method:";
             // 
             // numPaymentReceived
             // 
-            numPaymentReceived.Location = new Point(132, 334);
+            numPaymentReceived.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            numPaymentReceived.Location = new Point(183, 636);
             numPaymentReceived.Name = "numPaymentReceived";
-            numPaymentReceived.Size = new Size(195, 23);
+            numPaymentReceived.Size = new Size(403, 31);
             numPaymentReceived.TabIndex = 71;
             numPaymentReceived.ValueChanged += numPaymentReceived_ValueChanged;
             // 
             // label43
             // 
             label43.AutoSize = true;
-            label43.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label43.Location = new Point(15, 339);
+            label43.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label43.Location = new Point(17, 638);
             label43.Name = "label43";
-            label43.Size = new Size(111, 15);
+            label43.Size = new Size(158, 23);
             label43.TabIndex = 70;
             label43.Text = "Payment received:";
             // 
             // cboPaymentMethod
             // 
+            cboPaymentMethod.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             cboPaymentMethod.FormattingEnabled = true;
-            cboPaymentMethod.Location = new Point(132, 364);
+            cboPaymentMethod.Location = new Point(183, 697);
             cboPaymentMethod.Name = "cboPaymentMethod";
-            cboPaymentMethod.Size = new Size(195, 23);
+            cboPaymentMethod.Size = new Size(403, 31);
             cboPaymentMethod.TabIndex = 72;
             // 
             // lblCheckOutDate
             // 
             lblCheckOutDate.AutoSize = true;
-            lblCheckOutDate.Location = new Point(150, 140);
+            lblCheckOutDate.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblCheckOutDate.Location = new Point(225, 299);
             lblCheckOutDate.Name = "lblCheckOutDate";
-            lblCheckOutDate.Size = new Size(12, 15);
+            lblCheckOutDate.Size = new Size(16, 23);
             lblCheckOutDate.TabIndex = 54;
             lblCheckOutDate.Text = "-";
             // 
             // lblCheckInDate
             // 
             lblCheckInDate.AutoSize = true;
-            lblCheckInDate.Location = new Point(150, 109);
+            lblCheckInDate.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblCheckInDate.Location = new Point(225, 234);
             lblCheckInDate.Name = "lblCheckInDate";
-            lblCheckInDate.Size = new Size(12, 15);
+            lblCheckInDate.Size = new Size(16, 23);
             lblCheckInDate.TabIndex = 53;
             lblCheckInDate.Text = "-";
             // 
             // lblRoomNo
             // 
             lblRoomNo.AutoSize = true;
-            lblRoomNo.Location = new Point(150, 81);
+            lblRoomNo.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblRoomNo.Location = new Point(225, 169);
             lblRoomNo.Name = "lblRoomNo";
-            lblRoomNo.Size = new Size(12, 15);
+            lblRoomNo.Size = new Size(16, 23);
             lblRoomNo.TabIndex = 52;
             lblRoomNo.Text = "-";
             // 
             // lblGuest
             // 
             lblGuest.AutoSize = true;
-            lblGuest.Location = new Point(150, 52);
+            lblGuest.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblGuest.Location = new Point(225, 108);
             lblGuest.Name = "lblGuest";
-            lblGuest.Size = new Size(12, 15);
+            lblGuest.Size = new Size(16, 23);
             lblGuest.TabIndex = 51;
             lblGuest.Text = "-";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(46, 140);
+            label14.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label14.Location = new Point(48, 299);
             label14.Name = "label14";
-            label14.Size = new Size(95, 15);
+            label14.Size = new Size(139, 23);
             label14.TabIndex = 49;
             label14.Text = "Check-Out Date:";
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(56, 109);
+            label12.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label12.Location = new Point(63, 234);
             label12.Name = "label12";
-            label12.Size = new Size(85, 15);
+            label12.Size = new Size(124, 23);
             label12.TabIndex = 48;
             label12.Text = "Check-In Date:";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(55, 81);
+            label11.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label11.Location = new Point(57, 169);
             label11.Name = "label11";
-            label11.Size = new Size(89, 15);
+            label11.Size = new Size(130, 23);
             label11.TabIndex = 47;
             label11.Text = "Room Number:";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(69, 52);
+            label10.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label10.Location = new Point(74, 108);
             label10.Name = "label10";
-            label10.Size = new Size(75, 15);
+            label10.Size = new Size(113, 23);
             label10.TabIndex = 46;
             label10.Text = "Guest Name:";
             // 
@@ -553,15 +618,16 @@
             dgvReservationList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvReservationList.BackgroundColor = SystemColors.ActiveCaption;
             dgvReservationList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReservationList.Location = new Point(148, 88);
+            dgvReservationList.Location = new Point(27, 88);
             dgvReservationList.Name = "dgvReservationList";
-            dgvReservationList.Size = new Size(684, 190);
+            dgvReservationList.Size = new Size(854, 412);
             dgvReservationList.TabIndex = 68;
             dgvReservationList.CellFormatting += dgvGuestsList_CellFormatting;
             dgvReservationList.SelectionChanged += dgvReservationList_SelectionChanged;
             // 
             // panel4
             // 
+            panel4.BackColor = Color.FromArgb(224, 224, 224);
             panel4.Controls.Add(label20);
             panel4.Controls.Add(label10);
             panel4.Controls.Add(lblGuest);
@@ -571,50 +637,109 @@
             panel4.Controls.Add(label14);
             panel4.Controls.Add(label11);
             panel4.Controls.Add(lblCheckInDate);
-            panel4.Location = new Point(148, 288);
+            panel4.Location = new Point(27, 513);
             panel4.Name = "panel4";
-            panel4.Size = new Size(684, 214);
+            panel4.Size = new Size(854, 356);
             panel4.TabIndex = 69;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.Location = new Point(14, 15);
+            label20.Font = new Font("Constantia", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.Location = new Point(39, 29);
             label20.Name = "label20";
-            label20.Size = new Size(145, 20);
+            label20.Size = new Size(235, 29);
             label20.TabIndex = 55;
             label20.Text = "Reservation Details";
             // 
             // btnBRecords
             // 
-            btnBRecords.Location = new Point(12, 389);
+            btnBRecords.BackColor = Color.FromArgb(48, 91, 171);
+            btnBRecords.FlatStyle = FlatStyle.Popup;
+            btnBRecords.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnBRecords.ForeColor = SystemColors.ButtonHighlight;
+            btnBRecords.Location = new Point(35, 579);
             btnBRecords.Name = "btnBRecords";
-            btnBRecords.Size = new Size(108, 34);
+            btnBRecords.Size = new Size(263, 43);
             btnBRecords.TabIndex = 70;
-            btnBRecords.Text = "Billing Records";
-            btnBRecords.UseVisualStyleBackColor = true;
+            btnBRecords.Text = "BILLING RECORDS";
+            btnBRecords.UseVisualStyleBackColor = false;
             btnBRecords.Click += btnRecords_Click;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.FromArgb(19, 52, 113);
+            panel5.Controls.Add(pictureBox1);
+            panel5.Controls.Add(label5);
+            panel5.Controls.Add(btnDashboard);
+            panel5.Controls.Add(btnBRecords);
+            panel5.Controls.Add(btnRoom);
+            panel5.Controls.Add(btnGuestManagement);
+            panel5.Controls.Add(btnReservation);
+            panel5.Controls.Add(btnCheckIn);
+            panel5.Controls.Add(btnCheckOut);
+            panel5.Controls.Add(btnLogout);
+            panel5.Controls.Add(btnBilling);
+            panel5.Location = new Point(0, -1);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(336, 1044);
+            panel5.TabIndex = 71;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(215, 218, 224);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(35, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(263, 93);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 72;
+            pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(101, 138, 208);
+            label5.Location = new Point(27, 160);
+            label5.Name = "label5";
+            label5.Size = new Size(86, 15);
+            label5.TabIndex = 71;
+            label5.Text = "NAVIGATIONS";
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.FromArgb(7, 31, 77);
+            panel6.Controls.Add(label1);
+            panel6.Location = new Point(334, -1);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(1572, 108);
+            panel6.TabIndex = 72;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.FromArgb(48, 91, 171);
+            panel7.Controls.Add(dgvReservationList);
+            panel7.Controls.Add(txtSearch);
+            panel7.Controls.Add(panel4);
+            panel7.Location = new Point(358, 129);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(909, 892);
+            panel7.TabIndex = 73;
             // 
             // frmBillingPayment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1582, 543);
-            Controls.Add(btnBRecords);
-            Controls.Add(panel4);
-            Controls.Add(dgvReservationList);
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(panel7);
+            Controls.Add(panel6);
+            Controls.Add(panel5);
             Controls.Add(panel1);
-            Controls.Add(txtSearch);
-            Controls.Add(btnLogout);
-            Controls.Add(btnBilling);
-            Controls.Add(btnCheckOut);
-            Controls.Add(btnCheckIn);
-            Controls.Add(btnReservation);
-            Controls.Add(btnGuestManagement);
-            Controls.Add(btnRoom);
-            Controls.Add(btnDashboard);
-            Controls.Add(label1);
             Name = "frmBillingPayment";
             Text = "frmBillingPayment";
             Load += frmBillingPayment_Load;
@@ -630,8 +755,14 @@
             ((System.ComponentModel.ISupportInitialize)dgvReservationList).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -684,5 +815,10 @@
         private Label label43;
         private ComboBox cboPaymentMethod;
         private Button btnBRecords;
+        private Panel panel5;
+        private Label label5;
+        private PictureBox pictureBox1;
+        private Panel panel6;
+        private Panel panel7;
     }
 }
