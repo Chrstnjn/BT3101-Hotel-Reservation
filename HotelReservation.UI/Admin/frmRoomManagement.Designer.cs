@@ -60,8 +60,6 @@
             panel1 = new Panel();
             lblTotalRoom = new Label();
             label1 = new Label();
-            btnPayment = new Button();
-            btnCheckOut = new Button();
             btnCheckIn = new Button();
             btnReservation = new Button();
             btnGuestManagement = new Button();
@@ -449,32 +447,6 @@
             label1.TabIndex = 0;
             label1.Text = "Total Room";
             // 
-            // btnPayment
-            // 
-            btnPayment.BackColor = Color.FromArgb(48, 91, 171);
-            btnPayment.FlatStyle = FlatStyle.Popup;
-            btnPayment.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
-            btnPayment.ForeColor = SystemColors.ButtonHighlight;
-            btnPayment.Location = new Point(35, 521);
-            btnPayment.Name = "btnPayment";
-            btnPayment.Size = new Size(263, 43);
-            btnPayment.TabIndex = 37;
-            btnPayment.Text = "PAYMENT";
-            btnPayment.UseVisualStyleBackColor = false;
-            // 
-            // btnCheckOut
-            // 
-            btnCheckOut.BackColor = Color.FromArgb(48, 91, 171);
-            btnCheckOut.FlatStyle = FlatStyle.Popup;
-            btnCheckOut.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
-            btnCheckOut.ForeColor = SystemColors.ButtonHighlight;
-            btnCheckOut.Location = new Point(35, 463);
-            btnCheckOut.Name = "btnCheckOut";
-            btnCheckOut.Size = new Size(263, 43);
-            btnCheckOut.TabIndex = 36;
-            btnCheckOut.Text = "CHECK OUT";
-            btnCheckOut.UseVisualStyleBackColor = false;
-            // 
             // btnCheckIn
             // 
             btnCheckIn.BackColor = Color.FromArgb(48, 91, 171);
@@ -485,7 +457,7 @@
             btnCheckIn.Name = "btnCheckIn";
             btnCheckIn.Size = new Size(263, 43);
             btnCheckIn.TabIndex = 35;
-            btnCheckIn.Text = "CHECK IN";
+            btnCheckIn.Text = "INVOICED";
             btnCheckIn.UseVisualStyleBackColor = false;
             // 
             // btnReservation
@@ -498,8 +470,9 @@
             btnReservation.Name = "btnReservation";
             btnReservation.Size = new Size(263, 43);
             btnReservation.TabIndex = 34;
-            btnReservation.Text = "RESERVATION";
+            btnReservation.Text = "BOOKED";
             btnReservation.UseVisualStyleBackColor = false;
+            btnReservation.Click += btnReservation_Click;
             // 
             // btnGuestManagement
             // 
@@ -524,7 +497,7 @@
             btnRoom.Name = "btnRoom";
             btnRoom.Size = new Size(263, 43);
             btnRoom.TabIndex = 32;
-            btnRoom.Text = "ROOM";
+            btnRoom.Text = "ROOMS";
             btnRoom.UseVisualStyleBackColor = false;
             // 
             // btnDashboard
@@ -726,8 +699,6 @@
             panel5.Controls.Add(btnGuestManagement);
             panel5.Controls.Add(btnReservation);
             panel5.Controls.Add(btnCheckIn);
-            panel5.Controls.Add(btnCheckOut);
-            panel5.Controls.Add(btnPayment);
             panel5.Location = new Point(0, -1);
             panel5.Name = "panel5";
             panel5.Size = new Size(336, 1044);
@@ -819,7 +790,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1370, 749);
             Controls.Add(panel8);
             Controls.Add(pnlRoom);
             Controls.Add(pnlRoomType);
@@ -901,8 +872,6 @@
         private Panel panel1;
         private Label lblTotalRoom;
         private Label label1;
-        private Button btnPayment;
-        private Button btnCheckOut;
         private Button btnCheckIn;
         private Button btnReservation;
         private Button btnGuestManagement;
