@@ -13,4 +13,4 @@ Post-Deployment Script Template
 INSERT INTO Users
 VALUES
 ('admin','Administrator','admin123','Admin',GETDATE()),
-('frontdesk','Jane Lapuz','frontdesk123','FrontDesk',GETDATE());
+('frontdesk','FrontDesk','frontdesk123','FrontDesk',GETDATE());
