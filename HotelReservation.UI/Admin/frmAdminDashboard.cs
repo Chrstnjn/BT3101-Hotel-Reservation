@@ -33,16 +33,16 @@ namespace HotelReservation.UI.Admin
 
             lblAvailable.Text = roomRepo.GetRooms().Rows.Count.ToString();
             lblTotalGuest.Text = guestRepo.GetGuests().Rows.Count.ToString();
-            
-        //booked
+
+            //booked
             DataTable reservations = controller.GetReservations();
-           int CReserved = Convert.ToInt32( reservations.Select("Status = 'Reserved'").Length.ToString());
-           int CCheckIn = Convert.ToInt32(reservations.Select("Status = 'Checked-In'").Length.ToString());
-           int totalBooked = CReserved + CCheckIn;
+            int CReserved = Convert.ToInt32(reservations.Select("Status = 'Reserved'").Length.ToString());
+            int CCheckIn = Convert.ToInt32(reservations.Select("Status = 'Checked-In'").Length.ToString());
+            int totalBooked = CReserved + CCheckIn;
             lblTotalReservation.Text = totalBooked.ToString();
 
-           // Total checked-out guests
-           DataTable billing = controller.GetBillingRecords();
+            // Total checked-out guests
+            DataTable billing = controller.GetBillingRecords();
             lblTotalRecords.Text = billing.Rows.Count.ToString();
         }
 
