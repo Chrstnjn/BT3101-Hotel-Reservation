@@ -87,5 +87,7 @@
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />
     <None Include="Scripts\GuestScript.sql" />
+    <None Include="Scripts\RoomTypeScript.sql" />
+    <None Include="Scripts\RoomScript.sql" />
   </ItemGroup>
 </Project>
