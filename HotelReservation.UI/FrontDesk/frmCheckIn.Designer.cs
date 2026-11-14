@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheckIn));
             btnBilling = new Button();
             btnCheckOut = new Button();
             btnCheckIn = new Button();
@@ -47,121 +48,169 @@
             processCheckToolStripMenuItem = new ToolStripMenuItem();
             cancelToolStripMenuItem = new ToolStripMenuItem();
             btnRecords = new Button();
+            panel1 = new Panel();
+            label4 = new Label();
+            panel2 = new Panel();
+            panel3 = new Panel();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvCheckIn).BeginInit();
             contextMenuStrip1.SuspendLayout();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnBilling
             // 
-            btnBilling.Location = new Point(11, 293);
+            btnBilling.BackColor = Color.FromArgb(48, 91, 171);
+            btnBilling.FlatStyle = FlatStyle.Popup;
+            btnBilling.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnBilling.ForeColor = SystemColors.ButtonHighlight;
+            btnBilling.Location = new Point(35, 521);
             btnBilling.Name = "btnBilling";
-            btnBilling.Size = new Size(108, 34);
+            btnBilling.Size = new Size(263, 43);
             btnBilling.TabIndex = 27;
-            btnBilling.Text = "Billing Payment";
-            btnBilling.UseVisualStyleBackColor = true;
+            btnBilling.Text = "BILLING PAYMENT";
+            btnBilling.UseVisualStyleBackColor = false;
             btnBilling.Click += btnBilling_Click;
             // 
             // btnCheckOut
             // 
-            btnCheckOut.Location = new Point(11, 253);
+            btnCheckOut.BackColor = Color.FromArgb(48, 91, 171);
+            btnCheckOut.FlatStyle = FlatStyle.Popup;
+            btnCheckOut.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnCheckOut.ForeColor = SystemColors.ButtonHighlight;
+            btnCheckOut.Location = new Point(35, 463);
             btnCheckOut.Name = "btnCheckOut";
-            btnCheckOut.Size = new Size(108, 34);
+            btnCheckOut.Size = new Size(263, 43);
             btnCheckOut.TabIndex = 26;
-            btnCheckOut.Text = "Check Out";
-            btnCheckOut.UseVisualStyleBackColor = true;
+            btnCheckOut.Text = "CHECK OUT";
+            btnCheckOut.UseVisualStyleBackColor = false;
             btnCheckOut.Click += btnCheckOut_Click;
             // 
             // btnCheckIn
             // 
-            btnCheckIn.Location = new Point(12, 213);
+            btnCheckIn.BackColor = Color.FromArgb(48, 91, 171);
+            btnCheckIn.FlatStyle = FlatStyle.Popup;
+            btnCheckIn.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnCheckIn.ForeColor = SystemColors.ButtonHighlight;
+            btnCheckIn.Location = new Point(35, 405);
             btnCheckIn.Name = "btnCheckIn";
-            btnCheckIn.Size = new Size(108, 34);
+            btnCheckIn.Size = new Size(263, 43);
             btnCheckIn.TabIndex = 25;
-            btnCheckIn.Text = "Check In";
-            btnCheckIn.UseVisualStyleBackColor = true;
+            btnCheckIn.Text = "CHECK IN";
+            btnCheckIn.UseVisualStyleBackColor = false;
             // 
             // btnReservation
             // 
-            btnReservation.Location = new Point(12, 173);
+            btnReservation.BackColor = Color.FromArgb(48, 91, 171);
+            btnReservation.FlatStyle = FlatStyle.Popup;
+            btnReservation.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnReservation.ForeColor = SystemColors.ButtonHighlight;
+            btnReservation.Location = new Point(35, 348);
             btnReservation.Name = "btnReservation";
-            btnReservation.Size = new Size(108, 34);
+            btnReservation.Size = new Size(263, 43);
             btnReservation.TabIndex = 24;
-            btnReservation.Text = "Reservation";
-            btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Text = "RESERVATION";
+            btnReservation.UseVisualStyleBackColor = false;
             btnReservation.Click += btnReservation_Click;
             // 
             // btnGuestManagement
             // 
-            btnGuestManagement.Location = new Point(12, 133);
+            btnGuestManagement.BackColor = Color.FromArgb(48, 91, 171);
+            btnGuestManagement.FlatStyle = FlatStyle.Popup;
+            btnGuestManagement.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnGuestManagement.ForeColor = SystemColors.ButtonHighlight;
+            btnGuestManagement.Location = new Point(35, 293);
             btnGuestManagement.Name = "btnGuestManagement";
-            btnGuestManagement.Size = new Size(108, 34);
+            btnGuestManagement.Size = new Size(263, 43);
             btnGuestManagement.TabIndex = 23;
-            btnGuestManagement.Text = "Guest";
-            btnGuestManagement.UseVisualStyleBackColor = true;
+            btnGuestManagement.Text = "GUEST";
+            btnGuestManagement.UseVisualStyleBackColor = false;
             btnGuestManagement.Click += btnGuestManagement_Click;
             // 
             // btnRoom
             // 
-            btnRoom.Location = new Point(12, 93);
+            btnRoom.BackColor = Color.FromArgb(48, 91, 171);
+            btnRoom.FlatStyle = FlatStyle.Popup;
+            btnRoom.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnRoom.ForeColor = SystemColors.ButtonHighlight;
+            btnRoom.Location = new Point(35, 237);
             btnRoom.Name = "btnRoom";
-            btnRoom.Size = new Size(108, 34);
+            btnRoom.Size = new Size(263, 43);
             btnRoom.TabIndex = 22;
-            btnRoom.Text = "Room";
-            btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Text = "ROOM";
+            btnRoom.UseVisualStyleBackColor = false;
             btnRoom.Click += btnRoom_Click;
             // 
             // btnDashboard
             // 
-            btnDashboard.Location = new Point(12, 53);
+            btnDashboard.BackColor = Color.FromArgb(48, 91, 171);
+            btnDashboard.FlatStyle = FlatStyle.Popup;
+            btnDashboard.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnDashboard.ForeColor = SystemColors.ButtonHighlight;
+            btnDashboard.Location = new Point(35, 181);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(108, 34);
+            btnDashboard.Size = new Size(263, 43);
             btnDashboard.TabIndex = 21;
-            btnDashboard.Text = "Dashboard";
-            btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Text = "DASHBOARD";
+            btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(155, 24);
+            label1.Font = new Font("Constantia", 21.75F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(32, 36);
             label1.Name = "label1";
-            label1.Size = new Size(53, 15);
+            label1.Size = new Size(137, 36);
             label1.TabIndex = 28;
             label1.Text = "Check In";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(155, 88);
+            txtSearch.Font = new Font("Segoe UI", 18F);
+            txtSearch.Location = new Point(24, 93);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(623, 23);
+            txtSearch.Size = new Size(1465, 39);
             txtSearch.TabIndex = 30;
             txtSearch.TextChanged += txtSearch_TextChanged;
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(12, 404);
+            btnLogout.BackColor = Color.FromArgb(255, 100, 100);
+            btnLogout.FlatStyle = FlatStyle.Popup;
+            btnLogout.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnLogout.ForeColor = SystemColors.ButtonHighlight;
+            btnLogout.Location = new Point(35, 973);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(108, 34);
+            btnLogout.Size = new Size(263, 43);
             btnLogout.TabIndex = 31;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(155, 59);
+            label3.Font = new Font("Constantia", 20.25F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(24, 30);
             label3.Name = "label3";
-            label3.Size = new Size(113, 15);
+            label3.Size = new Size(269, 33);
             label3.TabIndex = 32;
             label3.Text = "Awaiting Check-Ins:";
             // 
             // lblAwaitingCount
             // 
             lblAwaitingCount.AutoSize = true;
-            lblAwaitingCount.Location = new Point(266, 59);
+            lblAwaitingCount.Font = new Font("Constantia", 20.25F, FontStyle.Bold);
+            lblAwaitingCount.ForeColor = Color.White;
+            lblAwaitingCount.Location = new Point(315, 29);
             lblAwaitingCount.Name = "lblAwaitingCount";
-            lblAwaitingCount.Size = new Size(12, 15);
+            lblAwaitingCount.Size = new Size(24, 33);
             lblAwaitingCount.TabIndex = 33;
             lblAwaitingCount.Text = "-";
             // 
@@ -171,9 +220,9 @@
             dgvCheckIn.BackgroundColor = SystemColors.ActiveCaption;
             dgvCheckIn.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCheckIn.GridColor = SystemColors.InactiveCaption;
-            dgvCheckIn.Location = new Point(155, 142);
+            dgvCheckIn.Location = new Point(24, 173);
             dgvCheckIn.Name = "dgvCheckIn";
-            dgvCheckIn.Size = new Size(633, 296);
+            dgvCheckIn.Size = new Size(1465, 683);
             dgvCheckIn.TabIndex = 34;
             dgvCheckIn.CellFormatting += dgvCheckIn_CellFormatting;
             dgvCheckIn.CellMouseDown += dgvCheckIn_CellMouseDown;
@@ -181,9 +230,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(605, 121);
+            label2.Font = new Font("Constantia", 20.25F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(1060, 137);
             label2.Name = "label2";
-            label2.Size = new Size(180, 15);
+            label2.Size = new Size(429, 33);
             label2.TabIndex = 35;
             label2.Text = "Press 'Right-Click' to view details";
             // 
@@ -209,27 +260,84 @@
             // 
             // btnRecords
             // 
-            btnRecords.Location = new Point(12, 333);
+            btnRecords.BackColor = Color.FromArgb(48, 91, 171);
+            btnRecords.FlatStyle = FlatStyle.Popup;
+            btnRecords.Font = new Font("Constantia", 9.75F, FontStyle.Bold);
+            btnRecords.ForeColor = SystemColors.ButtonHighlight;
+            btnRecords.Location = new Point(35, 579);
             btnRecords.Name = "btnRecords";
-            btnRecords.Size = new Size(108, 34);
+            btnRecords.Size = new Size(263, 43);
             btnRecords.TabIndex = 36;
-            btnRecords.Text = "Booked Records";
-            btnRecords.UseVisualStyleBackColor = true;
+            btnRecords.Text = "BOOKED RECORDS";
+            btnRecords.UseVisualStyleBackColor = false;
             btnRecords.Click += btnRecords_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(19, 52, 113);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(btnLogout);
+            panel1.Location = new Point(0, -1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(336, 1044);
+            panel1.TabIndex = 37;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            label4.ForeColor = Color.FromArgb(101, 138, 208);
+            label4.Location = new Point(27, 160);
+            label4.Name = "label4";
+            label4.Size = new Size(86, 15);
+            label4.TabIndex = 32;
+            label4.Text = "NAVIGATIONS";
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(7, 31, 77);
+            panel2.Controls.Add(label1);
+            panel2.Location = new Point(334, -1);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1572, 108);
+            panel2.TabIndex = 38;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(48, 91, 171);
+            panel3.Controls.Add(label3);
+            panel3.Controls.Add(lblAwaitingCount);
+            panel3.Controls.Add(txtSearch);
+            panel3.Controls.Add(dgvCheckIn);
+            panel3.Controls.Add(label2);
+            panel3.Location = new Point(367, 140);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1510, 877);
+            panel3.TabIndex = 39;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.FromArgb(215, 218, 224);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(35, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(263, 93);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 46;
+            pictureBox1.TabStop = false;
             // 
             // frmCheckIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(pictureBox1);
+            Controls.Add(panel2);
             Controls.Add(btnRecords);
-            Controls.Add(label2);
-            Controls.Add(dgvCheckIn);
-            Controls.Add(lblAwaitingCount);
-            Controls.Add(label3);
-            Controls.Add(btnLogout);
-            Controls.Add(txtSearch);
-            Controls.Add(label1);
             Controls.Add(btnBilling);
             Controls.Add(btnCheckOut);
             Controls.Add(btnCheckIn);
@@ -237,13 +345,21 @@
             Controls.Add(btnGuestManagement);
             Controls.Add(btnRoom);
             Controls.Add(btnDashboard);
+            Controls.Add(panel1);
+            Controls.Add(panel3);
             Name = "frmCheckIn";
             Text = "frmCheckIn";
             Load += frmCheckIn_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCheckIn).EndInit();
             contextMenuStrip1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -266,5 +382,10 @@
         private ToolStripMenuItem processCheckToolStripMenuItem;
         private ToolStripMenuItem cancelToolStripMenuItem;
         private Button btnRecords;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private PictureBox pictureBox1;
+        private Label label4;
     }
 }
