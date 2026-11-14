@@ -30,6 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCheckOut));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnLogout = new Button();
             btnBilling = new Button();
             btnCheckOut = new Button();
@@ -43,7 +46,6 @@
             label3 = new Label();
             txtSearch = new TextBox();
             label2 = new Label();
-            dgvCheckOut = new DataGridView();
             contextMenuStrip1 = new ContextMenuStrip(components);
             processCheckOutToolStripMenuItem = new ToolStripMenuItem();
             processBillingToolStripMenuItem = new ToolStripMenuItem();
@@ -53,12 +55,13 @@
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             panel3 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)dgvCheckOut).BeginInit();
+            dgvCheckOut = new DataGridView();
             contextMenuStrip1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCheckOut).BeginInit();
             SuspendLayout();
             // 
             // btnLogout
@@ -225,19 +228,6 @@
             label2.TabIndex = 44;
             label2.Text = "Press 'Right-Click' to view details";
             // 
-            // dgvCheckOut
-            // 
-            dgvCheckOut.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCheckOut.BackgroundColor = SystemColors.ActiveCaption;
-            dgvCheckOut.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCheckOut.GridColor = SystemColors.InactiveCaption;
-            dgvCheckOut.Location = new Point(24, 173);
-            dgvCheckOut.Name = "dgvCheckOut";
-            dgvCheckOut.Size = new Size(1465, 683);
-            dgvCheckOut.TabIndex = 45;
-            dgvCheckOut.CellFormatting += dgvCheckIn_CellFormatting;
-            dgvCheckOut.CellMouseDown += dgvCheckOut_CellMouseDown;
-            // 
             // contextMenuStrip1
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { processCheckOutToolStripMenuItem, processBillingToolStripMenuItem });
@@ -329,10 +319,10 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(48, 91, 171);
+            panel3.Controls.Add(dgvCheckOut);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(lblPendingCheckOut);
             panel3.Controls.Add(label2);
-            panel3.Controls.Add(dgvCheckOut);
             panel3.Controls.Add(txtSearch);
             panel3.Font = new Font("Constantia", 20.25F, FontStyle.Bold);
             panel3.ForeColor = Color.White;
@@ -340,6 +330,43 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1510, 877);
             panel3.TabIndex = 49;
+            // 
+            // dgvCheckOut
+            // 
+            dgvCheckOut.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCheckOut.BackgroundColor = SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvCheckOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCheckOut.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvCheckOut.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvCheckOut.GridColor = SystemColors.InactiveCaption;
+            dgvCheckOut.Location = new Point(24, 173);
+            dgvCheckOut.Name = "dgvCheckOut";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvCheckOut.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvCheckOut.Size = new Size(1465, 683);
+            dgvCheckOut.TabIndex = 45;
+            dgvCheckOut.CellFormatting += dgvCheckIn_CellFormatting;
+            dgvCheckOut.CellMouseDown += dgvCheckOut_CellMouseDown;
             // 
             // frmCheckOut
             // 
@@ -352,7 +379,6 @@
             Name = "frmCheckOut";
             Text = "frmCheckOut";
             Load += frmCheckOut_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvCheckOut).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -361,6 +387,7 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCheckOut).EndInit();
             ResumeLayout(false);
         }
 
@@ -379,7 +406,6 @@
         private Label label3;
         private TextBox txtSearch;
         private Label label2;
-        private DataGridView dgvCheckOut;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem processCheckOutToolStripMenuItem;
         private ToolStripMenuItem processBillingToolStripMenuItem;
@@ -389,5 +415,6 @@
         private Panel panel3;
         private PictureBox pictureBox1;
         private Label label4;
+        private DataGridView dgvCheckOut;
     }
 }
