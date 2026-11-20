@@ -1320,9 +1320,9 @@
             lblDpSubtotal.ForeColor = Color.Green;
             lblDpSubtotal.Location = new Point(164, 135);
             lblDpSubtotal.Name = "lblDpSubtotal";
-            lblDpSubtotal.Size = new Size(39, 16);
+            lblDpSubtotal.Size = new Size(11, 16);
             lblDpSubtotal.TabIndex = 43;
-            lblDpSubtotal.Text = "-2000";
+            lblDpSubtotal.Text = "-";
             // 
             // label22
             // 
