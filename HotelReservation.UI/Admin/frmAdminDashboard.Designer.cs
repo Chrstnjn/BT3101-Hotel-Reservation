@@ -43,6 +43,7 @@
             label2 = new Label();
             pictureBox1 = new PictureBox();
             panel8 = new Panel();
+            label5 = new Label();
             panel4 = new Panel();
             lblTotalReservation = new Label();
             label8 = new Label();
@@ -58,7 +59,6 @@
             panel6 = new Panel();
             dgvRecentBooked = new DataGridView();
             label3 = new Label();
-            label5 = new Label();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAvailable).BeginInit();
             panel7.SuspendLayout();
@@ -246,9 +246,20 @@
             panel8.Size = new Size(1572, 108);
             panel8.TabIndex = 49;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Constantia", 21.75F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(50, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(267, 36);
+            label5.TabIndex = 0;
+            label5.Text = "Admin Dashboard";
+            // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.ActiveCaption;
+            panel4.BackColor = Color.FromArgb(254, 159, 77);
             panel4.Controls.Add(lblTotalReservation);
             panel4.Controls.Add(label8);
             panel4.Location = new Point(739, 123);
@@ -280,7 +291,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.BackColor = Color.FromArgb(255, 100, 100);
             panel2.Controls.Add(lblTotalGuest);
             panel2.Controls.Add(label4);
             panel2.Location = new Point(1130, 123);
@@ -312,7 +323,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.BackColor = Color.FromArgb(6, 116, 41);
             panel1.Controls.Add(lblTotalRoom);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(349, 123);
@@ -344,7 +355,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.ActiveCaption;
+            panel3.BackColor = Color.FromArgb(19, 52, 113);
             panel3.Controls.Add(lblTotalRecords);
             panel3.Controls.Add(label6);
             panel3.Location = new Point(1522, 123);
@@ -402,17 +413,6 @@
             label3.Size = new Size(155, 22);
             label3.TabIndex = 0;
             label3.Text = "Recently Booked";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Constantia", 21.75F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(50, 37);
-            label5.Name = "label5";
-            label5.Size = new Size(267, 36);
-            label5.TabIndex = 0;
-            label5.Text = "Admin Dashboard";
             // 
             // frmAdminDashboard
             // 
