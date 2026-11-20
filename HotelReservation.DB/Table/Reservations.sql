@@ -19,6 +19,7 @@
     TotalPrice DECIMAL(18,2) NOT NULL,
 
     Status VARCHAR(50) NOT NULL DEFAULT 'Pending Downpayment',
+    PaymentDueDate DATE NULL,  
     CreatedDate DATETIME NOT NULL DEFAULT GETDATE(),
     CheckedInAt DATETIME NULL,
     CheckedOutAt DATETIME NULL,

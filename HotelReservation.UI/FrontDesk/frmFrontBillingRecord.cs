@@ -153,6 +153,7 @@ namespace HotelReservation.UI.FrontDesk
                 Nights = nights,
                 Rate = nights > 0 ? totalCharges / nights : 0,
                 TotalCharges = totalCharges,
+                OverdueCharge = Convert.ToDecimal(row.Cells["Charges"].Value),   // new
                 Paid = Convert.ToDecimal(row.Cells["Paid"].Value),
                 Balance = Convert.ToDecimal(row.Cells["Balance"].Value)
             };

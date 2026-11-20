@@ -10,5 +10,9 @@
         public int TotalNights { get; set; }
         public decimal RatePerNight { get; set; }
         public decimal TotalPrice { get; set; }
+
+        public string Status { get; set; } = string.Empty;   // added
+        public DateTime? PaymentDueDate { get; set; }        // added
+        public int ReservationID { get; set; }
     }
 }

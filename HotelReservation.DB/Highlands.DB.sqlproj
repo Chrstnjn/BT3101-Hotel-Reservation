@@ -83,6 +83,8 @@
     <Build Include="Stored Procedures\usp_GetAvailableRooms.sql" />
     <Build Include="Stored Procedures\usp_GetRoomsByDate.sql" />
     <Build Include="Stored Procedures\usp_GetRecentActivity.sql" />
+    <Build Include="Table\Charge.sql" />
+    <Build Include="Stored Procedures\usp_ApplyLateCharges.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\UserScript.sql" />
