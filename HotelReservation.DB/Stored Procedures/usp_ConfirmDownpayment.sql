@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE usp_ConfirmDownpayment
+﻿GO
+CREATE PROCEDURE usp_ConfirmDownpayment
 (
     @ReservationID INT,
     @Amount DECIMAL(18,2),
@@ -11,9 +12,9 @@ BEGIN
 
     BEGIN TRANSACTION;
 
-    DECLARE @RoomID INT;
+    DECLARE @RoomID INT, @TotalPrice DECIMAL(18,2);
 
-    SELECT @RoomID = RoomID
+    SELECT @RoomID = RoomID, @TotalPrice = TotalPrice
     FROM Reservations
     WHERE ReservationID = @ReservationID AND Status = 'Pending Downpayment';
 
@@ -21,6 +22,13 @@ BEGIN
     BEGIN
         ROLLBACK TRANSACTION;
         THROW 50002, 'This reservation is not waiting for a downpayment.', 1;
+    END
+
+    -- The downpayment is 50% of the total price
+    IF @Amount < ROUND(@TotalPrice * 0.5, 2)
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50012, 'The downpayment must be at least 50% of the total price.', 1;
     END
 
     -- The room is taken only now, and only if nobody else paid for it first

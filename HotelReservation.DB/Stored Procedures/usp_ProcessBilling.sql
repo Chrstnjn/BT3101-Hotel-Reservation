@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE usp_ProcessBilling
+﻿GO
+CREATE PROCEDURE usp_ProcessBilling
 (
     @ReservationID INT,
     @AmountReceived DECIMAL(18,2),
@@ -9,9 +10,13 @@ BEGIN
     SET NOCOUNT ON;
     SET XACT_ABORT ON;
 
+    -- Make sure the overdue charge is added before the balance is computed
+    EXEC usp_ApplyLateCharges;
+
     BEGIN TRANSACTION;
 
-    DECLARE @TotalPrice DECIMAL(18,2), @Paid DECIMAL(18,2), @Balance DECIMAL(18,2);
+    DECLARE @TotalPrice DECIMAL(18,2), @Charges DECIMAL(18,2),
+            @Paid DECIMAL(18,2), @Balance DECIMAL(18,2);
 
     SELECT @TotalPrice = TotalPrice
     FROM Reservations
@@ -23,11 +28,15 @@ BEGIN
         THROW 50009, 'Only a Checked-In reservation can be billed.', 1;
     END
 
+    SELECT @Charges = ISNULL(SUM(Amount), 0)
+    FROM Charge
+    WHERE ReservationID = @ReservationID;
+
     SELECT @Paid = ISNULL(SUM(Amount), 0)
     FROM DPayments
     WHERE ReservationID = @ReservationID;
 
-    SET @Balance = @TotalPrice - @Paid;
+    SET @Balance = @TotalPrice + @Charges - @Paid;
 
     IF @Balance <= 0
     BEGIN

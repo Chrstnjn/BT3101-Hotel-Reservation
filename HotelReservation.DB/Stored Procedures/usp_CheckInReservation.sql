@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE usp_CheckInReservation
+﻿GO
+CREATE PROCEDURE usp_CheckInReservation
 (
     @ReservationID INT
 )
@@ -18,7 +19,7 @@ BEGIN
     IF @RoomID IS NULL
     BEGIN
         ROLLBACK TRANSACTION;
-        THROW 50006, 'Only an Reserved reservation can be checked in.', 1;
+        THROW 50006, 'Only a Reserved reservation can be checked in.', 1;
     END
 
     UPDATE Rooms

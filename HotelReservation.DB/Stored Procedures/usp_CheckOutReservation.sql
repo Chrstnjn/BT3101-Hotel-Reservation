@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE usp_CheckOutReservation
+﻿GO
+CREATE PROCEDURE usp_CheckOutReservation
 (
     @ReservationID INT
 )
@@ -9,7 +10,8 @@ BEGIN
 
     BEGIN TRANSACTION;
 
-    DECLARE @RoomID INT, @TotalPrice DECIMAL(18,2), @Paid DECIMAL(18,2);
+    DECLARE @RoomID INT, @TotalPrice DECIMAL(18,2),
+            @Charges DECIMAL(18,2), @Paid DECIMAL(18,2);
 
     SELECT @RoomID = RoomID, @TotalPrice = TotalPrice
     FROM Reservations
@@ -21,11 +23,17 @@ BEGIN
         THROW 50007, 'Only a Checked-In reservation can be checked out.', 1;
     END
 
+    -- Overdue and other charges
+    SELECT @Charges = ISNULL(SUM(Amount), 0)
+    FROM Charge
+    WHERE ReservationID = @ReservationID;
+
     SELECT @Paid = ISNULL(SUM(Amount), 0)
     FROM DPayments
     WHERE ReservationID = @ReservationID;
 
-    IF @TotalPrice - @Paid > 0
+    -- The balance now includes the charges
+    IF @TotalPrice + @Charges - @Paid > 0
     BEGIN
         ROLLBACK TRANSACTION;
         THROW 50008, 'This reservation still has a balance. Please process the billing first.', 1;
@@ -42,3 +50,4 @@ BEGIN
 
     COMMIT TRANSACTION;
 END
+GO

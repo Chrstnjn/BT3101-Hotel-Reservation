@@ -56,10 +56,11 @@ namespace HotelReservation.UI.FrontDesk
             // The grid shows only: Guest Name, Phone Number, Room No, Check-In, Check-Out.
             // The other columns stay in the data for the details on the right.
             string[] hiddenColumns =
-            {
-       "ReservationID", "ReservationNumber", "RoomTypeName", "TotalNights",
-        "TotalPrice", "Paid", "Balance", "Status", "CheckedInAt"
-    };
+         {
+            "ReservationID", "ReservationNumber", "RoomTypeName", "TotalNights",
+            "TotalPrice", "Paid", "Balance", "Status", "CheckedInAt",
+            "Charges", "PaymentDueDate"
+};
 
             foreach (string column in hiddenColumns)
                 dgvReservationList.Columns[column].Visible = false;
@@ -124,11 +125,13 @@ namespace HotelReservation.UI.FrontDesk
             DataGridViewRow row = dgvReservationList.SelectedRows[0];
 
             int nights = Convert.ToInt32(row.Cells["TotalNights"].Value);
-            decimal totalCharges = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+            decimal roomTotal = Convert.ToDecimal(row.Cells["TotalPrice"].Value);
+            decimal overdue = Convert.ToDecimal(row.Cells["Charges"].Value);
             decimal totalPaid = Convert.ToDecimal(row.Cells["Paid"].Value);
-            decimal rate = nights > 0 ? totalCharges / nights : 0;
+            decimal rate = nights > 0 ? roomTotal / nights : 0;
 
-            currentBalance = totalCharges - totalPaid;
+            // The balance already includes the overdue charge (from usp_GetCheckOuts)
+            currentBalance = Convert.ToDecimal(row.Cells["Balance"].Value);
 
             // Reservation Details
             lblGuest.Text = row.Cells["GuestName"].Value.ToString();
@@ -142,7 +145,9 @@ namespace HotelReservation.UI.FrontDesk
             lblPdTotalNights.Text = nights.ToString();
 
             // Summary
-            lblSTotalCharge.Text = totalCharges.ToString(PesoFormat);
+            lblSTotalCharge.Text = roomTotal.ToString(PesoFormat);   // room only
+            lblSOverdue.Text = overdue.ToString(PesoFormat);
+            lblSOverdue.ForeColor = overdue > 0 ? Color.Crimson : Color.Green;
             lblSTotalPaid.Text = totalPaid.ToString(NegaPesoFormat);
             lblBalance.Text = currentBalance.ToString(PesoFormat);
 
@@ -150,6 +155,7 @@ namespace HotelReservation.UI.FrontDesk
             numPaymentReceived.Value = 0;
             cboPaymentMethod.SelectedIndex = -1;
             lblChange.Text = "-";
+
         }
 
         private void ClearDetails()
@@ -167,6 +173,7 @@ namespace HotelReservation.UI.FrontDesk
 
             lblSTotalCharge.Text = "-";
             lblSTotalPaid.Text = "-";
+            lblSOverdue.Text = "-";
             lblBalance.Text = "-";
 
             numPaymentReceived.Value = 0;
@@ -301,7 +308,10 @@ namespace HotelReservation.UI.FrontDesk
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadBillings();
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
             dgvReservationList.ClearSelection();

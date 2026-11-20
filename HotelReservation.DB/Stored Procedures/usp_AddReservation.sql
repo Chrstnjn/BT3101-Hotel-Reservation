@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE usp_AddReservation
+﻿GO
+CREATE PROCEDURE usp_AddReservation
 (
     @GuestID INT,
     @RoomID INT,
@@ -19,10 +20,11 @@ BEGIN
 
     INSERT INTO Reservations
         (GuestID, RoomID, CheckInDate, CheckOutDate, NumberOfGuests,
-         TotalNights, RatePerNight, TotalPrice, Status)
+         TotalNights, RatePerNight, TotalPrice, Status, PaymentDueDate)
     VALUES
         (@GuestID, @RoomID, @CheckInDate, @CheckOutDate, @NumberOfGuests,
-         @TotalNights, @RatePerNight, @TotalPrice, 'Pending Downpayment');
+         @TotalNights, @RatePerNight, @TotalPrice, 'Pending Downpayment',
+         CAST(@CheckOutDate AS DATE));
 
     -- Send the number back to the app
     SELECT ReservationNumber

@@ -83,6 +83,8 @@
             label5 = new Label();
             panel6 = new Panel();
             panel7 = new Panel();
+            label6 = new Label();
+            lblSOverdue = new Label();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
@@ -275,6 +277,8 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.ControlLight;
+            panel3.Controls.Add(lblSOverdue);
+            panel3.Controls.Add(label6);
             panel3.Controls.Add(lblSTotalCharge);
             panel3.Controls.Add(lblSTotalPaid);
             panel3.Controls.Add(label4);
@@ -290,7 +294,7 @@
             lblSTotalCharge.AutoSize = true;
             lblSTotalCharge.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             lblSTotalCharge.ForeColor = Color.OliveDrab;
-            lblSTotalCharge.Location = new Point(166, 58);
+            lblSTotalCharge.Location = new Point(166, 48);
             lblSTotalCharge.Name = "lblSTotalCharge";
             lblSTotalCharge.Size = new Size(16, 23);
             lblSTotalCharge.TabIndex = 48;
@@ -301,7 +305,7 @@
             lblSTotalPaid.AutoSize = true;
             lblSTotalPaid.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
             lblSTotalPaid.ForeColor = Color.IndianRed;
-            lblSTotalPaid.Location = new Point(166, 116);
+            lblSTotalPaid.Location = new Point(166, 129);
             lblSTotalPaid.Name = "lblSTotalPaid";
             lblSTotalPaid.Size = new Size(16, 23);
             lblSTotalPaid.TabIndex = 47;
@@ -311,7 +315,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(53, 116);
+            label4.Location = new Point(67, 129);
             label4.Name = "label4";
             label4.Size = new Size(91, 23);
             label4.TabIndex = 46;
@@ -321,7 +325,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
-            label3.Location = new Point(24, 58);
+            label3.Location = new Point(41, 51);
             label3.Name = "label3";
             label3.Size = new Size(120, 23);
             label3.TabIndex = 45;
@@ -425,7 +429,7 @@
             label22.AutoSize = true;
             label22.BackColor = SystemColors.ControlLight;
             label22.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
-            label22.Location = new Point(22, 132);
+            label22.Location = new Point(42, 132);
             label22.Name = "label22";
             label22.Size = new Size(116, 23);
             label22.TabIndex = 37;
@@ -458,7 +462,7 @@
             label26.AutoSize = true;
             label26.BackColor = SystemColors.ControlLight;
             label26.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
-            label26.Location = new Point(91, 75);
+            label26.Location = new Point(111, 75);
             label26.Name = "label26";
             label26.Size = new Size(47, 23);
             label26.TabIndex = 34;
@@ -469,7 +473,7 @@
             label27.AutoSize = true;
             label27.BackColor = SystemColors.ControlLight;
             label27.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
-            label27.Location = new Point(41, 20);
+            label27.Location = new Point(61, 20);
             label27.Name = "label27";
             label27.Size = new Size(97, 23);
             label27.TabIndex = 33;
@@ -731,6 +735,27 @@
             panel7.Size = new Size(909, 892);
             panel7.TabIndex = 73;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            label6.Location = new Point(17, 90);
+            label6.Name = "label6";
+            label6.Size = new Size(143, 23);
+            label6.TabIndex = 49;
+            label6.Text = "Overdue Charge:";
+            // 
+            // lblSOverdue
+            // 
+            lblSOverdue.AutoSize = true;
+            lblSOverdue.Font = new Font("Calibri", 14.25F, FontStyle.Bold);
+            lblSOverdue.ForeColor = Color.OliveDrab;
+            lblSOverdue.Location = new Point(166, 90);
+            lblSOverdue.Name = "lblSOverdue";
+            lblSOverdue.Size = new Size(16, 23);
+            lblSOverdue.TabIndex = 50;
+            lblSOverdue.Text = "-";
+            // 
             // frmBillingPayment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -820,5 +845,7 @@
         private PictureBox pictureBox1;
         private Panel panel6;
         private Panel panel7;
+        private Label label6;
+        private Label lblSOverdue;
     }
 }

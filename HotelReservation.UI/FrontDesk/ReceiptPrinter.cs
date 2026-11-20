@@ -19,6 +19,7 @@ namespace HotelReservation.UI.FrontDesk
         public decimal TotalCharges;
         public decimal Paid;
         public decimal Balance;
+        public decimal OverdueCharge;
     }
 
     // Used by frmCheckOut (after a check-out) and frmFrontBillingRecord (Print button)
@@ -77,7 +78,8 @@ namespace HotelReservation.UI.FrontDesk
                 "Check-in starts at 1:00 PM. Check-out is until 12:00 PM.",
                 "Smoking is not allowed inside the rooms.",
                 "Quiet hours are from 10:00 PM to 6:00 AM.",
-                "The hotel is not responsible for lost valuables."
+                "The hotel is not responsible for lost valuables.",
+                 "Late check-out or extension is charged at ₱500 per additional hour."
             };
 
             using (Font titleFont = new Font("Segoe UI Light", 30))
@@ -218,9 +220,16 @@ namespace HotelReservation.UI.FrontDesk
                 // Summary rows
                 float labelX = left + width * 0.45f;
 
-                TextLeft("Total Charges", font, grayBrush, labelX, y, rowH);
+                TextLeft("Room Charge", font, grayBrush, labelX, y, rowH);
                 TextRight(d.TotalCharges.ToString(PesoFormat), font, grayBrush, colAmountRight, y, rowH);
                 y += rowH;
+
+                if (d.OverdueCharge > 0)
+                {
+                    TextLeft("Overdue Charge", font, grayBrush, labelX, y, rowH);
+                    TextRight(d.OverdueCharge.ToString(PesoFormat), font, grayBrush, colAmountRight, y, rowH);
+                    y += rowH;
+                }
 
                 TextLeft("Total Paid", font, grayBrush, labelX, y, rowH);
                 TextRight(d.Paid.ToString(PesoFormat), font, grayBrush, colAmountRight, y, rowH);

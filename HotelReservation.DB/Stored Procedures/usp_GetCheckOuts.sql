@@ -1,7 +1,10 @@
-﻿CREATE PROCEDURE usp_GetCheckOuts
+﻿GO
+CREATE PROCEDURE usp_GetCheckOuts
 AS
 BEGIN
     SET NOCOUNT ON;
+
+    EXEC usp_ApplyLateCharges;
 
     SELECT
         r.ReservationID,
@@ -15,8 +18,10 @@ BEGIN
         ISNULL(r.CheckedInAt, r.CheckInDate) AS CheckedInAt,
         r.TotalNights,
         r.TotalPrice,
+        ISNULL(c.TotalCharges, 0) AS Charges,
         ISNULL(p.TotalPaid, 0) AS Paid,
-        r.TotalPrice - ISNULL(p.TotalPaid, 0) AS Balance,
+        r.TotalPrice + ISNULL(c.TotalCharges, 0) - ISNULL(p.TotalPaid, 0) AS Balance,
+        r.PaymentDueDate,
         r.Status
     FROM Reservations r
     INNER JOIN Guests g ON r.GuestID = g.GuestID
@@ -28,6 +33,12 @@ BEGIN
         FROM DPayments
         GROUP BY ReservationID
     ) p ON p.ReservationID = r.ReservationID
+    LEFT JOIN
+    (
+        SELECT ReservationID, SUM(Amount) AS TotalCharges
+        FROM Charge
+        GROUP BY ReservationID
+    ) c ON c.ReservationID = r.ReservationID
     WHERE r.Status = 'Checked-In'
     ORDER BY r.CheckOutDate ASC;
 END

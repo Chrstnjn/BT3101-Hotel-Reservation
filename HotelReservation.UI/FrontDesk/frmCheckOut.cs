@@ -40,6 +40,7 @@ namespace HotelReservation.UI.FrontDesk
             dgvCheckOut.Columns["ReservationID"].Visible = false;
             dgvCheckOut.Columns["TotalPrice"].Visible = false;
             dgvCheckOut.Columns["CheckedInAt"].Visible = false;
+            dgvCheckOut.Columns["PaymentDueDate"].Visible = false;
 
             dgvCheckOut.Columns["ReservationNumber"].HeaderText = "Reservation Number";
             dgvCheckOut.Columns["GuestName"].HeaderText = "Guest Name";
@@ -49,18 +50,19 @@ namespace HotelReservation.UI.FrontDesk
             dgvCheckOut.Columns["CheckInDate"].HeaderText = "Check-In Date";
             dgvCheckOut.Columns["CheckOutDate"].HeaderText = "Check-Out Date";
             dgvCheckOut.Columns["TotalNights"].HeaderText = "Total Night(s)";
+            dgvCheckOut.Columns["Charges"].HeaderText = "Overdue Charge";
             dgvCheckOut.Columns["Paid"].HeaderText = "Paid";
             dgvCheckOut.Columns["Balance"].HeaderText = "Balance";
             dgvCheckOut.Columns["Status"].HeaderText = "Status";
 
             dgvCheckOut.Columns["CheckInDate"].DefaultCellStyle.Format = DateTimeFormat;
             dgvCheckOut.Columns["CheckOutDate"].DefaultCellStyle.Format = DateTimeFormat;
+            dgvCheckOut.Columns["Charges"].DefaultCellStyle.Format = PesoFormat;
             dgvCheckOut.Columns["Paid"].DefaultCellStyle.Format = PesoFormat;
             dgvCheckOut.Columns["Balance"].DefaultCellStyle.Format = PesoFormat;
 
             ApplyCheckOutFilter();
         }
-
         private void ApplyCheckOutFilter()
         {
             if (checkOuts == null)
@@ -179,11 +181,11 @@ namespace HotelReservation.UI.FrontDesk
                 Nights = nights,
                 Rate = nights > 0 ? totalCharges / nights : 0,
                 TotalCharges = totalCharges,
+                OverdueCharge = Convert.ToDecimal(row.Cells["Charges"].Value),   // <-- add this
                 Paid = Convert.ToDecimal(row.Cells["Paid"].Value),
                 Balance = balance,
                 CheckedInAt = Convert.ToDateTime(row.Cells["CheckedInAt"].Value),
                 CheckedOutAt = DateTime.Now
-
             };
 
             try
