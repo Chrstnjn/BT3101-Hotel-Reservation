@@ -180,7 +180,7 @@ namespace HotelReservation.UI.FrontDesk
 
                 TextLeft(d.GuestName, font, grayBrush, left, y);
                 TextLeft("Checked In", headFont, navyBrush, infoLabelX, y);
-                TextRight(d.CheckedInAt.ToString(DateTimeFormat), font, grayBrush, right, y);
+                TextRight(d.CheckIn.ToString(DateTimeFormat), font, grayBrush, right, y);
                 y += 22;
 
                 TextLeft(FormatPhone(d.PhoneNumber), font, grayBrush, left, y);

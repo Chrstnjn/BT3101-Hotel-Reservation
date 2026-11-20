@@ -60,7 +60,6 @@ namespace HotelReservation.UI.Admin
 
             ApplyRecordFilter();
         }
-
         // Shows only Checked-Out, and also applies the search text
         private void ApplyRecordFilter()
         {
@@ -160,6 +159,7 @@ namespace HotelReservation.UI.Admin
                 Nights = nights,
                 Rate = nights > 0 ? totalCharges / nights : 0,
                 TotalCharges = totalCharges,
+                OverdueCharge = Convert.ToDecimal(row.Cells["Charges"].Value),   // new
                 Paid = Convert.ToDecimal(row.Cells["Paid"].Value),
                 Balance = Convert.ToDecimal(row.Cells["Balance"].Value)
             };
