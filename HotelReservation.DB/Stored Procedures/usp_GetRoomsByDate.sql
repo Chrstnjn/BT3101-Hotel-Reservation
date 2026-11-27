@@ -21,7 +21,8 @@ BEGIN
             ELSE 'Available'
         END AS Status
     FROM Rooms rm
-    INNER JOIN RoomTypes rt ON rm.RoomTypeID = rt.RoomTypeID
+    INNER JOIN RoomTypes rt
+        ON rm.RoomTypeID = rt.RoomTypeID
     OUTER APPLY
     (
         SELECT TOP 1 r.Status
@@ -30,12 +31,15 @@ BEGIN
           AND r.Status IN ('Reserved', 'Checked-In')
           AND CAST(r.CheckInDate AS DATE) <= @Date
           AND CASE
-                  -- The guest is still inside after the check-out time: the room is still taken today
-                  WHEN r.Status = 'Checked-In' AND r.CheckOutDate < GETDATE()
-                      THEN DATEADD(DAY, 1, @Today)
-                  ELSE CAST(r.CheckOutDate AS DATE)
+                WHEN r.Status = 'Checked-In'
+                     AND r.CheckOutDate < GETDATE()
+                THEN DATEADD(DAY, 1, @Today)
+                ELSE CAST(r.CheckOutDate AS DATE)
               END > @Date
         ORDER BY r.CheckInDate
     ) busy
-    ORDER BY rm.RoomNumber;
+    WHERE
+        rm.IsActive = 1
+        AND rt.IsActive = 1
+    ORDER BY CAST(rm.RoomNumber AS INT);
 END

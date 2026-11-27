@@ -19,6 +19,7 @@ namespace HotelReservation.UI.FrontDesk
         {
             SetupPaymentControls();
             LoadBillings();
+            DueWarning.Show(this, billings);
         }
 
         private void SetupPaymentControls()
@@ -27,7 +28,7 @@ namespace HotelReservation.UI.FrontDesk
             cboPaymentMethod.Items.Clear();
             cboPaymentMethod.Items.AddRange(new object[]
             {
-        "Cash", "GCash", "Maya", "Credit/Debit Card", "Bank Transfer"
+        "Cash", "GCash", "Maya", "Paypal", "Metrobank"
             });
 
             // The default maximum of a NumericUpDown is 100, which is too small for money
@@ -59,7 +60,7 @@ namespace HotelReservation.UI.FrontDesk
          {
             "ReservationID", "ReservationNumber", "RoomTypeName", "TotalNights",
             "TotalPrice", "Paid", "Balance", "Status", "CheckedInAt",
-            "Charges", "PaymentDueDate"
+            "Charges", "PaymentDueDate", "MustLeave", "NextCheckInDate"
 };
 
             foreach (string column in hiddenColumns)

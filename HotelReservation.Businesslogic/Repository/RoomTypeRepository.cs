@@ -8,26 +8,47 @@ namespace HotelReservation.Businesslogic.Repository
     public class RoomTypeRepository
     {
         private readonly string connectionString =
-               ConfigurationManager.ConnectionStrings["HighlandsDB"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["HighlandsDB"].ConnectionString;
 
         public bool AddRoomType(RoomTypeModel roomType)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = @"INSERT INTO RoomTypes
-                                (
-                                    RoomTypeName,
-                                    NumberOfBeds,
-                                    NumberOfPersons,
-                                    PricePerNight
-                                )
-                                VALUES
-                                (
-                                    @RoomTypeName,
-                                    @NumberOfBeds,
-                                    @NumberOfPersons,
-                                    @PricePerNight
-                                )";
+                string query = @"
+                IF EXISTS
+                (
+                    SELECT 1
+                    FROM RoomTypes
+                    WHERE RoomTypeName = @RoomTypeName
+                    AND IsActive = 0
+                )
+                BEGIN
+                    UPDATE RoomTypes
+                    SET
+                        IsActive = 1,
+                        NumberOfBeds = @NumberOfBeds,
+                        NumberOfPersons = @NumberOfPersons,
+                        PricePerNight = @PricePerNight
+                    WHERE RoomTypeName = @RoomTypeName
+                    AND IsActive = 0
+                END
+                ELSE
+                BEGIN
+                    INSERT INTO RoomTypes
+                    (
+                        RoomTypeName,
+                        NumberOfBeds,
+                        NumberOfPersons,
+                        PricePerNight
+                    )
+                    VALUES
+                    (
+                        @RoomTypeName,
+                        @NumberOfBeds,
+                        @NumberOfPersons,
+                        @PricePerNight
+                    )
+                END";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
@@ -48,7 +69,10 @@ namespace HotelReservation.Businesslogic.Repository
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM RoomTypes";
+                string query = @"
+                    SELECT *
+                    FROM RoomTypes
+                    WHERE IsActive = 1";
 
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
 
@@ -63,11 +87,11 @@ namespace HotelReservation.Businesslogic.Repository
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"UPDATE RoomTypes
-                         SET RoomTypeName = @RoomTypeName,
-                             NumberOfBeds = @NumberOfBeds,
-                             NumberOfPersons = @NumberOfPersons,
-                             PricePerNight = @PricePerNight
-                         WHERE RoomTypeID = @RoomTypeID";
+                                 SET RoomTypeName = @RoomTypeName,
+                                     NumberOfBeds = @NumberOfBeds,
+                                     NumberOfPersons = @NumberOfPersons,
+                                     PricePerNight = @PricePerNight
+                                 WHERE RoomTypeID = @RoomTypeID";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
@@ -87,9 +111,12 @@ namespace HotelReservation.Businesslogic.Repository
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = @"SELECT COUNT(*) FROM RoomTypes
-                         WHERE RoomTypeName = @RoomTypeName
-                         AND RoomTypeID <> @ExcludeID";
+                string query = @"
+                    SELECT COUNT(*)
+                    FROM RoomTypes
+                    WHERE RoomTypeName = @RoomTypeName
+                    AND IsActive = 1
+                    AND RoomTypeID <> @ExcludeID";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
@@ -108,8 +135,23 @@ namespace HotelReservation.Businesslogic.Repository
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string query =
-                        "DELETE FROM RoomTypes WHERE RoomTypeID = @RoomTypeID";
+                    string query = @"
+                    IF EXISTS
+                    (
+                        SELECT 1
+                        FROM Rooms
+                        WHERE RoomTypeID = @RoomTypeID
+                        AND IsActive = 1
+                    )
+                    SELECT 0;
+                    ELSE
+                    BEGIN
+                        UPDATE RoomTypes
+                        SET IsActive = 0
+                        WHERE RoomTypeID = @RoomTypeID;
+
+                        SELECT 1;
+                    END";
 
                     SqlCommand cmd = new SqlCommand(query, con);
 
@@ -117,12 +159,11 @@ namespace HotelReservation.Businesslogic.Repository
 
                     con.Open();
 
-                    return cmd.ExecuteNonQuery() > 0;
+                    return (int)cmd.ExecuteScalar() == 1;
                 }
             }
-            catch (SqlException ex) when (ex.Number == 547)
+            catch (SqlException)
             {
-                // 547 = foreign key error: a Room is still using this Room Type
                 return false;
             }
         }

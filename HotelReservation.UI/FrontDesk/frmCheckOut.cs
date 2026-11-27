@@ -18,6 +18,7 @@ namespace HotelReservation.UI.FrontDesk
         private void frmCheckOut_Load(object sender, EventArgs e)
         {
             LoadCheckOuts();
+            DueWarning.Show(this, checkOuts);   // popup for guests who must pay and leave
         }
 
         private void LoadCheckOuts()
@@ -41,6 +42,8 @@ namespace HotelReservation.UI.FrontDesk
             dgvCheckOut.Columns["TotalPrice"].Visible = false;
             dgvCheckOut.Columns["CheckedInAt"].Visible = false;
             dgvCheckOut.Columns["PaymentDueDate"].Visible = false;
+            dgvCheckOut.Columns["MustLeave"].Visible = false;
+            dgvCheckOut.Columns["NextCheckInDate"].Visible = false;
 
             dgvCheckOut.Columns["ReservationNumber"].HeaderText = "Reservation Number";
             dgvCheckOut.Columns["GuestName"].HeaderText = "Guest Name";
@@ -62,6 +65,13 @@ namespace HotelReservation.UI.FrontDesk
             dgvCheckOut.Columns["Balance"].DefaultCellStyle.Format = PesoFormat;
 
             ApplyCheckOutFilter();
+
+            // Red rows = must pay and leave now
+            foreach (DataGridViewRow gridRow in dgvCheckOut.Rows)
+            {
+                if (Convert.ToInt32(gridRow.Cells["MustLeave"].Value) == 1)
+                    gridRow.DefaultCellStyle.BackColor = Color.MistyRose;
+            }
         }
         private void ApplyCheckOutFilter()
         {
