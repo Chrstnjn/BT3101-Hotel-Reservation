@@ -12,9 +12,11 @@ BEGIN
 
     BEGIN TRANSACTION;
 
-    DECLARE @RoomID INT, @TotalPrice DECIMAL(18,2);
+    DECLARE @RoomID INT, @TotalPrice DECIMAL(18,2),
+            @CheckIn DATETIME, @CheckOut DATETIME;
 
-    SELECT @RoomID = RoomID, @TotalPrice = TotalPrice
+    SELECT @RoomID = RoomID, @TotalPrice = TotalPrice,
+           @CheckIn = CheckInDate, @CheckOut = CheckOutDate
     FROM Reservations
     WHERE ReservationID = @ReservationID AND Status = 'Pending Downpayment';
 
@@ -24,23 +26,29 @@ BEGIN
         THROW 50002, 'This reservation is not waiting for a downpayment.', 1;
     END
 
-    -- The downpayment is 50% of the total price
     IF @Amount < ROUND(@TotalPrice * 0.5, 2)
     BEGIN
         ROLLBACK TRANSACTION;
         THROW 50012, 'The downpayment must be at least 50% of the total price.', 1;
     END
 
-    -- The room is taken only now, and only if nobody else paid for it first
+    -- Nobody else paid for the same room and dates first
+    IF EXISTS (SELECT 1 FROM Reservations x
+               WHERE x.RoomID = @RoomID
+                 AND x.ReservationID <> @ReservationID
+                 AND x.Status IN ('Reserved', 'Checked-In')
+                 AND @CheckIn < x.CheckOutDate
+                 AND @CheckOut > x.CheckInDate)
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50003, 'This room was already taken by another guest for those dates.', 1;
+    END
+
+    -- Mark the room Reserved only if it is free right now
+    -- (if a guest is inside, the room keeps its Checked-In status)
     UPDATE Rooms
     SET Status = 'Reserved'
     WHERE RoomID = @RoomID AND Status = 'Available';
-
-    IF @@ROWCOUNT = 0
-    BEGIN
-        ROLLBACK TRANSACTION;
-        THROW 50003, 'This room was already taken by another guest.', 1;
-    END
 
     INSERT INTO DPayments (ReservationID, PaymentType, PaymentMethod, Amount)
     VALUES (@ReservationID, 'Downpayment', @PaymentMethod, @Amount);
@@ -51,3 +59,4 @@ BEGIN
 
     COMMIT TRANSACTION;
 END
+GO

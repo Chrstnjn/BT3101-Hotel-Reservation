@@ -22,9 +22,15 @@ BEGIN
         THROW 50006, 'Only a Reserved reservation can be checked in.', 1;
     END
 
-    UPDATE Rooms
-    SET Status = 'Checked-In'
-    WHERE RoomID = @RoomID;
+    -- The room must be empty
+    IF EXISTS (SELECT 1 FROM Reservations
+               WHERE RoomID = @RoomID AND Status = 'Checked-In')
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50014, 'The previous guest has not checked out of this room yet.', 1;
+    END
+
+    UPDATE Rooms SET Status = 'Checked-In' WHERE RoomID = @RoomID;
 
     UPDATE Reservations
     SET Status = 'Checked-In',
@@ -33,3 +39,4 @@ BEGIN
 
     COMMIT TRANSACTION;
 END
+GO

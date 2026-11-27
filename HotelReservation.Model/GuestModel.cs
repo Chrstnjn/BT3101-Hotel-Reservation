@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelReservation.Model
+﻿namespace HotelReservation.Model
 {
     public class GuestModel
     {

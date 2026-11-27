@@ -59,5 +59,9 @@ namespace HotelReservation.Businesslogic.Controller
         {
             return repo.GetRecentActivity();
         }
+        public DataTable GetAvailableRoomsForStay(DateTime checkIn, DateTime checkOut)
+        {
+            return repo.GetAvailableRoomsForStay(checkIn, checkOut);
+        }
     }
 }

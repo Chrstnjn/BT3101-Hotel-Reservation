@@ -8,6 +8,8 @@
 
     Status VARCHAR(50) NOT NULL,
 
+    IsActive BIT NOT NULL DEFAULT 1,
+
     CONSTRAINT UQ_RoomNumber UNIQUE (RoomNumber),
 
     FOREIGN KEY (RoomTypeID)

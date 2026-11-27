@@ -35,7 +35,6 @@ namespace HotelReservation.UI.FrontDesk
         private void frmReservation_Load(object sender, EventArgs e)
         {
             LoadGuests();
-            LoadRooms();
             LoadReservations();
 
             pnlReservationDetails.Visible = false;
@@ -184,7 +183,6 @@ namespace HotelReservation.UI.FrontDesk
 
                 CloseDownpaymentPanel();
                 LoadReservations();   // new status and counters
-                LoadRooms();          // the room is no longer Available
             }
             catch (Exception ex)
             {
@@ -298,10 +296,19 @@ namespace HotelReservation.UI.FrontDesk
                 dgvGuestList.Columns[column].Visible = false;
         }
 
-        private void LoadRooms()
+        // Loads only the rooms that are free for the whole stay (check-in to check-out)
+        private void LoadRoomsForStay()
         {
-            RoomRepository repo = new RoomRepository();
-            dgvRoomList.DataSource = repo.GetRooms();
+            // The rooms depend on the dates. Without dates there is nothing to load.
+            if (!checkInDate.HasValue || !checkOutDate.HasValue)
+                return;
+
+            ReservationController controller = new ReservationController();
+
+            dgvRoomList.DataSource =
+                controller.GetAvailableRoomsForStay(
+                    checkInDate.Value,
+                    checkOutDate.Value);
 
             SetupReadOnlyGrid(dgvRoomList);
 
@@ -475,24 +482,31 @@ namespace HotelReservation.UI.FrontDesk
         // =====================================================
         //  ROOM
         // =====================================================
-        private void btnSelectR_Click(object sender, EventArgs e)
-        {
-            if (!RequireGuest() || !RequireDates())
-                return;
+       private void btnSelectR_Click(object sender, EventArgs e)
+{
+    if (!RequireGuest() || !RequireDates())
+        return;
 
-            // Get the latest room status, then show only the rooms that fit
-            LoadRooms();
-            FilterRooms();
+    if (GetNights() <= 0)
+    {
+        ShowWarning("Check-out date must be after the check-in date.", "Invalid Dates");
+        return;
+    }
 
-            if (dgvRoomList.Rows.Count == 0)
-            {
-                MessageBox.Show($"No available room for {numberOfGuest.Value} guest(s).", "No Room Available",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+    // The rooms depend on the dates, so load them again every time
+    LoadRoomsForStay();
+    FilterRooms();
 
-            pnlRoomList.Visible = true;
-        }
+    if (dgvRoomList.Rows.Count == 0)
+    {
+        MessageBox.Show(
+            $"No available room for {numberOfGuest.Value} guest(s) on those dates.",
+            "No Room Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        return;
+    }
+
+    pnlRoomList.Visible = true;
+}
 
         private void FilterRooms()
         {
@@ -790,7 +804,6 @@ namespace HotelReservation.UI.FrontDesk
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadReservations();   // new status and counters
-                LoadRooms();          // the room is available again
             }
             catch (Exception ex)
             {

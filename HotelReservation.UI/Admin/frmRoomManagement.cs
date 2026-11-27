@@ -25,6 +25,7 @@ namespace HotelReservation.UI.Admin
 
             // Hide CreatedDate
             dgvRoomTypeList.Columns["CreatedDate"].Visible = false;
+            dgvRoomTypeList.Columns["isActive"].Visible = false;
 
             dgvRoomTypeList.Columns["PricePerNight"]
                 .DefaultCellStyle.Format = "₱#,##0.00";

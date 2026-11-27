@@ -5,5 +5,6 @@
     NumberOfBeds INT NOT NULL,
     NumberOfPersons INT NOT NULL,
     PricePerNight DECIMAL(18,2) NOT NULL,
-    CreatedDate DATETIME DEFAULT GETDATE()
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    IsActive BIT NOT NULL DEFAULT 1
 );

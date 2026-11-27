@@ -195,5 +195,21 @@ namespace HotelReservation.Businesslogic.Repository
 
             return dt;
         }
+        public DataTable GetAvailableRoomsForStay(DateTime checkIn, DateTime checkOut)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter da = new SqlDataAdapter("usp_GetAvailableRoomsForStay", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@CheckIn", checkIn);
+                da.SelectCommand.Parameters.AddWithValue("@CheckOut", checkOut);
+
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
     }
 }

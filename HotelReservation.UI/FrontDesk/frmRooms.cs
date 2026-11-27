@@ -131,6 +131,7 @@ namespace HotelReservation.UI.FrontDesk
 
             // Hide ID column
             dgvRoomTypeList.Columns["RoomTypeID"].Visible = false;
+            dgvRoomTypeList.Columns["isActive"].Visible = false;
 
             // Optional: Hide CreatedDate if it exists
             if (dgvRoomTypeList.Columns.Contains("CreatedDate"))
