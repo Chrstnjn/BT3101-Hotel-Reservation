@@ -92,5 +92,6 @@
     <None Include="Scripts\GuestScript.sql" />
     <None Include="Scripts\RoomTypeScript.sql" />
     <None Include="Scripts\RoomScript.sql" />
+    <None Include="Scripts\ReservationSample.sql" />
   </ItemGroup>
 </Project>
